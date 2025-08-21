@@ -1,15 +1,11 @@
 // nuxt.config.ts
-import tailwindcss from "@tailwindcss/vite"
-
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  css: ["~/asset/main.css"], // ✅ masukin CSS global kamu
+  css: ["~/assets/css/main.css"], // pastikan foldernya benar (assets, bukan asset)
 
-  vite: {
-    plugins: [
-      tailwindcss(), // ✅ plugin tailwind
-    ],
-  },
+  modules: [
+    "@nuxtjs/tailwindcss", // ✅ cara resmi integrasi tailwind di Nuxt
+  ],
 })
