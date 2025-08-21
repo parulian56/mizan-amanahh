@@ -24,7 +24,7 @@ model User {
   updated_by             String? @db.Uuid()
   deleted_by             String? @db.Uuid()
 
-  // User fields
+
   first_name String
   last_name  String?
   odtw_id    String? @db.Uuid()
