@@ -2,6 +2,9 @@
   <div class="flex flex-col min-h-screen">
     <!-- Header -->
     <header class="bg-red-600 text-white py-4">
+        <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+     </router-link>
       <div class="container mx-auto px-4">
         <h1 class="text-lg font-semibold">Profile mizan amanah</h1>
         <nav class="text-sm mt-1">
