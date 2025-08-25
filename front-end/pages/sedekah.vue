@@ -3,9 +3,9 @@
     <!-- Header -->
     <header class="bg-red-500 text-white px-4 py-3">
       <div class="flex items-center">
-        <button @click="goBack" class="mr-3">
-          <i class="fas fa-arrow-left text-xl"></i>
-        </button>
+        <router-link to="/program" class="mr-3">
+             <i class="fas fa-arrow-left text-xl"></i>
+        </router-link>
         <h1 class="text-lg font-medium">Infaq Beras Untuk Fakir, Miskin, L...</h1>
       </div>
     </header>
