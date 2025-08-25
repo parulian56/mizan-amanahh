@@ -1,15 +1,18 @@
 <template>
   <div class="min-h-screen bg-white">
     <!-- Header -->
-    <header class="bg-red-600 text-white px-6 py-4 flex items-center gap-3">
-      <router-link to="/home" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-     </router-link>
+    <header
+      class="fixed top-0 left-0 w-full bg-red-600 text-white px-6 py-4 flex items-center gap-3 shadow-md z-50"
+    >
+      <!-- Tombol Back -->
+      <button @click="$router.back()" class="text-white text-xl mr-3">
+        ←
+      </button>
       <h1 class="font-bold text-lg">Rekening Donasi</h1>
     </header>
 
     <!-- Breadcrumb -->
-    <nav class="px-6 py-2 text-sm text-gray-200 bg-red-600">
+    <nav class="mt-[64px] px-6 py-2 text-sm text-gray-200 bg-red-600 sticky top-[64px] z-40">
       Home <span class="mx-1">›</span> <span class="font-semibold">rekening-donasi</span>
     </nav>
 
