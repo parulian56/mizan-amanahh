@@ -44,7 +44,7 @@
         <div class="w-16 h-1 bg-red-500"></div>
       </div>
 
-      <!-- Content Section -->
+      <!-- Content Section --->
       <div class="bg-white rounded-lg shadow-sm p-6">
         <!-- Section Title -->
         <h2 class="text-xl font-semibold text-gray-700 mb-4">
