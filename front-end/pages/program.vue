@@ -2,9 +2,9 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-red-600 text-white p-4 flex items-center gap-2">
-      <button @click="goBack" class="mr-3">
-          <i class="fas fa-arrow-left text-xl"></i>
-        </button>
+      <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+     </router-link>
       <h1 class="font-bold">Program</h1>
       <div class="flex-1"></div>
       <!-- Search -->
