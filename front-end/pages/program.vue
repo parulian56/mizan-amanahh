@@ -2,9 +2,9 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-red-600 text-white p-4 flex items-center gap-2">
-      <button class="md:hidden">
-        <span class="material-icons">arrow_back</span>
-      </button>
+      <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+     </router-link>
       <h1 class="font-bold">Program</h1>
       <div class="flex-1"></div>
       <!-- Search -->
@@ -24,8 +24,8 @@
     </header>
 
     <!-- Breadcrumb -->
-    <nav class="bg-white px-4 py-2 text-sm text-gray-500">
-      Home › <span class="text-red-600 font-medium">Programs</span>
+    <nav class="bg-red-600 px-4 py-2 text-sm text-white">
+      Home › <span class="text-white font-medium">Programs</span>
     </nav>
 
     <!-- List Programs -->

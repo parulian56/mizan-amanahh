@@ -1,20 +1,26 @@
 <template>
   <div class="min-h-screen bg-white">
-    <!-- Header -->
-    <header class="bg-red-600 text-white px-6 py-4 flex items-center gap-3">
-      <button class="text-white text-xl">
-        ←
-      </button>
-      <h1 class="font-bold text-lg">Rekening Donasi</h1>
+    <!-- Navbar -->
+    <header
+      class="fixed top-0 left-0 w-full bg-red-600 text-white px-6 py-4 flex items-center justify-between shadow-md z-50"
+    >
+      <div class="flex items-center gap-3">
+        <!-- Tombol Back -->
+        <button @click="$router.back()" class="text-white text-xl">
+          ←
+        </button>
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm">
+          <router-link to="/home" class="hover:underline">Home</router-link>
+          <span class="mx-1">›</span>
+          <span class="font-semibold">Rekening Donasi</span>
+        </nav>
+      </div>
     </header>
 
-    <!-- Breadcrumb -->
-    <nav class="px-6 py-2 text-sm text-gray-200 bg-red-600">
-      Home <span class="mx-1">›</span> <span class="font-semibold">rekening-donasi</span>
-    </nav>
-
     <!-- Konten -->
-    <main class="p-6 max-w-3xl mx-auto">
+    <main class="p-6 max-w-3xl mx-auto pt-[80px]">
       <h2 class="text-2xl font-bold text-center border-b-2 border-red-500 pb-2 mb-6">
         Rekening Donasi
       </h2>
