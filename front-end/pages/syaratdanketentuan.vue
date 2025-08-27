@@ -1,15 +1,46 @@
 <template>
   <div class="bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-800 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <!-- Tombol Back -->
+        <button
+          @click="goBack"
+          class="flex items-center space-x-2 text-green-700 hover:text-green-900 font-medium transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Kembali</span>
+        </button>
+
+        <!-- Brand / Logo -->
+        <div class="text-green-700 font-bold text-lg">
+          QurbanApp
+        </div>
+
+        <!-- Menu (opsional bisa diisi link lain) -->
+        <div class="space-x-4 hidden md:flex">
+          <a href="#" class="text-gray-600 hover:text-green-700 transition">Beranda</a>
+          <a href="#" class="text-gray-600 hover:text-green-700 transition">Tentang</a>
+          <a href="#" class="text-gray-600 hover:text-green-700 transition">Kontak</a>
+        </div>
+      </div>
+    </nav>
+
     <main class="max-w-4xl mx-auto p-6 md:p-12">
       <!-- Header -->
-      <header class="mb-10 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-green-700 drop-shadow-sm">Syarat &amp; Ketentuan Qurban</h1>
+      <header class="mb-10 text-center relative">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-700 drop-shadow-sm">
+          Syarat &amp; Ketentuan Qurban
+        </h1>
         <p class="mt-3 text-base text-gray-600">Mohon dibaca dengan seksama sebelum melanjutkan.</p>
       </header>
 
       <!-- Card Container -->
       <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
         <section class="space-y-6 divide-y divide-gray-200">
+          <!-- Bagian-bagian syarat & ketentuan -->
           <article class="pt-2">
             <h2 class="text-lg font-semibold text-green-700">1. Definisi</h2>
             <ul class="list-disc pl-5 mt-2 text-gray-700">
@@ -90,8 +121,15 @@
 
         <!-- Agreement Section -->
         <div class="mt-10 flex items-center space-x-3">
-          <input type="checkbox" id="agree" v-model="isAgreed" class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500" />
-          <label for="agree" class="text-sm text-gray-700">Saya telah membaca &amp; menyetujui syarat &amp; ketentuan.</label>
+          <input
+            type="checkbox"
+            id="agree"
+            v-model="isAgreed"
+            class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
+          />
+          <label for="agree" class="text-sm text-gray-700">
+            Saya telah membaca &amp; menyetujui syarat &amp; ketentuan.
+          </label>
         </div>
 
         <!-- Button -->
@@ -119,10 +157,13 @@ export default {
     };
   },
   methods: {
+    goBack() {
+      window.history.back(); // kembali ke halaman sebelumnya
+    },
     submitAgreement() {
       if (this.isAgreed) {
         alert("Terima kasih, Anda telah menyetujui syarat & ketentuan.");
-        // Arahkan ke halaman form pendaftaran qurban atau langkah berikutnya
+        // bisa diarahkan ke halaman pendaftaran qurban
       }
     }
   }

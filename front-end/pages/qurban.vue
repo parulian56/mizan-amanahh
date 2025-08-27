@@ -153,11 +153,14 @@
 
 <script setup>
 import { reactive, computed, ref, onMounted } from "vue"
+import { useRouter } from "vue-router" // ✅ tambahkan ini
+
+const router = useRouter() // ✅ inisialisasi router
 
 const paketQurban = [
   { id: 1, name: "Kambing", price: 6000000, icon: "🐐" },
   { id: 2, name: "Domba", price: 7000000, icon: "🐏" },
-  { id: 3, name: "Sapi 1/7", price: 350000000, icon: "🐄" },
+  { id: 3, name: "Sapi 1/7", price: 200000000, icon: "🐄" },
   { id: 4, name: "Sapi 1 Ekor", price: 400000000, icon: "🐂" }
 ]
 
@@ -170,7 +173,6 @@ const form = reactive({
 
 const submitForm = () => {
   alert(`Pendaftaran Qurban berhasil!\n\nNama: ${form.nama}\nTelepon: ${form.telepon}\nAlamat: ${form.alamat}\nPaket: ${form.paket}`)
-  // nanti bisa diintegrasikan ke backend/API
   form.nama = ""
   form.telepon = ""
   form.alamat = ""
@@ -186,8 +188,9 @@ const faqs = reactive([
 
 const currentYear = computed(() => new Date().getFullYear())
 
+// ✅ Update fungsi back agar pakai router
 const goBack = () => {
-  window.location.href = "/" // kembali ke halaman utama
+  router.push("/") // kembali ke halaman awal (Home)
 }
 
 const formatCurrency = (amount) => {
