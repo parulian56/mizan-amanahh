@@ -2,7 +2,9 @@
   <div class="min-h-screen bg-white">
     <!-- Header -->
     <header class="bg-red-600 text-white px-6 py-4 flex items-center gap-2">
-  <NuxtLink to="/home" class="cursor-pointer">←</NuxtLink>
+  <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+      </router-link>
   <span>Home › <b>Kantor Cabang</b></span>
 </header>
 
