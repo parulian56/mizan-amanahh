@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <!-- Header -->
-    <header class="bg-red-600 text-white py-4">
+    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
