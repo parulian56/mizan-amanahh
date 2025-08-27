@@ -4,7 +4,7 @@
     <header class="bg-red-600 text-white p-4 flex items-center gap-2">
       <router-link to="/home" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
-     </router-link>
+      </router-link>
       <h1 class="font-bold">Program</h1>
       <div class="flex-1"></div>
       <!-- Search -->
@@ -25,8 +25,29 @@
 
     <!-- Breadcrumb -->
     <nav class="bg-red-600 px-4 py-2 text-sm text-white">
-      Home › <span class="text-white font-medium">Programs</span>
+     <ul class="flex items-center space-x-2">
+            <li><a href="/home" class="hover:underline">Home</a></li>
+            <li>/</li>
+            <li class="text-gray-200">Tentang</li>
+          </ul>
     </nav>
+
+    <!-- Tabs / Filter -->
+    <div class="bg-white px-4 py-3 flex gap-3 overflow-x-auto border-b">
+      <button
+        v-for="cat in categories"
+        :key="cat"
+        @click="activeCategory = cat"
+        :class="[
+          'px-4 py-1 rounded-full text-sm whitespace-nowrap',
+          activeCategory === cat
+            ? 'bg-red-600 text-white font-medium'
+            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+        ]"
+      >
+        {{ cat }}
+      </button>
+    </div>
 
     <!-- List Programs -->
     <main class="p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -63,7 +84,9 @@
               <span class="font-semibold">
                 Rp. {{ formatNumber(program.collected) }}
               </span>
-              <span class="text-xs"> dari Rp. {{ formatNumber(program.target) }}</span>
+              <span class="text-xs">
+                dari Rp. {{ formatNumber(program.target) }}
+              </span>
             </div>
             <div class="text-right">
               Sisa Hari<br />
@@ -93,14 +116,14 @@
 import { ref, computed } from "vue";
 
 const search = ref("");
+const activeCategory = ref("Semua");
 
 // Dummy data
 const programs = ref([
   {
     id: 1,
     title: "Nenek Penjual Sayur Berjuang Rawat Anaknya yang Sakit-sakitan",
-    image:
-      "https://via.placeholder.com/600x400.png?text=Program+1",
+    image: "https://via.placeholder.com/600x400.png?text=Program+1",
     collected: 12265173,
     target: 30000000,
     daysLeft: -143,
@@ -110,13 +133,12 @@ const programs = ref([
   {
     id: 2,
     title: "Sedekah Sembako & Bedah Rumah Nenek Eja Yang Hidup Sebatang Kara",
-    image:
-      "https://via.placeholder.com/600x400.png?text=Program+2",
+    image: "https://via.placeholder.com/600x400.png?text=Program+2",
     collected: 16108000,
     target: 30000000,
     daysLeft: -113,
     date: "Rabu, 30 April 2025",
-    category: "Kemanusiaan",
+    category: "Pendidikan",
   },
 ]);
 
@@ -125,11 +147,22 @@ programs.value.forEach((p) => {
   p.progress = Math.min(100, (p.collected / p.target) * 100);
 });
 
-// Search filter
+// Daftar kategori (otomatis dari data)
+const categories = computed(() => {
+  const cats = ["Semua", ...new Set(programs.value.map((p) => p.category))];
+  return cats;
+});
+
+// Filter berdasarkan search + kategori
 const filteredPrograms = computed(() =>
-  programs.value.filter((p) =>
-    p.title.toLowerCase().includes(search.value.toLowerCase())
-  )
+  programs.value.filter((p) => {
+    const matchSearch = p.title
+      .toLowerCase()
+      .includes(search.value.toLowerCase());
+    const matchCategory =
+      activeCategory.value === "Semua" || p.category === activeCategory.value;
+    return matchSearch && matchCategory;
+  })
 );
 
 // Format angka
