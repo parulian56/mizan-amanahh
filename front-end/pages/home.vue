@@ -1,28 +1,112 @@
 <template>
   <div class="font-sans text-gray-800">
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
     <header class="fixed top-0 w-full bg-white shadow z-50">
       <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-        <div class="flex items-center font-bold text-red-600">
-          <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white mr-2">M</div>
-          Mizan Amanah
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 font-bold text-red-600">
+          <span class="text-xl">Mizan Amanah</span>
         </div>
-        <ul class="hidden md:flex space-x-8 font-medium">
-          <li><a href="#beranda" class="hover:text-red-600">Beranda</a></li>
-          <li><a href="#program" class="hover:text-red-600">Program</a></li>
-          <li><a href="#berita" class="hover:text-red-600">Berita</a></li>
-          <li><a href="#tentang" class="hover:text-red-600">Tentang</a></li>
-          <li><a href="#kontak" class="hover:text-red-600">Kontak</a></li>
+
+        <!-- Hamburger (Mobile) -->
+        <button 
+          @click="isOpen = !isOpen" 
+          class="md:hidden text-gray-700 focus:outline-none"
+        >
+          <!-- Icon hamburger -->
+          <svg 
+            v-if="!isOpen" 
+            class="w-6 h-6" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <!-- Icon close -->
+          <svg 
+            v-else 
+            class="w-6 h-6" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <!-- Menu -->
+        <ul
+          :class="[ 
+            'absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none md:flex md:space-x-8 font-medium items-center transition-all',
+            isOpen ? 'block' : 'hidden'
+          ]"
+        >
+          <li class="border-b md:border-none">
+            <a href="#tentang" class="block px-6 py-3 md:p-0 hover:text-red-600">Tentang</a>
+          </li>
+
+          <!-- Dropdown Program -->
+          <li class="relative group border-b md:border-none">
+            <NuxtLink 
+              to="/program" 
+              class="flex justify-between md:inline-flex items-center px-6 py-3 md:p-0 hover:text-red-600"
+            >
+              <span>Program</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+                  viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </NuxtLink>
+            <ul class="absolute left-0 mt-2 w-40 bg-white shadow rounded hidden group-hover:block">
+              <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-gray-100">Infaq</NuxtLink></li>
+              <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-gray-100">Zakat</NuxtLink></li>
+            </ul>
+          </li>
+
+          <!-- Dropdown Berita -->
+          <li class="relative group border-b md:border-none">
+            <a href="#berita" class="flex justify-between md:inline-flex items-center px-6 py-3 md:p-0 hover:text-red-600">
+              <span>Berita</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-40 bg-white shadow rounded hidden group-hover:block">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Artikel</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Update</a></li>
+            </ul>
+          </li>
+
+          <li class="border-b md:border-none">
+            <a href="#kantor" class="block px-6 py-3 md:p-0 hover:text-red-600">Kantor Cabang</a>
+          </li>
+          <li class="border-b md:border-none">
+            <a href="#syarat" class="block px-6 py-3 md:p-0 hover:text-red-600">Syarat & Ketentuan</a>
+          </li>
+          <li>
+            <a href="#login" class="block px-6 py-3 md:p-0 hover:text-red-600">Log in</a>
+          </li>
+
+          <!-- Donasi Button -->
+          <li class="px-6 py-3 md:p-0">
+            <a href="#donasi" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700">
+              Donasi
+            </a>
+          </li>
         </ul>
-        <a href="#" class="bg-red-600 text-white px-5 py-2 rounded-full font-bold hover:bg-red-700">
-          Donasi
-        </a>
       </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- ================= HERO ================= -->
     <section id="beranda" class="bg-gradient-to-br from-pink-200 to-pink-400 pt-32 pb-20">
       <div class="container mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
+        <!-- Text -->
         <div>
           <h1 class="text-4xl font-bold text-gray-800 mb-4">
             Program Kemanusiaan <br />
@@ -31,18 +115,25 @@
           <p class="text-gray-600 mb-6">
             Bergabunglah dengan misi mulia kami untuk menciptakan harapan bagi mereka yang membutuhkan.
           </p>
-          <a href="#" class="bg-red-600 text-white px-6 py-3 rounded-full font-bold hover:bg-red-700">
+          <NuxtLink 
+            to="/program" 
+            class="bg-red-600 text-white px-6 py-3 rounded-full font-bold hover:bg-red-700"
+          >
             Mulai Berdonasi
-          </a>
+          </NuxtLink>
         </div>
+
+        <!-- Ilustrasi -->
         <div class="flex justify-center relative">
           <div class="absolute w-72 h-72 bg-orange-400 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-          <img src="https://via.placeholder.com/250x300" alt="Hero Image" class="relative z-10" />
+          <div class="relative z-10 w-48 h-48 bg-white rounded-lg shadow flex items-center justify-center font-bold text-red-600">
+            Hero Box
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Program Section -->
+    <!-- ================= PROGRAM ================= -->
     <section id="program" class="bg-gray-50 py-20">
       <div class="container mx-auto px-6">
         <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">Program Infaq dan Zakat</h2>
@@ -60,39 +151,48 @@
             <div class="p-5">
               <h3 class="text-lg font-bold text-gray-800 mb-2">Nazdar</h3>
               <p class="text-red-600 font-bold mb-2">Rp. 63.151.813 / Rp. 100.000.000</p>
-              <p class="text-sm text-gray-600 mb-4">NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...</p>
-              <a href="#" class="text-red-600 font-bold">Read More</a>
+              <p class="text-sm text-gray-600 mb-4">
+                NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...
+              </p>
+              <NuxtLink to="/program" class="text-red-600 font-bold">Read More</NuxtLink>
+              <div class="mt-4">
+                <NuxtLink 
+                  to="/program" 
+                  class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-red-700"
+                >
+                  Donasi
+                </NuxtLink>
+              </div>
             </div>
             <div class="bg-gray-100 px-5 py-3 flex justify-between items-center">
               <span class="text-sm text-gray-600">Batas: 31 Juli 2025</span>
               <button class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-red-700">Donasi</button>
             </div>
           </div>
-
-          <!-- Tambahkan card lain sesuai kebutuhan -->
         </div>
       </div>
     </section>
 
-    <!-- News Section -->
+    <!-- ================= BERITA ================= -->
     <section id="berita" class="py-20">
       <div class="container mx-auto px-6">
         <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">Update & Berita</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="bg-white rounded-xl shadow overflow-hidden">
-            <img src="https://via.placeholder.com/400x200" alt="News" />
+            <div class="w-full h-40 bg-gray-200 flex items-center justify-center text-gray-500">
+              No Image
+            </div>
             <div class="p-5">
               <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs">Artikel</span>
               <h3 class="font-bold text-lg mt-3">Doa Zakat Fitrah Beserta Arab...</h3>
-              <a href="#" class="text-red-600 font-bold">Read More</a>
+              <NuxtLink to="#" class="text-red-600 font-bold">Read More</NuxtLink>
             </div>
           </div>
-          <!-- Tambah news-card lainnya -->
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
     <footer class="bg-red-600 text-white py-12 mt-20">
       <div class="container mx-auto grid md:grid-cols-4 gap-8 px-6">
         <div>
@@ -108,21 +208,25 @@
         <div>
           <h3 class="font-bold mb-4">Program</h3>
           <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">Peduli Yatim Indonesia</a></li>
-            <li><a href="#" class="hover:underline">Peduli Pendidikan</a></li>
+            <li><NuxtLink to="#" class="hover:underline">Peduli Yatim Indonesia</NuxtLink></li>
+            <li><NuxtLink to="#" class="hover:underline">Peduli Pendidikan</NuxtLink></li>
           </ul>
         </div>
         <div>
           <h3 class="font-bold mb-4">Lainnya</h3>
           <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">Tentang Kami</a></li>
-            <li><a href="#" class="hover:underline">Relawan</a></li>
+            <li><NuxtLink to="/program" class="hover:underline">Peduli Yatim Indonesia</NuxtLink></li>
+            <li><NuxtLink to="/program" class="hover:underline">Peduli Pendidikan</NuxtLink></li>
           </ul>
         </div>
         <div>
           <h3 class="font-bold mb-4">Newsletter</h3>
           <div class="flex">
-            <input type="email" placeholder="Email Anda" class="px-3 py-2 w-full rounded-l bg-white text-gray-700" />
+            <input 
+              type="email" 
+              placeholder="Email Anda" 
+              class="px-3 py-2 w-full rounded-l bg-white text-gray-700" 
+            />
             <button class="bg-blue-600 px-4 rounded-r">OK</button>
           </div>
         </div>
@@ -135,4 +239,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue"
+
+const isOpen = ref(false)
 </script>
