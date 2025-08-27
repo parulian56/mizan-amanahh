@@ -1,174 +1,168 @@
 <template>
-  <div class="bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-800 min-h-screen">
+  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen">
     <!-- Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <!-- Tombol Back -->
-        <button
-          @click="goBack"
-          class="flex items-center space-x-2 text-green-700 hover:text-green-900 font-medium transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span>Kembali</span>
-        </button>
+    <!-- Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Tombol Back -->
+    <button
+      @click="goBack"
+      class="flex items-center space-x-2 text-black hover:text-gray-700 font-medium transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      <span>Kembali</span>
+    </button>
 
-        <!-- Brand / Logo -->
-        <div class="text-green-700 font-bold text-lg">
-          QurbanApp
-        </div>
+    <!-- Brand / Logo -->
+    <div class="text-black font-bold text-lg">
+      Mizan Amanah
+    </div>
+  </div>
+</nav>
 
-        <!-- Menu (opsional bisa diisi link lain) -->
-        <div class="space-x-4 hidden md:flex">
-          <a href="#" class="text-gray-600 hover:text-green-700 transition">Beranda</a>
-          <a href="#" class="text-gray-600 hover:text-green-700 transition">Tentang</a>
-          <a href="#" class="text-gray-600 hover:text-green-700 transition">Kontak</a>
-        </div>
-      </div>
-    </nav>
 
     <main class="max-w-4xl mx-auto p-6 md:p-12">
       <!-- Header -->
       <header class="mb-10 text-center relative">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-green-700 drop-shadow-sm">
-          Syarat &amp; Ketentuan Qurban
+        <h1 class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm">
+          Syarat &amp; Ketentuan Mizan Amanah
         </h1>
-        <p class="mt-3 text-base text-gray-600">Mohon dibaca dengan seksama sebelum melanjutkan.</p>
+        <p class="mt-3 text-base text-gray-600">
+          Pembaruan terakhir: 5 November 2019
+        </p>
       </header>
 
       <!-- Card Container -->
-      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
-        <section class="space-y-6 divide-y divide-gray-200">
-          <!-- Bagian-bagian syarat & ketentuan -->
-          <article class="pt-2">
-            <h2 class="text-lg font-semibold text-green-700">1. Definisi</h2>
-            <ul class="list-disc pl-5 mt-2 text-gray-700">
-              <li><strong>Penyelenggara</strong> — pihak/organisasi penyelenggara program qurban.</li>
-              <li><strong>Peserta</strong> — orang/badan yang mendaftar atau membayar program qurban.</li>
-              <li><strong>Hewan Qurban</strong> — hewan ternak yang memenuhi syarat sah untuk qurban.</li>
-            </ul>
-          </article>
+      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 prose prose-red max-w-none">
+        <p>
+          Persyaratan Layanan ini berlaku jika Anda melakukan donasi melalui
+          <strong>mizanamanah.or.id</strong>. Harap membaca Ketentuan Layanan
+          ini dengan seksama karena berisi informasi penting tentang hak dan
+          kewajiban Anda.
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">2. Syarat Peserta</h2>
-            <ul class="list-decimal pl-5 mt-2 text-gray-700">
-              <li>Peserta adalah mukallaf sesuai syariat.</li>
-              <li>Mendaftar sesuai prosedur resmi.</li>
-              <li>Menyediakan data yang benar &amp; valid.</li>
-            </ul>
-          </article>
+        <p>
+          Dengan mengakses atau menggunakan www.mizanamanah.or.id (apakah Anda
+          mendaftar untuk menggunakan Layanan kami atau tidak), Anda setuju
+          untuk terikat secara hukum dengan Syarat dan Ketentuan di website kami
+          serta perubahan yang kami tetapkan dari waktu ke waktu.
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">3. Kriteria Hewan Qurban</h2>
-            <p class="mt-2 text-gray-700">Hewan qurban harus sehat, cukup usia, dan tidak memiliki cacat yang membatalkan.</p>
-          </article>
+        <p>
+          Jika Anda tidak ingin terikat dengan Ketentuan Layanan ini maka Anda
+          tidak boleh menggunakan situs kami.
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">4. Pendaftaran &amp; Pembayaran</h2>
-            <ul class="list-disc pl-5 mt-2 text-gray-700">
-              <li>Pendaftaran sah setelah formulir &amp; pembayaran selesai.</li>
-              <li>Harga paket meliputi biaya hewan, pemotongan, pengemasan, distribusi.</li>
-              <li>Bukti pembayaran wajib disimpan.</li>
-            </ul>
-          </article>
+        <h2>Tentang Website</h2>
+        <p>
+          Situs web kami memberikan kesempatan untuk membuat kampanye
+          penggalangan donasi secara online untuk mendukung proyek amal di
+          Indonesia serta negara lain yang tidak melanggar hukum. ...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">5. Pembatalan &amp; Pengembalian Dana</h2>
-            <ul class="list-disc pl-5 mt-2 text-gray-700">
-              <li>Pembatalan sebelum cut-off dapat diproses sesuai aturan.</li>
-              <li>Setelah pembelian hewan/ pelaksanaan, pengembalian penuh tidak berlaku.</li>
-            </ul>
-          </article>
+        <h2>Menggunakan Layanan Website</h2>
+        <p>
+          Untuk menggunakan Layanan kami, Anda harus mengikuti prosedur yang
+          ditetapkan di Situs Web. ...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">6. Pelaksanaan &amp; Distribusi</h2>
-            <ul class="list-disc pl-5 mt-2 text-gray-700">
-              <li>Penyembelihan sesuai syariat oleh petugas kompeten.</li>
-              <li>Daging dikemas higienis &amp; disalurkan kepada mustahik.</li>
-              <li>Dokumentasi (foto/video) dapat diberikan sesuai kebijakan.</li>
-            </ul>
-          </article>
+        <h2>Perubahan pada Website</h2>
+        <p>
+          Kami berhak melakukan perubahan atau koreksi, menangguhkan, atau
+          menghentikan segala aspek situs web kami atau konten atau layanan yang
+          tersedia...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">7. Tanggung Jawab</h2>
-            <ul class="list-disc pl-5 mt-2 text-gray-700">
-              <li>Penyelenggara bertanggung jawab atas pelaksanaan sesuai paket.</li>
-              <li>Tidak bertanggung jawab atas keterlambatan distribusi akibat faktor eksternal.</li>
-            </ul>
-          </article>
+        <h2>Informasi yang Anda berikan kepada kami</h2>
+        <p>
+          Kebijakan Privasi kami menjelaskan bagaimana kami dapat menggunakan
+          informasi pribadi yang Anda berikan...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">8. Privasi &amp; Data</h2>
-            <p class="mt-2 text-gray-700">Data peserta digunakan hanya untuk administrasi &amp; distribusi, dijaga kerahasiaannya sesuai hukum berlaku.</p>
-          </article>
+        <h2>Keamanan</h2>
+        <p>
+          Anda bertanggung jawab sepenuhnya dalam semua hal untuk semua
+          penggunaan dan perlindungan kerahasiaan nama pengguna, verifikasi
+          email dan kata sandi...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">9. Force Majeure</h2>
-            <p class="mt-2 text-gray-700">Penyelenggara tidak bertanggung jawab atas kegagalan karena bencana, pandemi, atau hal di luar kendali.</p>
-          </article>
+        <h2>Penerapan Materi Online</h2>
+        <p>
+          Kecuali ditentukan lain, semua konten dan materi yang dipublikasikan
+          di situs kami disajikan semata-mata untuk penggunaan khusus, pribadi
+          dan non-komersial Anda...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">10. Perubahan</h2>
-            <p class="mt-2 text-gray-700">Syarat &amp; ketentuan dapat berubah sewaktu-waktu dan diumumkan melalui saluran resmi.</p>
-          </article>
+        <h2>Hak Cipta dan Pemantauan</h2>
+        <p>
+          Isi dari website kami dilindungi oleh undang-undang hak cipta dan hak
+          kekayaan intelektual lainnya...
+        </p>
 
-          <article class="pt-4">
-            <h2 class="text-lg font-semibold text-green-700">11. Kontak</h2>
-            <p class="mt-2 text-gray-700">Nama Organisasi: <em>[nama organisasi]</em><br>Email: <em>[email@example.com]</em><br>Telepon/WA: <em>[nomor]</em></p>
-          </article>
-        </section>
+        <h2>Situs yang terhubung</h2>
+        <p>
+          Mizan Amanah tidak membuat pernyataan apa pun tentang situs web lain
+          yang dapat Anda akses...
+        </p>
 
-        <!-- Agreement Section -->
-        <div class="mt-10 flex items-center space-x-3">
-          <input
-            type="checkbox"
-            id="agree"
-            v-model="isAgreed"
-            class="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
-          />
-          <label for="agree" class="text-sm text-gray-700">
-            Saya telah membaca &amp; menyetujui syarat &amp; ketentuan.
-          </label>
-        </div>
+        <h2>Ketersediaan Website</h2>
+        <p>
+          Kami akan mencoba membuat situs web kami tersedia namun tidak dapat
+          menjamin bahwa situs web kami akan beroperasi terus menerus...
+        </p>
 
-        <!-- Button -->
-        <div class="mt-6 text-center">
-          <button
-            @click="submitAgreement"
-            :disabled="!isAgreed"
-            class="px-8 py-3 rounded-full font-semibold shadow-md transition-all duration-300"
-            :class="isAgreed ? 'bg-green-600 text-white hover:bg-green-700 hover:shadow-lg' : 'bg-gray-300 text-gray-500 cursor-not-allowed'"
-          >
-            Setuju &amp; Lanjutkan
-          </button>
-        </div>
+        <h2>Kewajiban</h2>
+        <p>
+          Kami berjanji bahwa Layanan kami akan diberikan sesuai keterampilan
+          dan perhatian yang optimal...
+        </p>
+
+        <h2>Ketentuan Umum</h2>
+        <p>
+          Kami bisa, tapi Anda tidak bisa, memberikan hak dan / atau
+          mentransfer, mensubkontrakkan atau mendelegasikan kewajiban...
+        </p>
+
+        <h2>Keluhan dan Pelaporan</h2>
+        <p>
+          Jika Anda memiliki keluhan atau ingin melaporkan masalah teknis apapun
+          dengan situs web kami...
+        </p>
+
+        <h2>Pemberitahuan</h2>
+        <p>
+          Semua pemberitahuan harus diberikan kepada kami melalui email di
+          <em>info@mizanamanah.or.id</em> atau melalui surat ke alamat kantor
+          kami...
+        </p>
+
+        <p class="mt-8 text-sm text-gray-500">
+          <strong>Pembaruan terakhir:</strong> 5 November 2019
+        </p>
       </div>
     </main>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+
 export default {
-  name: "SyaratKetentuanQurban",
-  data() {
-    return {
-      isAgreed: false
+  name: "SyaratKetentuan",
+  setup() {
+    const router = useRouter();
+    const goBack = () => {
+      router.push({ name: "Home" });
     };
+    return { goBack };
   },
-  methods: {
-    goBack() {
-      window.history.back(); // kembali ke halaman sebelumnya
-    },
-    submitAgreement() {
-      if (this.isAgreed) {
-        alert("Terima kasih, Anda telah menyetujui syarat & ketentuan.");
-        // bisa diarahkan ke halaman pendaftaran qurban
-      }
-    }
-  }
 };
 </script>
 
 <style scoped>
+.prose h2 {
+  @apply text-[#FB8603] font-semibold text-xl mt-6;
+}
 </style>
