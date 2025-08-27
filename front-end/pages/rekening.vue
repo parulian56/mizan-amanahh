@@ -1,24 +1,26 @@
 <template>
   <div class="min-h-screen bg-white">
     <!-- Navbar -->
-    <header
-      class="fixed top-0 left-0 w-full bg-red-600 text-white px-6 py-4 flex items-center justify-between shadow-md z-50"
-    >
-      <div class="flex items-center gap-3">
-        <!-- Tombol Back -->
-        <button @click="$router.back()" class="text-white text-xl">
-          ←
-        </button>
+   <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
+      <div class="container mx-auto px-4">
+        <!-- Baris atas: tombol back + title -->
+        <div class="flex items-center">
+          <router-link to="/home" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <h1 class="text-lg font-semibold">Profile Mizan Amanah</h1>
+        </div>
 
         <!-- Breadcrumb -->
-        <nav class="text-sm">
-          <router-link to="/home" class="hover:underline">Home</router-link>
-          <span class="mx-1">›</span>
-          <span class="font-semibold">Rekening Donasi</span>
+        <nav class="text-sm mt-2">
+          <ul class="flex items-center space-x-2">
+            <li><a href="/home" class="hover:underline">Home</a></li>
+            <li>/</li>
+            <li class="text-gray-200">Rekening Donasi</li>
+          </ul>
         </nav>
       </div>
     </header>
-
     <!-- Konten -->
     <main class="p-6 max-w-3xl mx-auto pt-[80px]">
       <h2 class="text-2xl font-bold text-center border-b-2 border-red-500 pb-2 mb-6">

@@ -1,15 +1,20 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <!-- Header -->
-    <header class="bg-red-600 text-white py-4">
-        <router-link to="/home" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-     </router-link>
+    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
-        <h1 class="text-lg font-semibold">Profile mizan amanah</h1>
-        <nav class="text-sm mt-1">
+        <!-- Baris atas: tombol back + title -->
+        <div class="flex items-center">
+          <router-link to="/home" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <h1 class="text-lg font-semibold">Profile Mizan Amanah</h1>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm mt-2">
           <ul class="flex items-center space-x-2">
-            <li><a href="/" class="hover:underline">Home</a></li>
+            <li><a href="/home" class="hover:underline">Home</a></li>
             <li>/</li>
             <li class="text-gray-200">Tentang</li>
           </ul>
@@ -20,7 +25,6 @@
     <!-- Main Content -->
     <main class="flex-1 bg-gray-100 py-10">
       <div class="container mx-auto px-4 max-w-4xl space-y-10">
-
         <!-- Profile Section -->
         <section>
           <h2 class="text-center text-2xl font-bold mb-4">Profile Mizan Amanah</h2>
