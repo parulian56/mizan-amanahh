@@ -2,7 +2,10 @@
   <div class="min-h-screen bg-white">
     <!-- Header -->
     <header class="bg-red-600 text-white px-6 py-4 flex items-center gap-2">
-  <NuxtLink to="/" class="cursor-pointer">←</NuxtLink>
+   <!-- Tombol Back -->
+        <button @click="$router.back()" class="text-white text-xl">
+          ←
+        </button>
   <span>Home › <b>Kantor Cabang</b></span>
 </header>
 
