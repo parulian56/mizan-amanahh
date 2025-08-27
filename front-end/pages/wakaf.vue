@@ -2,20 +2,8 @@
   <div>
     <!-- Header -->
     <div class="flex items-center p-4 text-white bg-red-500">
-      <!-- Icon back -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6 mr-2"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15 19l-7-7 7-7"
-        />
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
       <h1 class="text-lg italic font-semibold">Wakaf</h1>
     </div>
@@ -31,7 +19,6 @@
 
     <!-- Image -->
     <div class="p-4">
-      <!-- Gunakan path dari folder public -->
       <img src="/image/yp.png" alt="yp.png" class="w-full rounded-lg shadow-md" />
     </div>
 
@@ -56,9 +43,9 @@
 </template>
 
 <script setup>
-// Tidak perlu script tambahan, hanya UI statis
+// UI statis, tidak perlu script tambahan
 </script>
 
 <style scoped>
-/* Tambahan kalau mau custom */
+/* Custom styling kalau perlu */
 </style>
