@@ -1,35 +1,39 @@
 <template>
   <div class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
     <!-- Navbar -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
-            <span class="text-white font-bold text-sm">Q</span>
-          </div>
-          <span class="font-bolda text-red-600 text-lg">Qurban Amanah</span>
-        </div>
-        <ul class="hidden md:flex space-x-6 font-medium">
-          <li><a href="#harga" @click="scrollTo('harga')" class="hover:text-red-600 transition-colors cursor-pointer">Harga</a></li>
-          <li><a href="#daftar" @click="scrollTo('daftar')" class="hover:text-red-600 transition-colors cursor-pointer">Daftar</a></li>
-          <li><a href="#faq" @click="scrollTo('faq')" class="hover:text-red-600 transition-colors cursor-pointer">FAQ</a></li>
-        </ul>
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2" @click="toggleMobileMenu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </nav>
-      <!-- Mobile Menu -->
-      <div v-show="mobileMenuOpen" class="md:hidden bg-white border-t">
-        <div class="px-4 py-2 space-y-2">
-          <a @click="scrollTo('harga')" class="block py-2 hover:text-red-600 transition-colors cursor-pointer">Harga</a>
-          <a @click="scrollTo('daftar')" class="block py-2 hover:text-red-600 transition-colors cursor-pointer">Daftar</a>
-          <a @click="scrollTo('faq')" class="block py-2 hover:text-red-600 transition-colors cursor-pointer">FAQ</a>
-        </div>
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      
+      <!-- 🔙 Tombol Back -->
+      <button @click="goBack" class="mr-3 p-2 rounded-full hover:bg-gray-100">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
+        <span class="text-white font-bold text-sm">Q</span>
       </div>
-    </header>
+      <span class="font-bold text-red-600 text-lg">Qurban Amanah</span>
+    </div>
+
+    <!-- Menu Desktop -->
+    <ul class="hidden md:flex space-x-6 font-medium">
+      <li><a href="#harga" @click="scrollTo('harga')" class="hover:text-red-600 transition-colors cursor-pointer">Harga</a></li>
+      <li><a href="#daftar" @click="scrollTo('daftar')" class="hover:text-red-600 transition-colors cursor-pointer">Daftar</a></li>
+      <li><a href="#faq" @click="scrollTo('faq')" class="hover:text-red-600 transition-colors cursor-pointer">FAQ</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden p-2" @click="toggleMobileMenu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+</header>
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-r from-orange-400 to-red-500 text-white py-16 lg:py-20">
