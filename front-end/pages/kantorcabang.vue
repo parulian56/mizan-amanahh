@@ -10,7 +10,7 @@
     <!-- Content -->
     <main class="container mx-auto px-6 py-10">
       <!-- Judul -->
-      <h2 class="text-2xl font-bold text-center mb-8">Kantor Cabang & Layanan Zakat</h2>
+      <h2 class="text-2xl font-bold text-center mb-8">Kantor Cabang</h2>
 
       <!-- Tabel -->
       <div class="overflow-x-auto">
