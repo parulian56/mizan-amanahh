@@ -6,9 +6,9 @@
     >
       <div class="flex items-center gap-3">
         <!-- Tombol Back -->
-        <button @click="$router.back()" class="text-white text-xl">
-          ←
-        </button>
+        <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+      </router-link>
 
         <!-- Breadcrumb -->
         <nav class="text-sm">
