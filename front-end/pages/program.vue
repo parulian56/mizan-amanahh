@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
-    <header class="bg-red-600 text-white p-4 flex items-center gap-2">
+    <header class="bg-primary text-white p-4 flex items-center gap-2">
       <router-link to="/home" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
       </router-link>
@@ -24,12 +24,12 @@
     </header>
 
     <!-- Breadcrumb -->
-    <nav class="bg-red-600 px-4 py-2 text-sm text-white">
+    <nav class="bg-primary px-4 py-2 text-sm text-white">
      <ul class="flex items-center space-x-2">
-            <li><a href="/home" class="hover:underline">Home</a></li>
-            <li>/</li>
-            <li class="text-gray-200">Tentang</li>
-          </ul>
+        <li><a href="/home" class="hover:underline">Home</a></li>
+        <li>/</li>
+        <li class="text-gray-200">Tentang</li>
+      </ul>
     </nav>
 
     <!-- Tabs / Filter -->
@@ -38,11 +38,11 @@
         v-for="cat in categories"
         :key="cat"
         @click="activeCategory = cat"
-        :class="[
+        :class="[ 
           'px-4 py-1 rounded-full text-sm whitespace-nowrap',
           activeCategory === cat
-            ? 'bg-red-600 text-white font-medium'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            ? 'bg-primary text-white font-medium'
+            : 'bg-secondary text-white hover:bg-secondary-dark'
         ]"
       >
         {{ cat }}
@@ -65,14 +65,14 @@
 
         <!-- Konten -->
         <div class="p-4 flex flex-col flex-1">
-          <h2 class="font-bold text-red-600 mb-2">
+          <h2 class="font-bold text-primary mb-2">
             {{ program.title }}
           </h2>
 
           <!-- Progress bar -->
           <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
             <div
-              class="bg-red-600 h-2 rounded-full"
+              class="bg-primary h-2 rounded-full"
               :style="{ width: program.progress + '%' }"
             ></div>
           </div>
@@ -97,12 +97,12 @@
           <!-- Tanggal & Kategori -->
           <div class="flex justify-between text-xs text-gray-500 mb-3">
             <span>{{ program.date }}</span>
-            <span class="text-red-600 font-medium">{{ program.category }}</span>
+            <span class="text-primary font-medium">{{ program.category }}</span>
           </div>
 
           <!-- Tombol -->
           <button
-            class="bg-red-600 text-white py-2 rounded-lg mt-auto hover:bg-red-700 transition"
+            class="bg-primary text-white py-2 rounded-lg mt-auto hover:bg-primary-dark transition"
           >
             DONASI
           </button>
@@ -118,7 +118,6 @@ import { ref, computed } from "vue";
 const search = ref("");
 const activeCategory = ref("Semua");
 
-// Dummy data
 const programs = ref([
   {
     id: 1,
@@ -142,18 +141,15 @@ const programs = ref([
   },
 ]);
 
-// Hitung persentase progress
 programs.value.forEach((p) => {
   p.progress = Math.min(100, (p.collected / p.target) * 100);
 });
 
-// Daftar kategori (otomatis dari data)
 const categories = computed(() => {
   const cats = ["Semua", ...new Set(programs.value.map((p) => p.category))];
   return cats;
 });
 
-// Filter berdasarkan search + kategori
 const filteredPrograms = computed(() =>
   programs.value.filter((p) => {
     const matchSearch = p.title
@@ -165,7 +161,6 @@ const filteredPrograms = computed(() =>
   })
 );
 
-// Format angka
 function formatNumber(num) {
   return new Intl.NumberFormat("id-ID").format(num);
 }
@@ -173,4 +168,40 @@ function formatNumber(num) {
 
 <style>
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/* Primary → Orange 500 */
+.bg-primary {
+  background-color: #FB8505 !important;
+}
+.text-primary {
+  color: #FB8505 !important;
+}
+.bg-primary-dark {
+  background-color: #C96A04 !important; /* Orange 700 */
+}
+
+/* Secondary → Teal 500 */
+.bg-secondary {
+  background-color: #59AAB7 !important;
+}
+.text-secondary {
+  color: #59AAB7 !important;
+}
+.bg-secondary-dark {
+  background-color: #478892 !important; /* Teal 700 */
+}
+
+/* Tambahan */
+.bg-light {
+  background-color: #FDB669 !important; /* Orange 300 */
+}
+.bg-accent {
+  background-color: #9BCCD4 !important; /* Teal 300 */
+}
+.bg-black-rich {
+  background-color: #111111 !important;
+}
+.text-black-rich {
+  color: #111111 !important;
+}
 </style>
