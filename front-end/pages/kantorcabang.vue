@@ -36,6 +36,7 @@
   </div>
 </template>
 
+
 <script setup>
 const kantorCabang = [
   { no: 1, alamat: "Jl. Ulujami Raya No.111 Kel. Ulujami Kec. Pesanggrahan Jakarta Selatan", telp: "(021) 2765 9993", hp: "0899 0697 691" },
