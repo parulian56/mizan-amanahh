@@ -62,7 +62,7 @@
             dari
             <span class="font-semibold">Rp. {{ formatCurrency(targetAmount) }}</span>
           </p>
-        </div>
+        </div> 
 
         <!-- Bismillah -->
         <div class="mb-6">
