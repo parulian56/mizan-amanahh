@@ -4,16 +4,19 @@
    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
-        <router-link to="/home" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
+        <div class="flex items-center">
+          <router-link to="/home" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <h1 class="text-lg font-semibold">Rekening</h1>
+        </div>
 
         <!-- Breadcrumb -->
         <nav class="text-sm mt-2">
           <ul class="flex items-center space-x-2">
             <li><a href="/home" class="hover:underline">Home</a></li>
             <li>/</li>
-            <li class="text-gray-200">Rekening Donasi</li>
+            <li class="text-gray-200">Rekening</li>
           </ul>
         </nav>
       </div>
