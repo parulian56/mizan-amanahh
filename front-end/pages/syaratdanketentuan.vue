@@ -5,16 +5,10 @@
 <nav class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <!-- Tombol Back -->
-    <button
-      @click="goBack"
-      class="flex items-center space-x-2 text-black hover:text-gray-700 font-medium transition-colors"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-      <span>Kembali</span>
-    </button>
-
+    <router-link to="/home" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+          <i class="fas fa-arrow-left text-xl"></i>
+          <span>Kembali</span>
+        </router-link>
     <!-- Brand / Logo -->
     <div class="text-black font-bold text-lg">
       Mizan Amanah
