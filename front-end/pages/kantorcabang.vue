@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-[#FFFFFF]">
     <!-- Header -->
-    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
+    <header class="bg-[#FB8505] text-[#FFFFFF] py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
         <!-- Top row: back button + title -->
         <div class="flex items-center">
           <router-link to="/home" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
           <h1 class="text-lg font-semibold">Kantor Cabang</h1>
         </div>
 
@@ -20,7 +20,7 @@
               </NuxtLink>
             </li>
             <li aria-hidden="true">›</li>
-            <li class="text-gray-200" aria-current="page">kantor-cabang</li>
+            <li class="text-[#59AAB7]" aria-current="page">kantor-cabang</li>
           </ul>
         </nav>
       </div>
@@ -28,38 +28,40 @@
 
     <!-- Content -->
     <main class="container mx-auto px-6 py-8">
-      <!-- Title with red underline -->
+      <!-- Title with orange underline -->
       <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Kantor Cabang</h2>
-        <div class="w-24 h-1 bg-red-600 mx-auto rounded"></div>
+        <h2 class="text-2xl font-bold text-[#111111] mb-2">Kantor Cabang</h2>
+        <div class="w-24 h-1 bg-[#FB8505] mx-auto rounded"></div>
       </div>
 
       <!-- Data grouped by category -->
       <div class="space-y-8">
         <!-- Head Office -->
-        <section class="bg-gray-50 rounded-lg p-6 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-600 mb-4">
+        <section class="bg-[#59AAB7]/10 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-[#59AAB7] mb-4">
             Kantor Pusat Manajemen Mizan Amanah
           </h3>
           <div class="space-y-4">
             <div
               v-for="kantor in kantorPusat"
               :key="kantor.no"
-              class="flex flex-col md:flex-row md:items-start justify-between py-3 border-b border-gray-200 last:border-b-0 hover:bg-white hover:px-3 hover:mx-[-12px] hover:rounded transition-all duration-200"
+              class="flex flex-col md:flex-row md:items-start justify-between py-3 border-b border-[#59AAB7]/40 last:border-b-0 hover:bg-[#FFFFFF] hover:px-3 hover:mx-[-12px] hover:rounded transition-all duration-200"
             >
               <div class="flex items-start space-x-4 flex-1">
-                <div class="text-gray-500 font-medium min-w-[30px] mt-1">
+                <div class="text-[#59AAB7] font-medium min-w-[30px] mt-1">
                   {{ kantor.no }}
                 </div>
                 <div class="flex-1">
-                  <p class="text-gray-700 leading-relaxed">{{ kantor.alamat }}</p>
+                  <p class="text-[#111111] leading-relaxed">{{ kantor.alamat }}</p>
                 </div>
               </div>
-              <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0 md:min-w-[300px] md:justify-end">
-                <div v-if="kantor.telp" class="text-gray-600 text-sm font-mono">
+              <div
+                class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0 md:min-w-[300px] md:justify-end"
+              >
+                <div v-if="kantor.telp" class="text-[#59AAB7] text-sm font-mono">
                   {{ kantor.telp }}
                 </div>
-                <div v-if="kantor.hp" class="text-red-600 text-sm font-medium font-mono">
+                <div v-if="kantor.hp" class="text-[#FB8505] text-sm font-medium font-mono">
                   {{ kantor.hp }}
                 </div>
               </div>
@@ -67,34 +69,36 @@
           </div>
         </section>
 
-        <!-- Branch Offices grouped by region -->
+        <!-- Branch Offices  by region -->
         <section
           v-for="(group, groupName) in groupedKantorCabang"
           :key="groupName"
-          class="bg-gray-50 rounded-lg p-6 shadow-sm"
+          class="bg-[#59AAB7]/10 rounded-lg p-6 shadow-sm"
         >
-          <h3 class="text-lg font-semibold text-gray-600 mb-4">
+          <h3 class="text-lg font-semibold text-[#59AAB7] mb-4">
             {{ groupName }}
           </h3>
           <div class="space-y-4">
             <div
               v-for="kantor in group"
               :key="kantor.no"
-              class="flex flex-col md:flex-row md:items-start justify-between py-3 border-b border-gray-200 last:border-b-0 hover:bg-white hover:px-3 hover:mx-[-12px] hover:rounded transition-all duration-200"
+              class="flex flex-col md:flex-row md:items-start justify-between py-3 border-b border-[#59AAB7]/40 last:border-b-0 hover:bg-[#FFFFFF] hover:px-3 hover:mx-[-12px] hover:rounded transition-all duration-200"
             >
               <div class="flex items-start space-x-4 flex-1">
-                <div class="text-gray-500 font-medium min-w-[30px] mt-1">
+                <div class="text-[#59AAB7] font-medium min-w-[30px] mt-1">
                   {{ kantor.no }}
                 </div>
                 <div class="flex-1">
-                  <p class="text-gray-700 leading-relaxed">{{ kantor.alamat }}</p>
+                  <p class="text-[#111111] leading-relaxed">{{ kantor.alamat }}</p>
                 </div>
               </div>
-              <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0 md:min-w-[300px] md:justify-end">
-                <div v-if="kantor.telp" class="text-gray-600 text-sm font-mono">
+              <div
+                class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0 md:min-w-[300px] md:justify-end"
+              >
+                <div v-if="kantor.telp" class="text-[#59AAB7] text-sm font-mono">
                   {{ kantor.telp }}
                 </div>
-                <div v-if="kantor.hp" class="text-red-600 text-sm font-medium font-mono">
+                <div v-if="kantor.hp" class="text-[#FB8505] text-sm font-medium font-mono">
                   {{ kantor.hp }}
                 </div>
               </div>
@@ -105,6 +109,7 @@
     </main>
   </div>
 </template>
+
 
 <script setup lang="ts">
 // SEO and Meta
@@ -248,20 +253,17 @@ const groupedKantorCabang = computed(() => {
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
 .font-mono {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
-/* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom focus styles for accessibility */
 a:focus,
 button:focus {
-  outline: 2px solid #dc2626;
+  outline: 2px solid #FB8505; /* orange */
   outline-offset: 2px;
 }
 </style>
