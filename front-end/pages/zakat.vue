@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Navbar -->
     <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-red-600 text-white px-4 py-4 flex items-center space-x-2"
+      class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
     >
       <span class="cursor-pointer" @click="page = 'home'">⬅</span>
       <h2 class="text-lg font-semibold">Zakat</h2>
@@ -10,22 +10,22 @@
 
     <!-- Breadcrumb -->
     <div
-      class="fixed top-14 left-0 right-0 z-40 bg-red-700 text-white px-4 py-2 text-sm"
+      class="fixed top-14 left-0 right-0 z-40 bg-[#FB8505] text-white px-4 py-2 text-sm"
     >
       <span v-if="page === 'home'">
-        Home › <span class="text-red-200 font-bold">Bayar-Zakat</span>
+        Home › <span class="text-[#FDB669] font-bold">Bayar-Zakat</span>
       </span>
       <span v-else-if="page === 'form'">
         Home › Bayar-Zakat ›
-        <span class="text-red-200 font-bold">Form-Zakat</span>
+        <span class="text-[#FDB669] font-bold">Form-Zakat</span>
       </span>
       <span v-else-if="page === 'calc'">
         Home › Bayar-Zakat ›
-        <span class="text-red-200 font-bold">Kalkulator</span>
+        <span class="text-[#FDB669] font-bold">Kalkulator</span>
       </span>
     </div>
 
-    <!-- Konten Utama (dikasih padding supaya ga ketiban header) -->
+    <!-- Konten Utama -->
     <div class="pt-24">
       <!-- Halaman Utama -->
       <div v-if="page === 'home'" class="p-4">
@@ -36,15 +36,13 @@
             :key="index"
             class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
           >
-            <!-- Gambar -->
             <img
               :src="item.image"
               alt="zakat"
               class="w-full h-40 object-cover"
             />
-            <!-- Isi Card -->
             <div class="p-3 flex flex-col flex-1">
-              <h3 class="font-semibold text-red-700 text-sm">
+              <h3 class="font-semibold text-[#FB8505] text-sm">
                 {{ item.title }}
               </h3>
               <p class="text-xs text-gray-600 mt-1 line-clamp-3">
@@ -62,7 +60,7 @@
                 </p>
                 <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
                   <div
-                    class="bg-red-600 h-2 rounded-full"
+                    class="bg-[#59AAB7] h-2 rounded-full"
                     :style="{
                       width: ((item.collected / item.target) * 100) + '%'
                     }"
@@ -79,7 +77,7 @@
               <!-- Button -->
               <div class="mt-auto pt-3">
                 <button
-                  class="w-full bg-red-600 text-white text-sm py-2 rounded-lg shadow hover:bg-red-700"
+                  class="w-full bg-[#FB8505] text-white text-sm py-2 rounded-lg shadow hover:bg-[#C96A04]"
                 >
                   Donasi Sekarang
                 </button>
@@ -98,13 +96,13 @@
           <div class="flex justify-center space-x-3 mt-4">
             <button
               @click="page = 'form'"
-              class="bg-red-600 text-white px-4 py-2 rounded-lg shadow text-sm"
+              class="bg-[#FB8505] text-white px-4 py-2 rounded-lg shadow text-sm hover:bg-[#C96A04]"
             >
               TUNAIKAN ZAKAT
             </button>
             <button
               @click="page = 'calc'"
-              class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow text-sm"
+              class="bg-[#59AAB7] text-white px-4 py-2 rounded-lg shadow text-sm hover:bg-[#478892]"
             >
               KALKULATOR ZAKAT
             </button>
@@ -114,10 +112,10 @@
 
       <!-- Form Zakat -->
       <div v-else-if="page === 'form'" class="p-4">
-        <h2 class="text-center text-xl font-bold text-red-700 mb-2">
+        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
           Tunaikan Zakat
         </h2>
-        <p class="text-center text-sm text-red-500 mb-4">
+        <p class="text-center text-sm text-[#59AAB7] mb-4">
           Silahkan Login atau isi data di bawah ini
         </p>
 
@@ -162,12 +160,12 @@
           </div>
 
           <button
-            class="w-full bg-red-500 text-white py-2 rounded-lg"
+            class="w-full bg-[#59AAB7] text-white py-2 rounded-lg hover:bg-[#478892]"
           >
             Pilih Metode Pembayaran
           </button>
           <button
-            class="w-full bg-red-600 text-white py-2 rounded-lg"
+            class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]"
           >
             Lanjutkan Pembayaran
           </button>
@@ -176,7 +174,7 @@
 
       <!-- Kalkulator Zakat -->
       <div v-else-if="page === 'calc'" class="p-4">
-        <h2 class="text-center text-xl font-bold text-red-700 mb-4">
+        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-4">
           Perhitungan Zakat Penghasilan
         </h2>
 
@@ -259,7 +257,7 @@
             syariat agama.
           </p>
 
-          <button class="w-full bg-red-600 text-white py-2 rounded-lg">
+          <button class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]">
             BAYAR
           </button>
         </form>
