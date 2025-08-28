@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-red-600 text-white p-4 flex items-center gap-2">
-      <router-link to="/home" class="mr-3">
+      <router-link to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
      </router-link>
       <h1 class="font-bold">Program</h1>
