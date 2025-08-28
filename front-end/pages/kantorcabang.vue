@@ -1,46 +1,82 @@
 <template>
   <div class="min-h-screen bg-white">
     <!-- Header -->
-    <header class="bg-red-600 text-white px-6 py-4 flex items-center gap-2">
-  <router-link to="/home" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
-  <span>Home › <b>Kantor Cabang</b></span>
-</header>
+    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
+      <div class="container mx-auto px-4">
+        <!-- Baris atas: tombol back + title -->
+        <div class="flex items-center">
+          <router-link to="/home" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <h1 class="text-lg font-semibold">Kantor Cabang</h1>
+        </div>
 
+        <!-- Breadcrumb -->
+        <nav class="text-sm mt-2">
+          <ul class="flex items-center space-x-2">
+            <li><a href="/home" class="hover:underline">Home</a></li>
+            <li>›</li>
+            <li class="text-gray-200">kantor-cabang</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <!-- Content -->
-    <main class="container mx-auto px-6 py-10">
-      <!-- Judul -->
-      <h2 class="text-2xl font-bold text-center mb-8">Kantor Cabang</h2>
+    <main class="container mx-auto px-6 py-8">
+      <!-- Judul dengan underline merah -->
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Kantor Cabang</h2>
+        <div class="w-24 h-1 bg-red-600 mx-auto"></div>
+      </div>
 
-      <!-- Tabel -->
-      <div class="overflow-x-auto">
-        <table class="w-full border border-gray-200 text-left text-sm">
-          <thead class="bg-gray-100">
-            <tr>
-              <th class="p-3 font-bold">No</th>
-              <th class="p-3 font-bold">Alamat</th>
-              <th class="p-3 font-bold">Telepon</th>
-              <th class="p-3 font-bold">HP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(kantor, i) in kantorCabang" :key="i" class="border-t">
-              <td class="p-3">{{ kantor.no }}</td>
-              <td class="p-3">{{ kantor.alamat }}</td>
-              <td class="p-3">{{ kantor.telp }}</td>
-              <td class="p-3">{{ kantor.hp }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Data dengan grouping berdasarkan kategori -->
+      <div class="space-y-8">
+        <!-- Kantor Pusat -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-gray-600 mb-4">Kantor Pusat Manajemen Mizan Amanah</h3>
+          <div class="space-y-4">
+            <div v-for="kantor in kantorPusat" :key="kantor.no" class="flex flex-col md:flex-row md:items-center justify-between py-3 border-b border-gray-200 last:border-b-0">
+              <div class="flex items-start space-x-4 flex-1">
+                <div class="text-gray-500 font-medium min-w-[30px]">{{ kantor.no }}</div>
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">{{ kantor.alamat }}</p>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0">
+                <div v-if="kantor.telp" class="text-gray-600 text-sm">{{ kantor.telp }}</div>
+                <div v-if="kantor.hp" class="text-gray-600 text-sm font-medium">{{ kantor.hp }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kantor Cabang dengan grouping berdasarkan wilayah -->
+        <div v-for="(group, groupName) in groupedKantorCabang" :key="groupName" class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-gray-600 mb-4">{{ groupName }}</h3>
+          <div class="space-y-4">
+            <div v-for="kantor in group" :key="kantor.no" class="flex flex-col md:flex-row md:items-center justify-between py-3 border-b border-gray-200 last:border-b-0">
+              <div class="flex items-start space-x-4 flex-1">
+                <div class="text-gray-500 font-medium min-w-[30px]">{{ kantor.no }}</div>
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">{{ kantor.alamat }}</p>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mt-2 md:mt-0">
+                <div v-if="kantor.telp" class="text-gray-600 text-sm">{{ kantor.telp }}</div>
+                <div v-if="kantor.hp" class="text-gray-600 text-sm font-medium">{{ kantor.hp }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
 </template>
 
-
 <script setup>
+import { computed } from 'vue'
+
 const kantorCabang = [
   { no: 1, alamat: "Jl. Ulujami Raya No.111 Kel. Ulujami Kec. Pesanggrahan Jakarta Selatan", telp: "(021) 2765 9993", hp: "0899 0697 691" },
   { no: 2, alamat: "Jl. Terusan Gg PGRI Rt007/003 Cimahi Tengah No 34 C", telp: "(022) 2066 5469", hp: "0852 9476 2633" },
@@ -95,4 +131,65 @@ const kantorCabang = [
   { no: 51, alamat: "Jl. Bumi Mas Raya No.2, Banjarmasin", telp: "(0511) 325 7370", hp: "" },
   { no: 52, alamat: "KM.12 Jalan Raya Cianjur Bandung Kp. Mekarsari No. 5 RT03/RW06, Hegarmanah, Kec. Sukaluyu, Kabupaten Cianjur, Jawa Barat 43284", telp: "", hp: "0823 1942 7090" }
 ]
+
+// Kantor Pusat (hanya no 1)
+const kantorPusat = computed(() => {
+  return kantorCabang.filter(kantor => kantor.no === 1)
+})
+
+// Grouping kantor cabang berdasarkan wilayah
+const groupedKantorCabang = computed(() => {
+  const groups = {}
+  
+  kantorCabang.slice(1).forEach(kantor => {
+    const alamat = kantor.alamat.toLowerCase()
+    
+    let groupName = ''
+    
+    if (alamat.includes('jakarta pusat')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Jakarta Pusat'
+    } else if (alamat.includes('jakarta barat')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Jakarta Barat'
+    } else if (alamat.includes('tangerang')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Tangerang Selatan'
+    } else if (alamat.includes('jakarta timur') || alamat.includes('cibubur') || alamat.includes('cipayung') || alamat.includes('pasar rebo') || alamat.includes('batu ampar') || alamat.includes('duren sawit') || alamat.includes('jatinegara')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Jakarta Timur'
+    } else if (alamat.includes('jakarta selatan') || alamat.includes('tebet') || alamat.includes('pancoran') || alamat.includes('pasar minggu') || alamat.includes('jagakarsa') || alamat.includes('ciganjur') || alamat.includes('lebak bulus') || alamat.includes('kebayoran') || alamat.includes('cilandak')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Jakarta Selatan'
+    } else if (alamat.includes('bogor')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Bogor'
+    } else if (alamat.includes('bekasi')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Bekasi'
+    } else if (alamat.includes('depok')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Depok'
+    } else if (alamat.includes('cimahi')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Cimahi'
+    } else if (alamat.includes('bandung')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Bandung'
+    } else if (alamat.includes('surakarta') || alamat.includes('solo')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Solo'
+    } else if (alamat.includes('banyumas')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Banyumas'
+    } else if (alamat.includes('yogyakarta')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Yogyakarta'
+    } else if (alamat.includes('surabaya')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Surabaya'
+    } else if (alamat.includes('malang')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Malang'
+    } else if (alamat.includes('balikpapan')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Balikpapan'
+    } else if (alamat.includes('banjarmasin')) {
+      groupName = 'Kantor Layanan Zakat dan Panti Asuhan Yatim Banjarmasin'
+    } else if (alamat.includes('cianjur')) {
+      groupName = 'Pesantren Al-Kamil Islamic Boarding School Kabupaten Cianjur'
+    }
+    
+    if (!groups[groupName]) {
+      groups[groupName] = []
+    }
+    groups[groupName].push(kantor)
+  })
+  
+  return groups
+})
 </script>
