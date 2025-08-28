@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-white">
     <!-- Navbar -->
-   <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
+    <header class="bg-orange-500 text-white py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
@@ -16,22 +16,23 @@
           <ul class="flex items-center space-x-2">
             <li><a href="/home" class="hover:underline">Home</a></li>
             <li>/</li>
-            <li class="text-gray-200">Rekening</li>
+            <li class="text-teal-300">Rekening</li>
           </ul>
         </nav>
       </div>
     </header>
+
     <!-- Konten -->
     <main class="p-6 max-w-3xl mx-auto pt-[80px]">
-      <h2 class="text-2xl font-bold text-center border-b-2 border-red-500 pb-2 mb-6">
+      <h2 class="text-2xl font-bold text-center border-b-2 border-orange-500 pb-2 mb-6 text-richblack">
         Rekening Donasi
       </h2>
 
       <!-- Zakat -->
       <section class="mt-6">
-        <p class="font-semibold mb-2">Rekening Zakat a.n Yayasan Mizan Amanah</p>
-        <table class="w-full border border-gray-300">
-          <thead class="bg-gray-100">
+        <p class="font-semibold mb-2 text-richblack">Rekening Zakat a.n Yayasan Mizan Amanah</p>
+        <table class="w-full border border-teal-500">
+          <thead class="bg-teal-300 text-richblack">
             <tr>
               <th class="border px-4 py-2 text-left">BANK</th>
               <th class="border px-4 py-2 text-left">NO REKENING</th>
@@ -49,9 +50,9 @@
 
       <!-- Sedekah -->
       <section class="mt-8">
-        <p class="font-semibold mb-2">Rekening Sedekah a.n Yayasan Mizan Amanah</p>
-        <table class="w-full border border-gray-300">
-          <thead class="bg-gray-100">
+        <p class="font-semibold mb-2 text-richblack">Rekening Sedekah a.n Yayasan Mizan Amanah</p>
+        <table class="w-full border border-teal-500">
+          <thead class="bg-teal-300 text-richblack">
             <tr>
               <th class="border px-4 py-2 text-left">BANK</th>
               <th class="border px-4 py-2 text-left">NO REKENING</th>
@@ -70,9 +71,9 @@
 
       <!-- Wakaf -->
       <section class="mt-8">
-        <p class="font-semibold mb-2">Rekening Wakaf a.n Yayasan Mizan Amanah</p>
-        <table class="w-full border border-gray-300">
-          <thead class="bg-gray-100">
+        <p class="font-semibold mb-2 text-richblack">Rekening Wakaf a.n Yayasan Mizan Amanah</p>
+        <table class="w-full border border-teal-500">
+          <thead class="bg-teal-300 text-richblack">
             <tr>
               <th class="border px-4 py-2 text-left">BANK</th>
               <th class="border px-4 py-2 text-left">NO REKENING</th>
@@ -90,9 +91,9 @@
 
       <!-- Kemanusiaan -->
       <section class="mt-8 mb-12">
-        <p class="font-semibold mb-2">Rekening Kemanusiaan / Bencana a.n Yayasan Mizan Amanah</p>
-        <table class="w-full border border-gray-300">
-          <thead class="bg-gray-100">
+        <p class="font-semibold mb-2 text-richblack">Rekening Kemanusiaan / Bencana a.n Yayasan Mizan Amanah</p>
+        <table class="w-full border border-teal-500">
+          <thead class="bg-teal-300 text-richblack">
             <tr>
               <th class="border px-4 py-2 text-left">BANK</th>
               <th class="border px-4 py-2 text-left">NO REKENING</th>
