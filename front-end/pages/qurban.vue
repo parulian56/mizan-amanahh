@@ -210,6 +210,7 @@ const artikels = reactive([
 
 const currentYear = computed(() => new Date().getFullYear())
 
+// ✅ Tombol Back ke Home Vue
 const goBack = () => {
   router.push("/") 
 }
@@ -244,3 +245,4 @@ onMounted(() => {
   setInterval(updateCountdown, 1000)
 })
 </script>
+  
