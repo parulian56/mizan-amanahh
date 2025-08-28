@@ -4,12 +4,9 @@
    <header class="bg-red-600 text-white py-4 sticky top-0 z-50 shadow">
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
-        <div class="flex items-center">
-          <router-link to="/home" class="mr-3 flex items-center">
-            <i class="fas fa-arrow-left text-xl"></i>
-          </router-link>
-          <h1 class="text-lg font-semibold">Profile Mizan Amanah</h1>
-        </div>
+        <router-link to="/home" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+      </router-link>
 
         <!-- Breadcrumb -->
         <nav class="text-sm mt-2">
