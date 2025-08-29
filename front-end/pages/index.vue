@@ -57,7 +57,7 @@
 
         <!-- Login & Donasi (Far Right) -->
         <div class="hidden md:flex items-center space-x-4 ml-auto">
-          <a href="#login" class="hover:text-red-600 font-medium">Log in</a>
+          <a href="login" class="hover:text-red-600 font-medium">Log in</a>
           <a href="#donasi" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700">
             Donasi
           </a>
@@ -117,7 +117,7 @@
             </NuxtLink>
           </li>
           <li class="border-b">
-            <a href="#login" class="block px-6 py-3 hover:text-red-600">Log in</a>
+            <a href="login" class="block px-6 py-3 hover:text-red-600">Log in</a>
           </li>
           <li class="px-6 py-3">
             <a href="#donasi" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 inline-block">

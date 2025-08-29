@@ -5,7 +5,7 @@
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
-          <router-link to="/home" class="mr-3 flex items-center">
+          <router-link to="http://localhost:3000" class="mr-3 flex items-center">
             <i class="fas fa-arrow-left text-xl"></i>
           </router-link>
           <h1 class="text-lg font-semibold">Rekening</h1>
@@ -13,7 +13,7 @@
 
         <!-- Breadcrumb -->
         <nav class="text-sm">
-          <router-link to="/home" class="hover:underline">Home</router-link>
+          <router-link to="http://localhost:3000" class="hover:underline">Home</router-link>
           <span class="mx-1">›</span>
           <span class="font-semibold">Rekening Donasi</span>
         </nav>
