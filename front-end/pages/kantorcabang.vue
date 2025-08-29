@@ -5,7 +5,7 @@
       <div class="container mx-auto px-4">
         <!-- Top row: back button + title -->
         <div class="flex items-center">
-          <router-link to="/home" class="mr-3">
+          <router-link to="http://localhost:3000" class="mr-3">
             <i class="fas fa-arrow-left text-xl"></i>
           </router-link>
           <h1 class="text-lg font-semibold">Kantor Cabang</h1>
@@ -15,7 +15,7 @@
         <nav class="text-sm mt-2" aria-label="Breadcrumb">
           <ul class="flex items-center space-x-2">
             <li>
-              <NuxtLink to="/home" class="hover:underline transition-all duration-200">
+              <NuxtLink to="http://localhost:3000/"" class="hover:underline transition-all duration-200">
                 Home
               </NuxtLink>
             </li>

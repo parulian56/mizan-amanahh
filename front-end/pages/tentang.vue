@@ -5,7 +5,7 @@
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
-          <router-link to="/home" class="mr-3 flex items-center">
+          <router-link to="/" class="mr-3 flex items-center">
             <i class="fas fa-arrow-left text-xl"></i>
           </router-link>
           <h1 class="text-lg font-semibold">Profile Ibadurrohman</h1>
@@ -14,7 +14,7 @@
         <!-- Breadcrumb -->
         <nav class="text-sm mt-2">
           <ul class="flex items-center space-x-2">
-            <li><a href="/home" class="hover:underline">Home</a></li>
+            <li><a href="/" class="hover:underline">Home</a></li>
             <li>/</li>
             <li class="text-gray-200">Tentang</li>
           </ul>

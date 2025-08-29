@@ -2,7 +2,7 @@
   <div class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <header class="bg-red-600 text-white p-4 flex items-center space-x-3 shadow-md">
-     <router-link to="/home" class="mr-3">
+     <router-link to="http://localhost:3000" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
      </router-link>
       <h1 class="font-semibold text-lg truncate">
