@@ -5,17 +5,16 @@
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <!-- Tombol Back -->
-          <button @click="goBack" class="mr-3 p-2 rounded-full hover:bg-gray-100">
-            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+        <router-link to="/home" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+          <i class="fas fa-arrow-left text-xl"></i>
+          <span>Kembali</span>
+        </router-link>
           <div class="w-8 h-8 bg-[#FB8603] rounded-full flex items-center justify-center">
             <span class="text-white font-bold text-sm">Q</span>
           </div>
-          <span class="font-bold text-[#FB8603] text-lg">Qurban Amanah</span>
+          <span class="font-bold text-[#FB8603] text-lg">Mizan Amanah</span>
         </div>
-        <ul class="hidden md:flex space-x-6 font-medium">
+        <ul class="hidden md:flex space-x-6 font-medium"> 
           <li><a href="#tentang" class="hover:text-[#FB8603]">Tentang</a></li>
           <li><a href="#harga" class="hover:text-[#FB8603]">Harga</a></li>
           <li><a href="#daftar" class="hover:text-[#FB8603]">Daftar</a></li>

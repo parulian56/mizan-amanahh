@@ -12,12 +12,10 @@
         </div>
 
         <!-- Breadcrumb -->
-        <nav class="text-sm mt-2">
-          <ul class="flex items-center space-x-2">
-            <li><a href="/home" class="hover:underline">Home</a></li>
-            <li>/</li>
-            <li class="text-teal-300">Rekening</li>
-          </ul>
+        <nav class="text-sm">
+          <router-link to="/home" class="hover:underline">Home</router-link>
+          <span class="mx-1">›</span>
+          <span class="font-semibold">Rekening Donasi</span>
         </nav>
       </div>
     </header>
