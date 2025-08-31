@@ -21,22 +21,21 @@
   @click="toggleDarkMode" 
   class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
 >
-  <!-- Logo saat Dark Mode aktif -->
-  <img 
-    v-if="darkMode" 
-    src="/logo-dark.png" 
-    alt="Dark Mode Logo" 
-    class="h-6 w-6"
-  >
-
-  <!-- Logo saat Light Mode -->
-  <img 
-    v-else 
-    src="/logo-light.png" 
-    alt="Light Mode Logo" 
-    class="h-6 w-6"
-  >
-</button>
+      <!-- Logo Dark -->
+       <img 
+       v-if="darkMode" 
+       :src="logoDark" 
+       alt="Dark Mode Logo" 
+       class="h-6 w-6"
+      >
+      <!-- Logo Light -->
+        <img 
+         v-else 
+         :src="/assets/image/logo.png" 
+         alt="Light Mode Logo" 
+         class="h-6 w-6"
+        >
+    </button>
   </nav>
 </header>
 
