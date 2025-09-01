@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-100 to-gray-200">
+  <div class="min-h-screen flex flex-col bg-gradient-to-br from-[#9BCDD4] to-[#59AAB7]">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg">
+    <header class="bg-gradient-to-r from-[#FB8505] to-[#C96A04] text-white shadow-lg">
       <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         <div class="flex items-center font-bold text-xl">
           🏛️ <span class="ml-2">mizan amanah</span>
@@ -21,7 +21,7 @@
         class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-[slideUp_0.6s_ease-out]"
       >
         <!-- Header -->
-        <div class="bg-gradient-to-r from-red-600 to-pink-600 text-white text-center py-8 px-6">
+        <div class="bg-gradient-to-r from-[#FB8505] to-[#C96A04] text-white text-center py-8 px-6">
           <h1 class="text-2xl font-semibold mb-2">Masuk Akun</h1>
           <p class="text-sm opacity-90">Silakan masuk dengan akun Anda</p>
         </div>
@@ -30,7 +30,7 @@
         <form @submit.prevent="handleLogin" class="p-6 space-y-6">
           <!-- Email -->
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="email" class="block text-sm font-medium text-[#111111] mb-1">
               Email atau Username
             </label>
             <input
@@ -39,13 +39,13 @@
               type="text"
               required
               placeholder="Masukkan email atau username"
-              class="w-full px-4 py-3 border-2 rounded-lg text-gray-800 bg-gray-50 focus:outline-none focus:border-red-500 focus:bg-white transition"
+              class="w-full px-4 py-3 border-2 rounded-lg text-[#111111] bg-gray-50 focus:outline-none focus:border-[#478892] focus:bg-white transition"
             />
           </div>
 
           <!-- Password -->
           <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="password" class="block text-sm font-medium text-[#111111] mb-1">
               Password
             </label>
             <div class="relative">
@@ -55,12 +55,12 @@
                 :type="showPassword ? 'text' : 'password'"
                 required
                 placeholder="Masukkan password"
-                class="w-full px-4 py-3 border-2 rounded-lg text-gray-800 bg-gray-50 focus:outline-none focus:border-red-500 focus:bg-white transition"
+                class="w-full px-4 py-3 border-2 rounded-lg text-[#111111] bg-gray-50 focus:outline-none focus:border-[#478892] focus:bg-white transition"
               />
               <button
                 type="button"
                 @click="togglePassword"
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-500 text-lg"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#FB8505] text-lg"
               >
                 {{ showPassword ? '🙈' : '👁️' }}
               </button>
@@ -70,29 +70,29 @@
           <!-- Options -->
           <div class="flex items-center justify-between text-sm">
             <label class="flex items-center gap-2">
-              <input type="checkbox" v-model="remember" class="w-4 h-4 text-red-500 rounded" />
-              <span>Ingat saya</span>
+              <input type="checkbox" v-model="remember" class="w-4 h-4 text-[#FB8505] rounded" />
+              <span class="text-[#111111]">Ingat saya</span>
             </label>
-            <a href="#" class="text-red-600 font-medium hover:underline">Lupa password?</a>
+            <a href="#" class="text-[#C96A04] font-medium hover:underline">Lupa password?</a>
           </div>
 
           <!-- Button -->
           <button
             type="submit"
-            :class="[
+            :class="[ 
               'w-full py-3 rounded-lg font-semibold text-white transition shadow-md',
               loading
-                ? 'bg-gradient-to-r from-green-600 to-green-700'
-                : 'bg-gradient-to-r from-red-600 to-pink-600 hover:shadow-lg hover:-translate-y-1 transform'
+                ? 'bg-gradient-to-r from-[#59AAB7] to-[#478892]'
+                : 'bg-gradient-to-r from-[#FB8505] to-[#C96A04] hover:shadow-lg hover:-translate-y-1 transform'
             ]"
           >
             {{ loading ? 'Berhasil! Mengalihkan...' : 'Masuk' }}
           </button>
 
           <!-- Footer -->
-          <div class="text-center border-t pt-4 text-sm text-gray-600">
+          <div class="text-center border-t pt-4 text-sm text-[#111111]">
             Belum punya akun?
-            <a href="#" class="text-red-600 font-medium hover:underline">Daftar sekarang</a>
+            <a href="#" class="text-[#FB8505] font-medium hover:underline">Daftar sekarang</a>
           </div>
         </form>
       </div>
