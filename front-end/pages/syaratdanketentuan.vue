@@ -16,19 +16,38 @@
   </div>
 </nav>
 
-
-    <main class="max-w-4xl mx-auto p-6 md:p-12">
       <!-- Header -->
-      <header class="mb-10 text-center relative">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm">
-          Syarat &amp; Ketentuan Mizan Amanah
-        </h1>
-        <p class="mt-3 text-base text-gray-600">
-          Pembaruan terakhir: 5 November 2019
-        </p>
-      </header>
+      <header class="bg-primary text-white py-4 sticky top-0 z-50 shadow">
+      <div class="container mx-auto px-4">
+        <!-- Baris atas: tombol back + title -->
+        <div class="flex items-center">
+          <router-link to="/" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <h1 class="text-lg font-semibold">Syarat & Ketentuan</h1>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm mt-2">
+          <ul class="flex items-center space-x-2">
+            <li><a href="/" class="hover:underline">Home</a></li>
+            <li>/</li>
+            <li class="text-gray-200">Tentang</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
       <!-- Card Container -->
+
+      <h1 class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm text-center">
+  Syarat &amp; Ketentuan Mizan Amanah
+</h1>
+<p class="mt-3 text-base text-gray-600 text-center">
+  Pembaruan terakhir: 5 November 2019
+</p>
+
+      
       <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 prose prose-red max-w-none">
         <p>
           Persyaratan Layanan ini berlaku jika Anda melakukan donasi melalui
@@ -136,8 +155,6 @@
           <strong>Pembaruan terakhir:</strong> 5 November 2019
         </p>
       </div>
-    </main>
-  </div>
 </template>
 
 <script>
