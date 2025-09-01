@@ -14,48 +14,29 @@
     <a href="/tentang" class="hover:text-[#FB8505]">Tentang</a>
   </li>
 
-  <li class="relative group">
+  <!-- Dropdown Program -->
+<li class="relative group">
   <NuxtLink to="/program" class="flex items-center hover:text-[#FB8505]">
     <span>Program</span>
-    <svg
-      class="w-4 h-4 ml-1"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      viewBox="0 0 24 24"
-    >
+    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
     </svg>
   </NuxtLink>
 
-  <!-- Dropdown -->
   <ul
-    class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden
+    class="absolute left-0 mt-2 w-48 bg-white shadow rounded
            opacity-0 pointer-events-none
            group-hover:opacity-100 group-hover:pointer-events-auto
-           transition duration-200 z-50"
+           transition z-50"
   >
-    <li>
-      <NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Infaq</NuxtLink>
-    </li>
-    <li>
-      <NuxtLink to="/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink>
-    </li>
-    <li>
-      <NuxtLink to="/" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink>
-    </li>
-    <li>
-      <NuxtLink to="/rekening" class="block px-4 py-2 hover:bg-[#9BCDD4]">Rekening Donasi</NuxtLink>
-    </li>
-    <li>
-      <NuxtLink to="/" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink>
-    </li>
-    <li>
-      <NuxtLink to="/laporan" class="block px-4 py-2 hover:bg-[#9BCDD4]">Laporan Audit</NuxtLink>
-    </li>
+    <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Program</NuxtLink></li>
+    <li><NuxtLink to="/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
+    <li><NuxtLink to="/sedekah" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink></li>
+    <li><NuxtLink to="/rekening" class="block px-4 py-2 hover:bg-[#9BCDD4]">Rekening Donasi</NuxtLink></li>
+    <li><NuxtLink to="/qurban" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink></li>
+    <li><NuxtLink to="/laporan" class="block px-4 py-2 hover:bg-[#9BCDD4]">Laporan Audit</NuxtLink></li>
   </ul>
 </li>
-
 
   <!-- Dropdown Berita -->
   <li class="relative group">
