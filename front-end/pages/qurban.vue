@@ -2,43 +2,42 @@
   <div class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
     <!-- Navbar -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
-    <div class="flex items-center space-x-3">
-      <!-- Tombol Back -->
-      <button @click="goBack" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-        <i class="fas fa-arrow-left text-xl"></i>
-        <span>Kembali</span>
-      </button>
-    </div>
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
+        <div class="flex items-center space-x-3">
+          <!-- Tombol Back -->
+          <button @click="goBack" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+            <i class="fas fa-arrow-left text-xl"></i>
+            <span>Kembali</span>
+          </button>
+        </div>
 
-    <!-- Teks Mizan Amanah (tengah & lebih besar) -->
-    <span class="absolute left-1/2 transform -translate-x-1/2 font-extrabold text-center text-xl md:text-2xl">
-      Mizan Amanah
-    </span>
+        <!-- Teks Mizan Amanah (tengah & lebih besar) -->
+        <span class="absolute left-1/2 transform -translate-x-1/2 font-extrabold text-center text-xl md:text-2xl">
+          Mizan Amanah
+        </span>
 
-   <!-- Dark Mode Toggle -->
-<button 
-  @click="toggleDarkMode" 
-  class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
->
-      <!-- Logo Dark -->
-       <img 
-       v-if="darkMode" 
-       :src="logoDark" 
-       alt="Dark Mode Logo" 
-       class="h-6 w-6"
-      >
-      <!-- Logo Light -->
-        <img 
-         v-else 
-         :src="/assets/image/logo.png" 
-         alt="Light Mode Logo" 
-         class="h-6 w-6"
+        <!-- Dark Mode Toggle -->
+        <button 
+          @click="toggleDarkMode" 
+          class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
         >
-    </button>
-  </nav>
-</header>
-
+          <!-- Logo Dark -->
+          <img 
+            v-if="darkMode" 
+            :src="logoDark" 
+            alt="Dark Mode Logo" 
+            class="h-6 w-6"
+          >
+          <!-- Logo Light -->
+          <img 
+            v-else 
+            src="/assets/image/logo.png" 
+            alt="Light Mode Logo" 
+            class="h-6 w-6"
+          >
+        </button>
+      </nav>
+    </header>
 
     <!-- Hero -->
     <section class="relative bg-gradient-to-r from-orange-400 to-[#FB8603] text-white py-20">
@@ -46,7 +45,8 @@
       <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h1 class="text-5xl font-extrabold mb-4 leading-tight">
-            Tunaikan Ibadah Qurban dengan Amanah</h1>
+            Tunaikan Ibadah Qurban dengan Amanah
+          </h1>
           <p class="text-lg mb-6 opacity-90">
             Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
           </p>
@@ -56,12 +56,12 @@
               Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
             </div>
             <!-- Button Daftar Sekarang -->
-              <button
-                @click="scrollTo('daftar')"
-                class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
-              >
-                Daftar Sekarang
-              </button>
+            <button
+              @click="scrollTo('daftar')"
+              class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
+            >
+              Daftar Sekarang
+            </button>
           </div>
         </div>
         <div class="flex justify-center">
@@ -122,12 +122,12 @@
             </select>
           </div>
           <!-- Button Kirim Pendaftaran -->
-            <button 
-              type="submit" 
-              class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 rounded-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
-            >
-              Kirim Pendaftaran
-            </button>
+          <button 
+            type="submit" 
+            class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 rounded-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
+          >
+            Kirim Pendaftaran
+          </button>
         </form>
       </div>
     </section>
@@ -238,6 +238,8 @@ const toggleFAQ = (index) => {
 }
 
 const darkMode = ref(false)
+const logoDark = "/dark-logo.png" // ganti dengan path logo dark mode
+
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value
   document.documentElement.classList.toggle("dark", darkMode.value)
@@ -259,4 +261,3 @@ onMounted(() => {
   setInterval(updateCountdown, 1000)
 })
 </script>
-  
