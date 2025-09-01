@@ -42,13 +42,13 @@
       <NuxtLink to="/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink>
     </li>
     <li>
-      <NuxtLink to="/sedekah" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink>
+      <NuxtLink to="/" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink>
     </li>
     <li>
       <NuxtLink to="/rekening" class="block px-4 py-2 hover:bg-[#9BCDD4]">Rekening Donasi</NuxtLink>
     </li>
     <li>
-      <NuxtLink to="/qurban" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink>
+      <NuxtLink to="/" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink>
     </li>
     <li>
       <NuxtLink to="/laporan" class="block px-4 py-2 hover:bg-[#9BCDD4]">Laporan Audit</NuxtLink>
