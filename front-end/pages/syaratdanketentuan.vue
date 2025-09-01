@@ -1,4 +1,20 @@
 <template>
+  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen">
+    <!-- Navbar -->
+    <!-- Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Tombol Back -->
+    <router-link to="/home" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+          <i class="fas fa-arrow-left text-xl"></i>
+          <span>Kembali</span>
+        </router-link>
+    <!-- Brand / Logo -->
+    <div class="text-black font-bold text-lg">
+      Mizan Amanah
+    </div>
+  </div>
+</nav>
 
       <!-- Header -->
       <header class="bg-primary text-white py-4 sticky top-0 z-50 shadow">
