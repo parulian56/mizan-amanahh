@@ -5,7 +5,7 @@
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
-          <router-link to="http://localhost:3000" class="mr-3 flex items-center">
+          <router-link to="/" class="mr-3 flex items-center">
             <i class="fas fa-arrow-left text-xl"></i>
           </router-link>
           <h1 class="text-lg font-semibold">Rekening</h1>
