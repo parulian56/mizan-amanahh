@@ -20,7 +20,7 @@
     <!-- Image dengan ukuran yang lebih kecil -->
     <div class="flex justify-center p-4">
       <div class="w-full max-w-sm">
-        <img src="/image/yp.png" alt="Wakaf Illustration" class="object-cover w-full h-40 rounded-lg shadow-md" />
+        <img src="assets/image/yp.png" alt="Wakaf Illustration" class="object-cover w-full h-40 rounded-lg shadow-md" />
       </div>
     </div>
 

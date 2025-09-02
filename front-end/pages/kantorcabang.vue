@@ -1,38 +1,43 @@
 <template>
   <div class="min-h-screen bg-[#FFFFFF]">
     <!-- Header -->
-    <header class="bg-[#FB8505] text-[#FFFFFF] py-4 sticky top-0 z-50 shadow">
-      <div class="container mx-auto px-4">
-        <!-- Top row: back button + title -->
-        <div class="flex items-center">
-          <router-link to="/" class="mr-3">
-            <i class="fas fa-arrow-left text-xl"></i>
-          </router-link>
-          <h1 class="text-lg font-semibold">Kantor Cabang</h1>
-        </div>
+   <!-- Header -->
+<header class="bg-[#FB8505] text-[#FFFFFF] py-4 sticky top-0 z-50 shadow">
+  <div class="container mx-auto px-4">
+    <!-- Top row: back button + title -->
+    <div class="flex items-center">
+      <NuxtLink to="/home" class="mr-3 flex items-center hover:opacity-80 transition">
+        <i class="fas fa-arrow-left text-xl"></i>
+      </NuxtLink>
+      <h1 class="text-lg font-semibold">Kantor Cabang</h1>
+    </div>
 
-        <!-- Breadcrumb -->
-        <nav class="text-sm mt-2" aria-label="Breadcrumb">
-          <ul class="flex items-center space-x-2">
-            <li>
-              <NuxtLink to="http://localhost:3000/"" class="hover:underline transition-all duration-200">
-                Home
-              </NuxtLink>
-            </li>
-            <li aria-hidden="true">›</li>
-            <li class="text-[#59AAB7]" aria-current="page">kantor-cabang</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <!-- Breadcrumb -->
+    <nav class="text-sm mt-2" aria-label="Breadcrumb">
+      <ul class="flex items-center space-x-2">
+        <li>
+          <NuxtLink to="/home" class="hover:underline transition-all duration-200">
+            Home
+          </NuxtLink>
+        </li>
+        <li aria-hidden="true">›</li>
+        <li class="text-[#59AAB7]" aria-current="page">kantor-cabang</li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
     <!-- Content -->
     <main class="container mx-auto px-6 py-8">
-      <!-- Title with orange underline -->
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-[#111111] mb-2">Kantor Cabang</h2>
-        <div class="w-24 h-1 bg-[#FB8505] mx-auto rounded"></div>
-      </div>
+<!-- Title with centered underline -->
+<div class="text-center mb-8">
+  <h2 class="text-2xl font-bold text-[#111111] mb-2 relative inline-block">
+    Kantor Cabang
+    <span class="absolute left-1/2 -translate-x-1/2 bottom-[-6px] w-2[110%] h-1 bg-[#FB8505] rounded"></span>
+  </h2>
+</div>
+
 
       <!-- Data grouped by category -->
       <div class="space-y-8">
@@ -69,7 +74,7 @@
           </div>
         </section>
 
-        <!-- Branch Offices  by region -->
+        <!-- Branch Offices grouped by region -->
         <section
           v-for="(group, groupName) in groupedKantorCabang"
           :key="groupName"
@@ -109,6 +114,7 @@
     </main>
   </div>
 </template>
+
 
 
 <script setup lang="ts">

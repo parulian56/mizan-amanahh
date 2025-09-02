@@ -8,52 +8,68 @@
           <span class="text-xl">Ibadurrohman</span>
         </div>
 
-        <!-- Desktop Menu (Center) -->
-        <ul class="hidden md:flex md:space-x-8 font-medium items-center mx-auto">
-          <li>
-            <a href="/tentang" class="hover:text-[#FB8505]">Tentang</a>
-          </li>
+       <!-- Desktop Menu (Center) -->
+<ul class="hidden md:flex md:space-x-8 font-medium items-center mx-auto">
+  <li>
+    <a href="/tentang" class="hover:text-[#FB8505]">Tentang</a>
+  </li>
 
-          <!-- Dropdown Program -->
-          <li class="relative group">
-            <NuxtLink to="/program" class="flex items-center hover:text-[#FB8505]">
-              <span>Program</span>
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </NuxtLink>
-            <ul class="absolute left-0 mt-2 w-40 bg-white shadow rounded hidden group-hover:block">
-              <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Infaq</NuxtLink></li>
-              <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
-            </ul>
-          </li>
+  <!-- Dropdown Program -->
+<li class="relative group">
+  <NuxtLink to="/program" class="flex items-center hover:text-[#FB8505]">
+    <span>Program</span>
+    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </NuxtLink>
 
-          <!-- Dropdown Berita -->
-          <li class="relative group">
-            <NuxtLink to="/berita-update" class="flex items-center hover:text-[#FB8505]">
-              <span>Berita & Update</span>
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </NuxtLink>
-            <ul class="absolute left-0 mt-2 w-40 bg-white shadow rounded hidden group-hover:block">
-              <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Artikel</NuxtLink></li>
-              <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Pengumuman</NuxtLink></li>
-            </ul>
-          </li>
+  <ul
+    class="absolute left-0 mt-2 w-48 bg-white shadow rounded
+           opacity-0 pointer-events-none
+           group-hover:opacity-100 group-hover:pointer-events-auto
+           transition z-50"
+  >
+    <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Program</NuxtLink></li>
+    <li><NuxtLink to="/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
+    <li><NuxtLink to="/sedekah" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink></li>
+    <li><NuxtLink to="/rekening" class="block px-4 py-2 hover:bg-[#9BCDD4]">Rekening Donasi</NuxtLink></li>
+    <li><NuxtLink to="/qurban" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink></li>
+    <li><NuxtLink to="/laporan" class="block px-4 py-2 hover:bg-[#9BCDD4]">Laporan Audit</NuxtLink></li>
+  </ul>
+</li>
 
-          <li>
-            <a href="/kantorcabang" class="hover:text-[#FB8505]">Kantor Cabang</a>
-          </li>
+  <!-- Dropdown Berita -->
+  <li class="relative group">
+    <NuxtLink to="/berita-update" class="flex items-center hover:text-[#FB8505]">
+      <span>Berita & Update</span>
+      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </NuxtLink>
 
-          <li>
-            <NuxtLink to="/syaratdanketentuan" class="hover:text-[#FB8505]">
-              Syarat & Ketentuan
-            </NuxtLink>
-          </li>
-        </ul>
+    <ul
+      class="absolute left-0 mt-2 w-40 bg-white shadow rounded
+             opacity-0 pointer-events-none
+             group-hover:opacity-100 group-hover:pointer-events-auto
+             transition z-50"
+    >
+      <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
+      <li><NuxtLink to="/wakaf" class="block px-4 py-2 hover:bg-[#9BCDD4]">Wakaf</NuxtLink></li>
+      <li><NuxtLink to="/artikel" class="block px-4 py-2 hover:bg-[#9BCDD4]">Artikel</NuxtLink></li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="/kantorcabang" class="hover:text-[#FB8505]">Kantor Cabang</a>
+  </li>
+
+  <li>
+    <NuxtLink to="/syaratdanketentuan" class="hover:text-[#FB8505]">
+      Syarat & Ketentuan
+    </NuxtLink>
+  </li>
+</ul>
+
 
         <!-- Login & Donasi (Far Right) -->
         <div class="hidden md:flex items-center space-x-4 ml-auto">
