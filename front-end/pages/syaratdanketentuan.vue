@@ -1,23 +1,7 @@
 <template>
-  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen">
-    <!-- Navbar -->
-    <!-- Navbar -->
-<nav class="bg-white shadow-md sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Tombol Back -->
-    <router-link to="/home" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-          <i class="fas fa-arrow-left text-xl"></i>
-          <span>Kembali</span>
-        </router-link>
-    <!-- Brand / Logo -->
-    <div class="text-black font-bold text-lg">
-      Mizan Amanah
-    </div>
-  </div>
-</nav>
-
-      <!-- Header -->
-      <header class="bg-primary text-white py-4 sticky top-0 z-50 shadow">
+  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 shadow">
       <div class="container mx-auto px-4">
         <!-- Baris atas: tombol back + title -->
         <div class="flex items-center">
@@ -30,7 +14,9 @@
         <!-- Breadcrumb -->
         <nav class="text-sm mt-2">
           <ul class="flex items-center space-x-2">
-            <li><a href="/" class="hover:underline">Home</a></li>
+            <li>
+              <a href="/" class="hover:underline">Home</a>
+            </li>
             <li>/</li>
             <li class="text-gray-200">Tentang</li>
           </ul>
@@ -38,17 +24,20 @@
       </div>
     </header>
 
-      <!-- Card Container -->
+    <!-- Konten Utama -->
+    <main class="flex-1 container mx-auto px-4 py-10">
+      <h1
+        class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm text-center"
+      >
+        Syarat &amp; Ketentuan Ibadurrohman
+      </h1>
+      <p class="mt-3 text-base text-gray-600 text-center">
+        Pembaruan terakhir: 5 November 2019
+      </p>
 
-      <h1 class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm text-center">
-  Syarat &amp; Ketentuan Mizan Amanah
-</h1>
-<p class="mt-3 text-base text-gray-600 text-center">
-  Pembaruan terakhir: 5 November 2019
-</p>
-
-      
-      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 prose prose-red max-w-none">
+      <div
+        class="bg-white rounded-2xl shadow-xl p-6 md:p-10 prose prose-red max-w-none mt-6"
+      >
         <p>
           Persyaratan Layanan ini berlaku jika Anda melakukan donasi melalui
           <strong>mizanamanah.or.id</strong>. Harap membaca Ketentuan Layanan
@@ -116,7 +105,7 @@
 
         <h2>Situs yang terhubung</h2>
         <p>
-          Mizan Amanah tidak membuat pernyataan apa pun tentang situs web lain
+          Ibadurrohman tidak membuat pernyataan apa pun tentang situs web lain
           yang dapat Anda akses...
         </p>
 
@@ -155,6 +144,13 @@
           <strong>Pembaruan terakhir:</strong> 5 November 2019
         </p>
       </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+      <p>&copy; 2025 Ibadurrohman. All rights reserved.</p>
+    </footer>
+  </div>
 </template>
 
 <script>

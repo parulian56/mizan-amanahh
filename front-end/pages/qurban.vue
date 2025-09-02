@@ -11,9 +11,9 @@
           </button>
         </div>
 
-        <!-- Teks Mizan Amanah (tengah & lebih besar) -->
+        <!-- Teks Ibadurrohman (tengah & lebih besar) -->
         <span class="absolute left-1/2 transform -translate-x-1/2 font-extrabold text-center text-xl md:text-2xl">
-          Mizan Amanah
+          Ibadurrohman
         </span>
 
         <!-- Dark Mode Toggle -->
@@ -40,35 +40,42 @@
     </header>
 
     <!-- Hero -->
-    <section class="relative bg-gradient-to-r from-orange-400 to-[#FB8603] text-white py-20">
-      <div class="absolute inset-0 bg-black opacity-10"></div>
-      <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h1 class="text-5xl font-extrabold mb-4 leading-tight">
-            Tunaikan Ibadah Qurban dengan Amanah
-          </h1>
-          <p class="text-lg mb-6 opacity-90">
-            Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
-          </p>
-          <div class="space-y-4">
-            <!-- Countdown -->
-            <div class="bg-white text-black font-bold p-3 rounded-lg shadow-md inline-block">
-              Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
-            </div>
-            <!-- Button Daftar Sekarang -->
-            <button
-              @click="scrollTo('daftar')"
-              class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
-            >
-              Daftar Sekarang
-            </button>
-          </div>
+<section class="relative bg-gradient-to-r from-orange-400 to-[#FB8603] text-white py-20">
+  <div class="absolute inset-0 bg-black opacity-10"></div>
+  <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h1 class="text-5xl font-extrabold mb-4 leading-tight">
+        Tunaikan Ibadah Qurban dengan Amanah
+      </h1>
+      <p class="text-lg mb-6 opacity-90">
+        Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
+      </p>
+      <div class="space-y-4">
+        <!-- Countdown -->
+        <div class="bg-white text-black font-bold p-3 rounded-lg shadow-md inline-block">
+          Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
         </div>
-        <div class="flex justify-center">
-          <img src="https://img.icons8.com/emoji/200/cow-emoji.png" alt="Qurban" class="w-56 h-56 lg:w-72 lg:h-72" />
-        </div>
+        <!-- Button Daftar Sekarang -->
+        <button
+          @click="scrollTo('daftar')"
+          class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
+        >
+          Daftar Sekarang
+        </button>
       </div>
-    </section>
+    </div>
+    <div class="flex justify-center">
+      <!-- 🔥 Ganti icon sapi dengan gambar -->
+      <img 
+        src="/assets/image/sedekah1.png" 
+        alt="Qurban" 
+        class="w-72 h-44 lg:w-96 lg:h-60 object-cover rounded-lg shadow-lg" 
+      />
+
+    </div>
+  </div>
+</section>
+
 
     <!-- Tentang Qurban -->
     <section id="tentang" class="py-16 bg-white text-center px-4">
