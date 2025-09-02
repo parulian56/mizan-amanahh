@@ -25,7 +25,7 @@
       <!-- Main Image -->
       <div class="relative">
         <img
-          src="/image/sedekah1.png"
+          src="assets/image/sedekah1.png"
           alt="Foto kegiatan donasi beras"
           class="w-full h-64 object-cover"
         />
