@@ -2,30 +2,39 @@
   <div class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
     <!-- Navbar -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
+        <div class="flex items-center space-x-3">
           <!-- Tombol Back -->
-          <button @click="goBack" class="mr-3 p-2 rounded-full hover:bg-gray-100">
-            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
+          <button @click="goBack" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+            <i class="fas fa-arrow-left text-xl"></i>
+            <span>Kembali</span>
           </button>
-          <div class="w-8 h-8 bg-[#FB8603] rounded-full flex items-center justify-center">
-            <span class="text-white font-bold text-sm">Q</span>
-          </div>
-          <span class="font-bold text-[#FB8603] text-lg">Qurban Amanah</span>
         </div>
-        <ul class="hidden md:flex space-x-6 font-medium">
-          <li><a href="#tentang" class="hover:text-[#FB8603]">Tentang</a></li>
-          <li><a href="#harga" class="hover:text-[#FB8603]">Harga</a></li>
-          <li><a href="#daftar" class="hover:text-[#FB8603]">Daftar</a></li>
-          <li><a href="#faq" class="hover:text-[#FB8603]">FAQ</a></li>
-          <li><a href="#artikel" class="hover:text-[#FB8603]">Artikel</a></li>
-        </ul>
+
+        <!-- Teks Mizan Amanah (tengah & lebih besar) -->
+        <span class="absolute left-1/2 transform -translate-x-1/2 font-extrabold text-center text-xl md:text-2xl">
+          Mizan Amanah
+        </span>
+
         <!-- Dark Mode Toggle -->
-        <button @click="toggleDarkMode" class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300">
-          <span v-if="darkMode">🌙</span>
-          <span v-else>☀️</span>
+        <button 
+          @click="toggleDarkMode" 
+          class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+        >
+          <!-- Logo Dark -->
+          <img 
+            v-if="darkMode" 
+            :src="logoDark" 
+            alt="Dark Mode Logo" 
+            class="h-6 w-6"
+          >
+          <!-- Logo Light -->
+          <img 
+            v-else 
+            src="/assets/image/logo.png" 
+            alt="Light Mode Logo" 
+            class="h-6 w-6"
+          >
         </button>
       </nav>
     </header>
@@ -36,19 +45,20 @@
       <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h1 class="text-5xl font-extrabold mb-4 leading-tight">
-            Tunaikan Ibadah <span class="text-yellow-300">Qurban</span> dengan Amanah
+            Tunaikan Ibadah Qurban dengan Amanah
           </h1>
           <p class="text-lg mb-6 opacity-90">
             Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
           </p>
           <div class="space-y-4">
             <!-- Countdown -->
-            <div class="bg-white text-[#FB8603] font-bold p-3 rounded-lg shadow-md inline-block">
+            <div class="bg-white text-black font-bold p-3 rounded-lg shadow-md inline-block">
               Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
             </div>
+            <!-- Button Daftar Sekarang -->
             <button
               @click="scrollTo('daftar')"
-              class="block bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold shadow-lg"
+              class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
             >
               Daftar Sekarang
             </button>
@@ -62,7 +72,7 @@
 
     <!-- Tentang Qurban -->
     <section id="tentang" class="py-16 bg-white text-center px-4">
-      <h2 class="text-3xl font-bold text-[#FB8603] mb-6">Tentang Qurban</h2>
+      <h2 class="text-3xl font-bold text-center mb-6">Tentang Qurban</h2>
       <p class="max-w-3xl mx-auto text-gray-600 leading-relaxed">
         Qurban adalah ibadah yang diperintahkan Allah SWT sebagai bentuk ketaatan dan rasa syukur hamba-Nya.
         Dengan berqurban, kita meneladani Nabi Ibrahim AS dan Nabi Ismail AS. Hewan qurban akan disembelih
@@ -77,7 +87,7 @@
         <div v-for="paket in paketQurban" :key="paket.id" class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
           <div class="text-5xl mb-4">{{ paket.icon }}</div>
           <h3 class="text-xl font-semibold mb-2">{{ paket.name }}</h3>
-          <p class="text-2xl font-bold text-[#FB8603] mb-4">{{ formatCurrency(paket.price) }}</p>
+          <p class="text-2xl font-bold text-center mb-4">{{ formatCurrency(paket.price) }}</p>
           <button @click="scrollTo('daftar')" class="w-full bg-[#5DAAB9] text-white py-2 rounded-lg hover:bg-[#4c94a1]">
             Pilih Qurban
           </button>
@@ -88,7 +98,7 @@
     <!-- 📌 Form Daftar Qurban -->
     <section id="daftar" class="py-20 bg-gray-100">
       <div class="max-w-4xl mx-auto px-6 bg-white p-8 rounded-xl shadow-lg">
-        <h2 class="text-3xl font-bold text-center text-[#FB8603] mb-8">Form Pendaftaran Qurban</h2>
+        <h2 class="text-3xl font-bold text-center text-center mb-8">Form Pendaftaran Qurban</h2>
         <form @submit.prevent="submitForm" class="space-y-6">
           <div>
             <label class="block font-semibold mb-2">Nama Lengkap</label>
@@ -111,7 +121,11 @@
               </option>
             </select>
           </div>
-          <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg">
+          <!-- Button Kirim Pendaftaran -->
+          <button 
+            type="submit" 
+            class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 rounded-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
+          >
             Kirim Pendaftaran
           </button>
         </form>
@@ -135,7 +149,7 @@
     <!-- 📌 Artikel -->
     <section id="artikel" class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-[#FB8603] mb-10">Artikel Terbaru</h2>
+        <h2 class="text-3xl font-bold text-center text-center mb-10">Artikel Terbaru</h2>
         <div class="grid md:grid-cols-3 gap-6">
           <div v-for="artikel in artikels" :key="artikel.id" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
             <img :src="artikel.image" alt="artikel" class="rounded-lg mb-4 w-full h-40 object-cover" />
@@ -224,6 +238,8 @@ const toggleFAQ = (index) => {
 }
 
 const darkMode = ref(false)
+const logoDark = "/dark-logo.png" // ganti dengan path logo dark mode
+
 const toggleDarkMode = () => {
   darkMode.value = !darkMode.value
   document.documentElement.classList.toggle("dark", darkMode.value)
@@ -245,4 +261,3 @@ onMounted(() => {
   setInterval(updateCountdown, 1000)
 })
 </script>
-  

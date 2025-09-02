@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-primary text-white p-4 flex items-center gap-2">
-      <router-link to="/home" class="mr-3">
+      <router-link to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
       </router-link>
       <h1 class="font-bold">Program</h1>
@@ -26,7 +26,7 @@
     <!-- Breadcrumb -->
     <nav class="bg-primary px-4 py-2 text-sm text-white">
      <ul class="flex items-center space-x-2">
-        <li><a href="/home" class="hover:underline">Home</a></li>
+        <li><a href="/" class="hover:underline">Home</a></li>
         <li>/</li>
         <li class="text-gray-200">Tentang</li>
       </ul>
