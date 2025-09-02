@@ -53,8 +53,9 @@
              group-hover:opacity-100 group-hover:pointer-events-auto
              transition z-50"
     >
+      <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
+      <li><NuxtLink to="/wakaf" class="block px-4 py-2 hover:bg-[#9BCDD4]">Wakaf</NuxtLink></li>
       <li><NuxtLink to="/artikel" class="block px-4 py-2 hover:bg-[#9BCDD4]">Artikel</NuxtLink></li>
-      <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Pengumuman</NuxtLink></li>
     </ul>
   </li>
 
