@@ -29,7 +29,7 @@
       <h1
         class="text-3xl md:text-4xl font-extrabold text-[#FB8603] drop-shadow-sm text-center"
       >
-        Syarat &amp; Ketentuan Mizan Amanah
+        Syarat &amp; Ketentuan Ibadurrohman
       </h1>
       <p class="mt-3 text-base text-gray-600 text-center">
         Pembaruan terakhir: 5 November 2019
@@ -40,13 +40,13 @@
       >
         <p>
           Persyaratan Layanan ini berlaku jika Anda melakukan donasi melalui
-          <strong>mizanamanah.or.id</strong>. Harap membaca Ketentuan Layanan
+          <strong>ibadurrohman.or.id</strong>. Harap membaca Ketentuan Layanan
           ini dengan seksama karena berisi informasi penting tentang hak dan
           kewajiban Anda.
         </p>
 
         <p>
-          Dengan mengakses atau menggunakan www.mizanamanah.or.id (apakah Anda
+          Dengan mengakses atau menggunakan www.ibadurrohman.or.id (apakah Anda
           mendaftar untuk menggunakan Layanan kami atau tidak), Anda setuju
           untuk terikat secara hukum dengan Syarat dan Ketentuan di website kami
           serta perubahan yang kami tetapkan dari waktu ke waktu.
@@ -105,7 +105,7 @@
 
         <h2>Situs yang terhubung</h2>
         <p>
-          Mizan Amanah tidak membuat pernyataan apa pun tentang situs web lain
+          Ibadurrohman tidak membuat pernyataan apa pun tentang situs web lain
           yang dapat Anda akses...
         </p>
 
@@ -136,7 +136,7 @@
         <h2>Pemberitahuan</h2>
         <p>
           Semua pemberitahuan harus diberikan kepada kami melalui email di
-          <em>info@mizanamanah.or.id</em> atau melalui surat ke alamat kantor
+          <em>info@ibadurrohman.or.id</em> atau melalui surat ke alamat kantor
           kami...
         </p>
 
@@ -148,7 +148,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white text-center py-6">
-      <p>&copy; 2025 Mizan Amanah. All rights reserved.</p>
+      <p>&copy; 2025 Ibadurrohman. All rights reserved.</p>
     </footer>
   </div>
 </template>
