@@ -40,13 +40,13 @@
       >
         <p>
           Persyaratan Layanan ini berlaku jika Anda melakukan donasi melalui
-          <strong>ibadurrohman.or.id</strong>. Harap membaca Ketentuan Layanan
+          <strong>mizanamanah.or.id</strong>. Harap membaca Ketentuan Layanan
           ini dengan seksama karena berisi informasi penting tentang hak dan
           kewajiban Anda.
         </p>
 
         <p>
-          Dengan mengakses atau menggunakan www.ibadurrohman.or.id (apakah Anda
+          Dengan mengakses atau menggunakan www.mizanamanah.or.id (apakah Anda
           mendaftar untuk menggunakan Layanan kami atau tidak), Anda setuju
           untuk terikat secara hukum dengan Syarat dan Ketentuan di website kami
           serta perubahan yang kami tetapkan dari waktu ke waktu.
@@ -136,7 +136,7 @@
         <h2>Pemberitahuan</h2>
         <p>
           Semua pemberitahuan harus diberikan kepada kami melalui email di
-          <em>info@ibadurrohman.or.id</em> atau melalui surat ke alamat kantor
+          <em>info@mizanamanah.or.id</em> atau melalui surat ke alamat kantor
           kami...
         </p>
 
