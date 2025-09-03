@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="flex items-center p-4 text-white bg-red-500">
+    <div class="flex items-center p-4 text-white bg-orange-400">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="w-6 h-6 mr-2"
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Breadcrumb -->
-    <div class="px-6 py-3 text-white bg-red-500">
+    <div class="px-6 py-3 text-white bg-orange-400">
       <p>
         <NuxtLink to="/" class="hover:underline">Home</NuxtLink>
         <span class="mx-2">›</span>
@@ -31,13 +31,17 @@
     <!-- Image dengan ukuran yang lebih kecil -->
     <div class="flex justify-center p-4">
       <div class="w-full max-w-sm">
-        <img src="assets/image/yp.png" alt="Wakaf Illustration" class="object-cover w-full h-40 rounded-lg shadow-md" />
+        <img
+          src="assets/image/yp.png"
+          alt="Wakaf Illustration"
+          class="object-cover w-full h-40 rounded-lg shadow-md"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="px-4 mb-6">
-      <h2 class="text-xl font-bold leading-snug text-center text-red-600">
+      <h2 class="text-xl font-bold leading-snug text-center text-orange-600">
         Wakaf: Arti, Makna, Hukum, dan Keutamaan yang Harus Diketahui
       </h2>
     </div>
@@ -47,7 +51,7 @@
       <!-- Pengertian Wakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           📚 Pengertian Wakaf
         </h3>
@@ -67,13 +71,13 @@
       <!-- Dasar Hukum Wakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           ⚖️ Dasar Hukum Wakaf dalam Islam
         </h3>
         <div class="space-y-3">
           <div class="p-4 rounded-lg bg-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">Dalil Al-Quran:</h4>
+            <h4 class="mb-2 font-semibold text-orange-700">Dalil Al-Quran:</h4>
             <p class="italic text-gray-700">
               "Kamu sekali-kali tidak sampai kepada kebajikan (yang sempurna),
               sebelum kamu menafkahkan sebagian harta yang kamu cintai." (QS.
@@ -81,7 +85,9 @@
             </p>
           </div>
           <div class="p-4 rounded-lg bg-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">Hadits Rasulullah:</h4>
+            <h4 class="mb-2 font-semibold text-orange-700">
+              Hadits Rasulullah:
+            </h4>
             <p class="italic text-gray-700">
               "Apabila anak Adam meninggal dunia, maka terputuslah amalnya
               kecuali tiga hal: sedekah jariyah, ilmu yang bermanfaat, dan anak
@@ -94,13 +100,13 @@
       <!-- Jenis-Jenis Wakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           🏗️ Jenis-Jenis Wakaf
         </h3>
         <div class="grid gap-4 md:grid-cols-2">
           <div class="p-4 rounded-lg bg-gradient-to-r from-red-100 to-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">
+            <h4 class="mb-2 font-semibold text-orange-700">
               1. Wakaf Ahli (Dzurri)
             </h4>
             <p class="text-sm text-gray-700">
@@ -109,20 +115,24 @@
             </p>
           </div>
           <div class="p-4 rounded-lg bg-gradient-to-r from-red-100 to-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">2. Wakaf Khairi</h4>
+            <h4 class="mb-2 font-semibold text-orange-700">2. Wakaf Khairi</h4>
             <p class="text-sm text-gray-700">
               Wakaf yang ditujukan untuk kepentingan umum seperti masjid,
               sekolah, dan rumah sakit.
             </p>
           </div>
           <div class="p-4 rounded-lg bg-gradient-to-r from-red-100 to-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">3. Wakaf Musytarak</h4>
+            <h4 class="mb-2 font-semibold text-orange-700">
+              3. Wakaf Musytarak
+            </h4>
             <p class="text-sm text-gray-700">
               Kombinasi antara wakaf ahli dan wakaf khairi.
             </p>
           </div>
           <div class="p-4 rounded-lg bg-gradient-to-r from-red-100 to-red-50">
-            <h4 class="mb-2 font-semibold text-red-700">4. Wakaf Produktif</h4>
+            <h4 class="mb-2 font-semibold text-orange-700">
+              4. Wakaf Produktif
+            </h4>
             <p class="text-sm text-gray-700">
               Wakaf yang dikelola secara produktif untuk menghasilkan keuntungan
               yang berkelanjutan.
@@ -134,7 +144,7 @@
       <!-- Syarat dan Rukun Wakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           📋 Syarat dan Rukun Wakaf
         </h3>
@@ -164,14 +174,14 @@
       <!-- Keutamaan Wakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           ⭐ Keutamaan dan Manfaat Wakaf
         </h3>
         <div class="grid gap-4 md:grid-cols-3">
           <div class="p-4 text-center rounded-lg bg-red-50">
             <div class="mb-2 text-3xl">🤲</div>
-            <h4 class="mb-1 font-semibold text-red-700">
+            <h4 class="mb-1 font-semibold text-orange-700">
               Pahala Berkelanjutan
             </h4>
             <p class="text-sm text-gray-600">
@@ -180,14 +190,16 @@
           </div>
           <div class="p-4 text-center rounded-lg bg-red-50">
             <div class="mb-2 text-3xl">🏘️</div>
-            <h4 class="mb-1 font-semibold text-red-700">Kesejahteraan Umat</h4>
+            <h4 class="mb-1 font-semibold text-orange-700">
+              Kesejahteraan Umat
+            </h4>
             <p class="text-sm text-gray-600">
               Membantu kesejahteraan masyarakat umum
             </p>
           </div>
           <div class="p-4 text-center rounded-lg bg-red-50">
             <div class="mb-2 text-3xl">💰</div>
-            <h4 class="mb-1 font-semibold text-red-700">
+            <h4 class="mb-1 font-semibold text-orange-700">
               Pemberdayaan Ekonomi
             </h4>
             <p class="text-sm text-gray-600">
@@ -200,7 +212,7 @@
       <!-- Contoh Wakaf dalam Sejarah -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           📜 Contoh Wakaf dalam Sejarah Islam
         </h3>
@@ -229,14 +241,14 @@
       <!-- Tips Berwakaf -->
       <div class="p-6 bg-white rounded-lg shadow-md">
         <h3
-          class="pb-2 mb-4 text-xl font-bold text-red-600 border-b-2 border-red-200"
+          class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-red-200"
         >
           💡 Tips Memilih Wakaf yang Baik
         </h3>
         <div class="space-y-3">
           <div class="flex items-start space-x-3">
             <div
-              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-red-500 rounded-full"
+              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-orange-500 rounded-full"
             >
               1
             </div>
@@ -246,7 +258,7 @@
           </div>
           <div class="flex items-start space-x-3">
             <div
-              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-red-500 rounded-full"
+              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-orange-500 rounded-full"
             >
               2
             </div>
@@ -256,7 +268,7 @@
           </div>
           <div class="flex items-start space-x-3">
             <div
-              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-red-500 rounded-full"
+              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-orange-500 rounded-full"
             >
               3
             </div>
@@ -266,7 +278,7 @@
           </div>
           <div class="flex items-start space-x-3">
             <div
-              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-red-500 rounded-full"
+              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-orange-500 rounded-full"
             >
               4
             </div>
@@ -276,7 +288,7 @@
           </div>
           <div class="flex items-start space-x-3">
             <div
-              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-red-500 rounded-full"
+              class="flex items-center justify-center w-6 h-6 mt-1 text-sm font-bold text-white bg-orange-500 rounded-full"
             >
               5
             </div>
@@ -289,7 +301,7 @@
 
       <!-- Call to Action -->
       <div
-        class="p-6 text-center text-white rounded-lg shadow-md bg-gradient-to-r from-red-500 to-red-600"
+        class="p-6 text-center text-white rounded-lg shadow-md bg-gradient-to-r from-orange-500 to-orange-600"
       >
         <h3 class="mb-2 text-xl font-bold">
           Mari Berwakaf untuk Keberkahan Hidup
@@ -299,7 +311,7 @@
           akhirat
         </p>
         <button
-          class="px-6 py-2 font-semibold text-red-600 transition-colors bg-white rounded-lg hover:bg-gray-100"
+          class="px-6 py-2 font-semibold text-orange-600 transition-colors bg-white rounded-lg hover:bg-gray-100"
           @click="startWakaf"
         >
           Mulai Berwakaf Sekarang
@@ -310,26 +322,27 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
 // Handle image path dengan error handling
-const imagePath = ref('/image/yp.png')
-const imageError = ref(false)
+const imagePath = ref("/image/yp.png");
+const imageError = ref(false);
 
 // Method untuk handle image error
 const handleImageError = () => {
-  console.warn('Image not found, using fallback')
-  imageError.value = true
+  console.warn("Image not found, using fallback");
+  imageError.value = true;
   // Bisa diganti dengan placeholder atau gambar default lainnya
-  imagePath.value = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDMwMCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iODAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY3NzQ4RSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+V2FrYWYgSWxsdXN0cmF0aW9uPC90ZXh0Pgo8L3N2Zz4K'
-}
+  imagePath.value =
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDMwMCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iODAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY3NzQ4RSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+V2FrYWYgSWxsdXN0cmF0aW9uPC90ZXh0Pgo8L3N2Zz4K";
+};
 
 // Method untuk handle call to action
 const startWakaf = () => {
   // Implementasi navigasi atau action untuk memulai wakaf
-  console.log('Navigating to wakaf form...')
+  console.log("Navigating to wakaf form...");
   // Contoh: navigateTo('/wakaf/form') atau emit event
-}
+};
 
 // SEO Meta tags
 useHead({
@@ -342,16 +355,17 @@ useHead({
     },
     {
       name: "keywords",
-      content: "wakaf, amal jariyah, islam, sedekah, hukum wakaf, syariat"
+      content: "wakaf, amal jariyah, islam, sedekah, hukum wakaf, syariat",
     },
     {
       property: "og:title",
-      content: "Wakaf: Panduan Lengkap dalam Islam"
+      content: "Wakaf: Panduan Lengkap dalam Islam",
     },
     {
-      property: "og:description", 
-      content: "Panduan lengkap tentang wakaf dalam Islam, mulai dari pengertian, hukum, hingga keutamaannya"
-    }
+      property: "og:description",
+      content:
+        "Panduan lengkap tentang wakaf dalam Islam, mulai dari pengertian, hukum, hingga keutamaannya",
+    },
   ],
 });
 </script>
@@ -384,7 +398,7 @@ useHead({
   .grid.md\\:grid-cols-2 {
     grid-template-columns: 1fr;
   }
-  
+
   .grid.md\\:grid-cols-3 {
     grid-template-columns: 1fr;
   }
