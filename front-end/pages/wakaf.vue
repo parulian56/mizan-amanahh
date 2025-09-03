@@ -295,7 +295,7 @@
           Mari Berwakaf untuk Keberkahan Hidup
         </h3>
         <p class="mb-4 opacity-90">
-          Jadilah bagian dari amal jariyah yang pahalanya terus mengalir hingga
+          Jadilahh bagian dari amal jariyah yang pahalanya terus mengalir hingga
           akhirat
         </p>
         <button
