@@ -31,7 +31,7 @@
           <!-- Logo Light -->
           <img 
             v-else 
-            src="/assets/image/logo.png" 
+            src="/assets/image/ibadurrohman-logo.png" 
             alt="Light Mode Logo" 
             class="w-6 h-6"
           >
