@@ -13,7 +13,7 @@
 
         <!-- Breadcrumb -->
         <nav class="text-sm">
-          <router-link to="http://localhost:3000" class="hover:underline">Home</router-link>
+          <router-link to="/" class="hover:underline">Home</router-link>
           <span class="mx-1">›</span>
           <span class="font-semibold">Rekening Donasi</span>
         </nav>

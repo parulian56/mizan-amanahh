@@ -6,9 +6,9 @@
   <div class="container mx-auto px-4">
     <!-- Top row: back button + title -->
     <div class="flex items-center">
-      <NuxtLink to="/" class="mr-3 flex items-center hover:opacity-80 transition">
-        <i class="fas fa-arrow-left text-xl"></i>
-      </NuxtLink>
+      <router-link to="http://localhost:3000" class="mr-3 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
       <h1 class="text-lg font-semibold">Kantor Cabang</h1>
     </div>
 
