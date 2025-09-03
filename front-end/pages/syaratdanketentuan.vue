@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen">
+  <div class="bg-gradient-to-br from-red-50 via-white to-red-100 text-gray-800 min-h-screen"></div>
     <!-- Navbar -->
     <!-- Navbar -->
 <nav class="bg-white shadow-md sticky top-0 z-50">
