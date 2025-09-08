@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen text-gray-800 bg-gray-50">
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-[#FB8603] shadow-md">
+    <header class="sticky top-0 z-50 bg-[#E9741C] shadow-md">
       <div class="px-6 py-6 mx-auto max-w-7xl text-white">
         <!-- Judul -->
         <h1 class="text-2xl font-bold">Qurban</h1>
@@ -132,7 +132,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#FB8603] text-white py-8 mt-auto">
+    <footer class="bg-[#E9741C] text-white py-8 mt-auto">
       <div class="px-4 mx-auto space-y-2 text-center max-w-7xl">
         <p>&copy; {{ currentYear }} Qurban Amanah. Semua Hak Dilindungi.</p>
         <p>Hubungi kami: 0812-3456-7890 | Email: info@qurbanamanah.org</p>
