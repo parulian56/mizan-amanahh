@@ -1,39 +1,39 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
+  <div class="flex flex-col min-h-screen text-gray-800 bg-gray-50">
     <!-- Navbar -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <nav class="relative flex items-center justify-between px-4 py-4 mx-auto max-w-7xl sm:px-6">
         <div class="flex items-center space-x-3">
           <!-- Tombol Back -->
           <button @click="goBack" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <i class="fas fa-arrow-left text-xl"></i>
+            <i class="text-xl fas fa-arrow-left"></i>
             <span>Kembali</span>
           </button>
         </div>
 
         <!-- Teks Ibadurrohman (tengah & lebih besar) -->
-        <span class="absolute left-1/2 transform -translate-x-1/2 font-extrabold text-center text-xl md:text-2xl">
+        <span class="absolute text-xl font-extrabold text-center transform -translate-x-1/2 left-1/2 md:text-2xl">
           Ibadurrohman
         </span>
 
         <!-- Dark Mode Toggle -->
         <button 
           @click="toggleDarkMode" 
-          class="ml-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+          class="p-2 ml-4 bg-gray-200 rounded-full hover:bg-gray-300"
         >
           <!-- Logo Dark -->
           <img 
             v-if="darkMode" 
             :src="logoDark" 
             alt="Dark Mode Logo" 
-            class="h-6 w-6"
+            class="w-6 h-6"
           >
           <!-- Logo Light -->
           <img 
             v-else 
-            src="/assets/image/logo.png" 
+            src="/assets/image/ibadurrohman-logo.png" 
             alt="Light Mode Logo" 
-            class="h-6 w-6"
+            class="w-6 h-6"
           >
         </button>
       </nav>
@@ -42,17 +42,17 @@
     <!-- Hero -->
 <section class="relative bg-gradient-to-r from-orange-400 to-[#FB8603] text-white py-20">
   <div class="absolute inset-0 bg-black opacity-10"></div>
-  <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+  <div class="relative grid items-center gap-8 px-4 mx-auto max-w-7xl md:grid-cols-2">
     <div>
-      <h1 class="text-5xl font-extrabold mb-4 leading-tight">
+      <h1 class="mb-4 text-5xl font-extrabold leading-tight">
         Tunaikan Ibadah Qurban dengan Amanah
       </h1>
-      <p class="text-lg mb-6 opacity-90">
+      <p class="mb-6 text-lg opacity-90">
         Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
       </p>
       <div class="space-y-4">
         <!-- Countdown -->
-        <div class="bg-white text-black font-bold p-3 rounded-lg shadow-md inline-block">
+        <div class="inline-block p-3 font-bold text-black bg-white rounded-lg shadow-md">
           Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
         </div>
         <!-- Button Daftar Sekarang -->
@@ -69,7 +69,7 @@
       <img 
         src="/assets/image/sedekah1.png" 
         alt="Qurban" 
-        class="w-72 h-44 lg:w-96 lg:h-60 object-cover rounded-lg shadow-lg" 
+        class="object-cover rounded-lg shadow-lg w-72 h-44 lg:w-96 lg:h-60" 
       />
 
     </div>
@@ -78,9 +78,9 @@
 
 
     <!-- Tentang Qurban -->
-    <section id="tentang" class="py-16 bg-white text-center px-4">
-      <h2 class="text-3xl font-bold text-center mb-6">Tentang Qurban</h2>
-      <p class="max-w-3xl mx-auto text-gray-600 leading-relaxed">
+    <section id="tentang" class="px-4 py-16 text-center bg-white">
+      <h2 class="mb-6 text-3xl font-bold text-center">Tentang Qurban</h2>
+      <p class="max-w-3xl mx-auto leading-relaxed text-gray-600">
         Qurban adalah ibadah yang diperintahkan Allah SWT sebagai bentuk ketaatan dan rasa syukur hamba-Nya.
         Dengan berqurban, kita meneladani Nabi Ibrahim AS dan Nabi Ismail AS. Hewan qurban akan disembelih
         pada Hari Raya Idul Adha hingga hari Tasyrik, lalu dagingnya dibagikan kepada yang membutuhkan.
@@ -88,13 +88,13 @@
     </section>
 
     <!-- Harga Qurban -->
-    <section id="harga" class="py-16 max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-10">Harga Hewan Qurban</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div v-for="paket in paketQurban" :key="paket.id" class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
-          <div class="text-5xl mb-4">{{ paket.icon }}</div>
-          <h3 class="text-xl font-semibold mb-2">{{ paket.name }}</h3>
-          <p class="text-2xl font-bold text-center mb-4">{{ formatCurrency(paket.price) }}</p>
+    <section id="harga" class="px-4 py-16 mx-auto max-w-7xl">
+      <h2 class="mb-10 text-3xl font-bold text-center">Harga Hewan Qurban</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div v-for="paket in paketQurban" :key="paket.id" class="p-6 text-center transition bg-white shadow-lg rounded-xl hover:shadow-xl">
+          <div class="mb-4 text-5xl">{{ paket.icon }}</div>
+          <h3 class="mb-2 text-xl font-semibold">{{ paket.name }}</h3>
+          <p class="mb-4 text-2xl font-bold text-center">{{ formatCurrency(paket.price) }}</p>
           <button @click="scrollTo('daftar')" class="w-full bg-[#5DAAB9] text-white py-2 rounded-lg hover:bg-[#4c94a1]">
             Pilih Qurban
           </button>
@@ -104,23 +104,23 @@
 
     <!-- 📌 Form Daftar Qurban -->
     <section id="daftar" class="py-20 bg-gray-100">
-      <div class="max-w-4xl mx-auto px-6 bg-white p-8 rounded-xl shadow-lg">
-        <h2 class="text-3xl font-bold text-center text-center mb-8">Form Pendaftaran Qurban</h2>
+      <div class="max-w-4xl p-8 px-6 mx-auto bg-white shadow-lg rounded-xl">
+        <h2 class="mb-8 text-3xl font-bold text-center">Form Pendaftaran Qurban</h2>
         <form @submit.prevent="submitForm" class="space-y-6">
           <div>
-            <label class="block font-semibold mb-2">Nama Lengkap</label>
+            <label class="block mb-2 font-semibold">Nama Lengkap</label>
             <input v-model="form.nama" type="text" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]" />
           </div>
           <div>
-            <label class="block font-semibold mb-2">Nomor Telepon</label>
+            <label class="block mb-2 font-semibold">Nomor Telepon</label>
             <input v-model="form.telepon" type="tel" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]" />
           </div>
           <div>
-            <label class="block font-semibold mb-2">Alamat</label>
+            <label class="block mb-2 font-semibold">Alamat</label>
             <textarea v-model="form.alamat" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]"></textarea>
           </div>
           <div>
-            <label class="block font-semibold mb-2">Pilih Paket Qurban</label>
+            <label class="block mb-2 font-semibold">Pilih Paket Qurban</label>
             <select v-model="form.paket" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]">
               <option value="" disabled>Pilih Paket</option>
               <option v-for="paket in paketQurban" :key="paket.id" :value="paket.name">
@@ -141,10 +141,10 @@
 
     <!-- FAQ -->
     <section id="faq" class="py-16 bg-white">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-10">FAQ</h2>
-        <div v-for="(faq, index) in faqs" :key="index" class="border border-gray-200 rounded-lg mb-4">
-          <button @click="toggleFAQ(index)" class="w-full px-6 py-4 text-left font-semibold hover:bg-gray-50 flex justify-between">
+      <div class="max-w-4xl px-4 mx-auto">
+        <h2 class="mb-10 text-3xl font-bold text-center">FAQ</h2>
+        <div v-for="(faq, index) in faqs" :key="index" class="mb-4 border border-gray-200 rounded-lg">
+          <button @click="toggleFAQ(index)" class="flex justify-between w-full px-6 py-4 font-semibold text-left hover:bg-gray-50">
             {{ faq.question }}
             <span>{{ faq.open ? '-' : '+' }}</span>
           </button>
@@ -155,13 +155,13 @@
 
     <!-- 📌 Artikel -->
     <section id="artikel" class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-center mb-10">Artikel Terbaru</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div v-for="artikel in artikels" :key="artikel.id" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-            <img :src="artikel.image" alt="artikel" class="rounded-lg mb-4 w-full h-40 object-cover" />
-            <h3 class="text-xl font-semibold mb-2">{{ artikel.title }}</h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">{{ artikel.excerpt }}</p>
+      <div class="max-w-6xl px-4 mx-auto">
+        <h2 class="mb-10 text-3xl font-bold text-center">Artikel Terbaru</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div v-for="artikel in artikels" :key="artikel.id" class="p-6 transition bg-white shadow-lg rounded-xl hover:shadow-xl">
+            <img :src="artikel.image" alt="artikel" class="object-cover w-full h-40 mb-4 rounded-lg" />
+            <h3 class="mb-2 text-xl font-semibold">{{ artikel.title }}</h3>
+            <p class="mb-4 text-gray-600 line-clamp-3">{{ artikel.excerpt }}</p>
             <a :href="artikel.link" target="_blank" class="text-[#FB8603] font-medium hover:underline">Baca Selengkapnya →</a>
           </div>
         </div>
@@ -170,7 +170,7 @@
 
     <!-- Footer -->
     <footer class="bg-[#FB8603] text-white py-8 mt-auto">
-      <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+      <div class="px-4 mx-auto space-y-2 text-center max-w-7xl">
         <p>&copy; {{ currentYear }} Qurban Amanah. Semua Hak Dilindungi.</p>
         <p>Hubungi kami: 0812-3456-7890 | Email: info@qurbanamanah.org</p>
       </div>
@@ -264,7 +264,7 @@ const updateCountdown = () => {
   countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
 }
 
-onMounted(() => {
+onMounted(() => {l
   setInterval(updateCountdown, 1000)
 })
 </script>

@@ -4,7 +4,13 @@
     <nav
       class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
     >
+<<<<<<< HEAD
       <span class="cursor-pointer" @click="page = 'home'">⬅</span>
+=======
+      <router-link to="/" class="mr-3">
+        <i class="fas fa-arrow-left text-xl"></i>
+      </router-link>
+>>>>>>> 2a95f6215dc102860c7e6be52caa60ad5d2fa828
       <h2 class="text-lg font-semibold">Zakat</h2>
     </nav>
 
@@ -22,6 +28,9 @@
       <span v-else-if="page === 'calc'">
         Home › Bayar-Zakat ›
         <span class="text-[#FDB669] font-bold">Kalkulator</span>
+      </span>
+      <span v-else-if="page === 'donate'">
+        Home › <span class="text-[#FDB669] font-bold">Donate</span>
       </span>
     </div>
 
@@ -66,9 +75,7 @@
                     }"
                   ></div>
                 </div>
-                <div
-                  class="flex justify-between text-xs text-gray-500 mt-2"
-                >
+                <div class="flex justify-between text-xs text-gray-500 mt-2">
                   <span>{{ item.deadline }}</span>
                   <span>Zakat</span>
                 </div>
@@ -77,6 +84,7 @@
               <!-- Button -->
               <div class="mt-auto pt-3">
                 <button
+                  @click="page = 'donate'"
                   class="w-full bg-[#FB8505] text-white text-sm py-2 rounded-lg shadow hover:bg-[#C96A04]"
                 >
                   Donasi Sekarang
@@ -110,6 +118,78 @@
         </div>
       </div>
 
+      <!-- Halaman Donasi -->
+      <div v-else-if="page === 'donate'" class="p-4">
+        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
+          Donasi
+        </h2>
+        <p class="text-center text-sm text-[#59AAB7] mb-4">
+          Silahkan Login atau isi data di bawah ini
+        </p>
+
+        <form class="space-y-4" @submit.prevent="submitDonasi">
+          <div>
+            <label class="block text-sm">Nama Lengkap</label>
+            <input v-model="nama" type="text" class="w-full border-b focus:outline-none py-1" />
+          </div>
+          <div>
+            <label class="block text-sm">No Handphone / Whatsapp</label>
+            <input v-model="hp" type="text" class="w-full border-b focus:outline-none py-1" />
+          </div>
+          <div>
+            <label class="block text-sm">Email</label>
+            <input v-model="email" type="email" class="w-full border-b focus:outline-none py-1" />
+          </div>
+
+          <!-- Pilihan Nominal -->
+          <div>
+            <label class="block text-sm">Nominal Donasi</label>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 1000000">
+                Rp. 1.000.000
+              </button>
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 500000">
+                Rp. 500.000
+              </button>
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 200000">
+                Rp. 200.000
+              </button>
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 100000">
+                Rp. 100.000
+              </button>
+            </div>
+          </div>
+
+          <!-- Nominal Lain -->
+          <div>
+            <label class="block text-sm">Nominal Donasi Lainnya</label>
+            <input v-model.number="donasi" type="number" class="w-full border-b focus:outline-none py-1" />
+          </div>
+
+          <!-- Tombol Aksi -->
+          <button type="button" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg" @click="showPayment = !showPayment">
+            Pilih Metode Pembayaran
+          </button>
+
+          <!-- Metode Pembayaran -->
+          <div v-if="showPayment" class="space-y-2">
+            <label class="block">
+              <input type="radio" value="Transfer Bank" v-model="metode" /> Transfer Bank
+            </label>
+            <label class="block">
+              <input type="radio" value="E-Wallet" v-model="metode" /> E-Wallet
+            </label>
+            <label class="block">
+              <input type="radio" value="VA (Virtual Account)" v-model="metode" /> Virtual Account
+            </label>
+          </div>
+
+          <button type="submit" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg">
+            Donasi
+          </button>
+        </form>
+      </div>
+
       <!-- Form Zakat -->
       <div v-else-if="page === 'form'" class="p-4">
         <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
@@ -122,24 +202,15 @@
         <form class="space-y-4">
           <div>
             <label class="block text-sm">Nama Lengkap</label>
-            <input
-              type="text"
-              class="w-full border-b focus:outline-none py-1"
-            />
+            <input type="text" class="w-full border-b focus:outline-none py-1" />
           </div>
           <div>
             <label class="block text-sm">No Handphone / Whatsapp</label>
-            <input
-              type="text"
-              class="w-full border-b focus:outline-none py-1"
-            />
+            <input type="text" class="w-full border-b focus:outline-none py-1" />
           </div>
           <div>
             <label class="block text-sm">Email</label>
-            <input
-              type="email"
-              class="w-full border-b focus:outline-none py-1"
-            />
+            <input type="email" class="w-full border-b focus:outline-none py-1" />
           </div>
           <div>
             <label class="block text-sm">Kategori Zakat</label>
@@ -152,21 +223,13 @@
           </div>
           <div>
             <label class="block text-sm">Jumlah Zakat</label>
-            <input
-              type="number"
-              value="0"
-              class="w-full border-b focus:outline-none py-1"
-            />
+            <input type="number" value="0" class="w-full border-b focus:outline-none py-1" />
           </div>
 
-          <button
-            class="w-full bg-[#59AAB7] text-white py-2 rounded-lg hover:bg-[#478892]"
-          >
+          <button class="w-full bg-[#59AAB7] text-white py-2 rounded-lg hover:bg-[#478892]">
             Pilih Metode Pembayaran
           </button>
-          <button
-            class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]"
-          >
+          <button class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]">
             Lanjutkan Pembayaran
           </button>
         </form>
@@ -186,69 +249,31 @@
 
           <div>
             <label class="block text-sm">Penghasilan Per Bulan</label>
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2"
-            />
+            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
           </div>
           <div>
-            <label class="block text-sm"
-              >Penghasilan Tambahan Per Bulan</label
-            >
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2"
-            />
+            <label class="block text-sm">Penghasilan Tambahan Per Bulan</label>
+            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
           </div>
           <div>
             <label class="block text-sm">Pengeluaran Pokok Per Bulan</label>
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2"
-            />
+            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
           </div>
           <div>
             <label class="block text-sm">Harga Beras (Kg)</label>
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2"
-            />
+            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
           </div>
           <div>
-            <label class="block text-sm"
-              >NISHAB (Harga Beras x 522 Kg)</label
-            >
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2 bg-gray-100"
-              readonly
-            />
+            <label class="block text-sm">NISHAB (Harga Beras x 522 Kg)</label>
+            <input type="number" value="0" class="w-full border rounded py-1 px-2 bg-gray-100" readonly />
           </div>
           <div>
-            <label class="block text-sm"
-              >Jumlah Bulan Yang Akan Dibayarkan Zakatnya</label
-            >
-            <input
-              type="number"
-              value="1"
-              class="w-full border rounded py-1 px-2"
-            />
+            <label class="block text-sm">Jumlah Bulan Yang Akan Dibayarkan Zakatnya</label>
+            <input type="number" value="1" class="w-full border rounded py-1 px-2" />
           </div>
           <div>
-            <label class="block text-sm"
-              >Besar Zakat Hasil Perhitungan</label
-            >
-            <input
-              type="number"
-              value="0"
-              class="w-full border rounded py-1 px-2 bg-gray-100"
-              readonly
-            />
+            <label class="block text-sm">Besar Zakat Hasil Perhitungan</label>
+            <input type="number" value="0" class="w-full border rounded py-1 px-2 bg-gray-100" readonly />
           </div>
 
           <p class="text-xs text-gray-600">
@@ -270,6 +295,17 @@
 import { ref } from "vue";
 
 const page = ref("home");
+
+const nama = ref("");
+const hp = ref("");
+const email = ref("");
+const donasi = ref(0);
+const metode = ref("");
+const showPayment = ref(false);
+
+const submitDonasi = () => {
+  alert(`Donasi Berhasil!\nNama: ${nama.value}\nHP: ${hp.value}\nEmail: ${email.value}\nNominal: Rp ${donasi.value.toLocaleString()}\nMetode: ${metode.value}`);
+};
 
 const zakatList = ref([
   {
