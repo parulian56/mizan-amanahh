@@ -6,7 +6,7 @@
     >
       <router-link to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
+      </router-link>
       <h2 class="text-lg font-semibold">Zakat</h2>
     </nav>
 
@@ -119,7 +119,7 @@
         <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
           Donasi
         </h2>
-        <p class="text-center text-sm text-red-500 mb-4">
+        <p class="text-center text-sm text-[#59AAB7] mb-4">
           Silahkan Login atau isi data di bawah ini
         </p>
 
@@ -141,16 +141,16 @@
           <div>
             <label class="block text-sm">Nominal Donasi</label>
             <div class="flex flex-wrap gap-2 mt-2">
-              <button type="button" class="bg-red-600 text-white px-3 py-2 rounded-lg" @click="donasi = 1000000">
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 1000000">
                 Rp. 1.000.000
               </button>
-              <button type="button" class="bg-red-600 text-white px-3 py-2 rounded-lg" @click="donasi = 500000">
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 500000">
                 Rp. 500.000
               </button>
-              <button type="button" class="bg-red-600 text-white px-3 py-2 rounded-lg" @click="donasi = 200000">
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 200000">
                 Rp. 200.000
               </button>
-              <button type="button" class="bg-red-600 text-white px-3 py-2 rounded-lg" @click="donasi = 100000">
+              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 100000">
                 Rp. 100.000
               </button>
             </div>
@@ -163,7 +163,7 @@
           </div>
 
           <!-- Tombol Aksi -->
-          <button type="button" class="w-full bg-red-600 text-white py-2 rounded-lg" @click="showPayment = !showPayment">
+          <button type="button" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg" @click="showPayment = !showPayment">
             Pilih Metode Pembayaran
           </button>
 
@@ -180,7 +180,7 @@
             </label>
           </div>
 
-          <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg">
+          <button type="submit" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg">
             Donasi
           </button>
         </form>

@@ -6,12 +6,6 @@
         <div class="flex items-center font-bold text-xl">
           🏛️ <span class="ml-2">mizan amanah</span>
         </div>
-        <button
-          @click="toggleMenu"
-          class="text-2xl px-2 py-1 rounded-md hover:bg-white/10 transition"
-        >
-          ☰
-        </button>
       </div>
     </header>
 

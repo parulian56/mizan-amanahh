@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
-    <header class="text-white bg-red-500 shadow-lg">
+    <header class="text-white bg-orange-500 shadow-lg">
       <div class="container px-4 mx-auto">
         <!-- Navigation Bar -->
         <nav class="flex items-center justify-between py-4">
@@ -37,7 +37,7 @@
       <!-- Page Title -->
       <div class="mb-8 text-center">
         <h2 class="mb-2 text-3xl font-bold text-gray-800">Laporan Audit</h2>
-        <div class="w-24 h-1 mx-auto bg-red-500"></div>
+        <div class="w-24 h-1 mx-auto bg-orange-500"></div>
       </div>
 
       <!-- Content Section -->
@@ -87,13 +87,6 @@
         </div>
       </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="py-8 mt-12 text-white bg-gray-800">
-      <div class="container px-4 mx-auto text-center">
-        <p>&copy; {{ currentYear }} Mizan Amanah. All rights reserved.</p>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -121,67 +114,78 @@ const auditReports = ref([
   {
     number: 1,
     year: "2011",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-keuangan-mizan-amanah-2011/23766862",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-keuangan-mizan-amanah-2011/23766862",
     downloadLink: "/audit/2011/download",
   },
   {
     number: 2,
     year: "2012",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-keuangan-mizan-amanah-2012/24644977",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-keuangan-mizan-amanah-2012/24644977",
     downloadLink: "/audit/2012/download",
   },
   {
     number: 3,
     year: "2013",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2013/227351424",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2013/227351424",
     downloadLink: "/audit/2013/download",
   },
   {
     number: 4,
     year: "2014",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2014/227347854",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2014/227347854",
     downloadLink: "/audit/2014/download",
   },
   {
     number: 5,
     year: "2015",
-    viewLink: "https://www.slideshare.net/mizanamanah/laporan-audit-kap-mizan-amanah-tahun-2015",
+    viewLink:
+      "https://www.slideshare.net/mizanamanah/laporan-audit-kap-mizan-amanah-tahun-2015",
     downloadLink: "/audit/2015/download",
   },
   {
     number: 6,
     year: "2016",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2016/227347458",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2016/227347458",
     downloadLink: "/audit/2016/download",
   },
   {
     number: 7,
     year: "2017",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2017/227346231",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2017/227346231",
     downloadLink: "/audit/2017/download",
   },
   {
     number: 8,
     year: "2018",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2018/227346875",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-kap-mizan-amanah-tahun-2018/227346875",
     downloadLink: "/audit/2018/download",
   },
   {
     number: 9,
     year: "2019",
-    viewLink: "https://www.slideshare.net/mizanamanah/laporan-audit-mizan-amanah-tahun-2019-240416449",
+    viewLink:
+      "https://www.slideshare.net/mizanamanah/laporan-audit-mizan-amanah-tahun-2019-240416449",
     downloadLink: "/audit/2019/download",
   },
   {
     number: 10,
     year: "2020",
-    viewLink: "https://www.slideshare.net/slideshow/laporan-audit-yayasan-mizan-amanah-tahun-2020pdf/251505790",
+    viewLink:
+      "https://www.slideshare.net/slideshow/laporan-audit-yayasan-mizan-amanah-tahun-2020pdf/251505790",
     downloadLink: "/audit/2020/download",
   },
   {
     number: 11,
     year: "2021",
-    viewLink: "https://www.slideshare.net/slideshow/audit-keuangan-mizan-amanah-tahun-2021/255085974",
+    viewLink:
+      "https://www.slideshare.net/slideshow/audit-keuangan-mizan-amanah-tahun-2021/255085974",
     downloadLink: "/audit/2021/download",
   },
 ]);
