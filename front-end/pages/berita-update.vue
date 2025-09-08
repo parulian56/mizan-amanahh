@@ -28,7 +28,7 @@
           <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
             <div class="relative">
               <img 
-                src="#" 
+                src="" 
                 alt="Doa Zakat Fitrah" 
                 class="w-full h-48 object-cover"
                 @error="handleImageError($event, '#')"
@@ -288,6 +288,7 @@ useHead({
   ]
 })
 </script>
+
 
 <style scoped>
 .hover\:-translate-y-2:hover {
