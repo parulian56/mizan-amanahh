@@ -4,9 +4,13 @@
     <nav
       class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
     >
+<<<<<<< HEAD
+      <span class="cursor-pointer" @click="page = 'home'">⬅</span>
+=======
       <router-link to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
       </router-link>
+>>>>>>> 2a95f6215dc102860c7e6be52caa60ad5d2fa828
       <h2 class="text-lg font-semibold">Zakat</h2>
     </nav>
 
