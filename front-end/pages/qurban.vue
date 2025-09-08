@@ -1,77 +1,40 @@
 <template>
   <div class="flex flex-col min-h-screen text-gray-800 bg-gray-50">
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-      <nav class="relative flex items-center justify-between px-4 py-4 mx-auto max-w-7xl sm:px-6">
-        <div class="flex items-center space-x-3">
-          <!-- Tombol Back -->
-          <button @click="goBack" class="inline-flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <i class="text-xl fas fa-arrow-left"></i>
-            <span>Kembali</span>
-          </button>
-        </div>
-
-        <!-- Teks Ibadurrohman (tengah & lebih besar) -->
-        <span class="absolute text-xl font-extrabold text-center transform -translate-x-1/2 left-1/2 md:text-2xl">
-          Ibadurrohman
-        </span>
-
-        <!-- Dark Mode Toggle -->
-        <button 
-          @click="toggleDarkMode" 
-          class="p-2 ml-4 bg-gray-200 rounded-full hover:bg-gray-300"
-        >
-          <!-- Logo Dark -->
-          <img 
-            v-if="darkMode" 
-            :src="logoDark" 
-            alt="Dark Mode Logo" 
-            class="w-6 h-6"
-          >
-          <!-- Logo Light -->
-          <img 
-            v-else 
-            src="/assets/image/ibadurrohman-logo.png" 
-            alt="Light Mode Logo" 
-            class="w-6 h-6"
-          >
-        </button>
-      </nav>
+    <header class="sticky top-0 z-50 bg-[#FB8603] shadow-md">
+      <div class="px-6 py-6 mx-auto max-w-7xl text-white">
+        <!-- Judul -->
+        <h1 class="text-2xl font-bold">Qurban</h1>
+        <!-- Breadcrumb -->
+        <nav class="mt-1 text-sm opacity-90">
+          <router-link to="/" class="hover:underline">Home</router-link>
+          <span class="mx-1">/</span>
+          <span>Tentang</span>
+        </nav>
+      </div>
     </header>
 
-    <!-- Hero -->
-<section class="relative bg-gradient-to-r from-orange-400 to-[#FB8603] text-white py-20">
-  <div class="absolute inset-0 bg-black opacity-10"></div>
-  <div class="relative grid items-center gap-8 px-4 mx-auto max-w-7xl md:grid-cols-2">
+<!-- Hero Section -->
+<section class="bg-[#E9741C] py-16">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center text-white">
+    <!-- Teks -->
     <div>
-      <h1 class="mb-4 text-5xl font-extrabold leading-tight">
-        Tunaikan Ibadah Qurban dengan Amanah
-      </h1>
-      <p class="mb-6 text-lg opacity-90">
-        Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.
-      </p>
-      <div class="space-y-4">
-        <!-- Countdown -->
-        <div class="inline-block p-3 font-bold text-black bg-white rounded-lg shadow-md">
-          Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
-        </div>
-        <!-- Button Daftar Sekarang -->
-        <button
-          @click="scrollTo('daftar')"
-          class="block bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
-        >
-          Daftar Sekarang
-        </button>
+      <h2 class="text-4xl font-extrabold mb-4">Tunaikan Ibadah Qurban<br />dengan Amanah</h2>
+      <p class="mb-6">Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.</p>
+      <!-- Countdown -->
+      <div class="mb-4">
+        <span class="px-3 py-2 rounded bg-white text-black font-semibold">
+          Batas Qurban: -92h -16j -46m -15d
+        </span>
       </div>
+      <!-- Button -->
+      <button class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md">
+        Daftar Sekarang
+      </button>
     </div>
+    <!-- Gambar -->
     <div class="flex justify-center">
-      <!-- 🔥 Ganti icon sapi dengan gambar -->
-      <img 
-        src="/assets/image/sedekah1.png" 
-        alt="Qurban" 
-        class="object-cover rounded-lg shadow-lg w-72 h-44 lg:w-96 lg:h-60" 
-      />
-
+      <img src="/assets/image/sedekah1.png" alt="Qurban" class="rounded-lg shadow-lg w-full md:w-96" />
     </div>
   </div>
 </section>
@@ -264,7 +227,7 @@ const updateCountdown = () => {
   countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
 }
 
-onMounted(() => {l
+onMounted(() => {
   setInterval(updateCountdown, 1000)
 })
 </script>
