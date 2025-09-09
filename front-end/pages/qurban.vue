@@ -2,26 +2,25 @@
   <div class="flex flex-col min-h-screen text-gray-800 bg-gray-50">
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-[#E9741C] shadow-md">
-    <div class="px-6 py-6 mx-auto max-w-7xl text-white">
-      <!-- Baris Atas: Back + Judul -->
-      <div class="flex items-center mb-1">
-        <!-- Tombol Back -->
-        <router-link to="/" class="mr-2 flex items-center">
-          <i class="fas fa-arrow-left text-xl"></i>
-        </router-link>
-        <!-- Judul -->
-        <h1 class="text-2xl font-bold">Program</h1>
+      <div class="px-6 py-6 mx-auto max-w-7xl text-white">
+        <!-- Baris Atas: Back + Judul -->
+        <div class="flex items-center mb-1">
+          <!-- Tombol Back -->
+          <router-link to="/" class="mr-2 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <!-- Judul -->
+          <h1 class="text-2xl font-bold">Program</h1>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm opacity-90">
+          <router-link to="/" class="hover:underline">Home</router-link>
+          <span class="mx-1">/</span>
+          <span>Tentang</span>
+        </nav>
       </div>
-
-      <!-- Breadcrumb -->
-      <nav class="text-sm opacity-90">
-        <router-link to="/" class="hover:underline">Home</router-link>
-        <span class="mx-1">/</span>
-        <span>Tentang</span>
-      </nav>
-    </div>
-  </header>
-
+    </header>
 
     <!-- Hero Section -->
     <section class="bg-[#E9741C] py-16">
@@ -33,11 +32,14 @@
           <!-- Countdown -->
           <div class="mb-4">
             <span class="px-3 py-2 rounded bg-white text-black font-semibold">
-              Batas Qurban: -92h -16j -46m -15d
+              Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
             </span>
           </div>
           <!-- Button -->
-          <button class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md">
+          <button 
+            @click="daftarSekarang"
+            class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md"
+          >
             Daftar Sekarang
           </button>
         </div>
@@ -47,7 +49,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Tentang Qurban -->
     <section id="tentang" class="px-4 py-16 text-center bg-white">
@@ -150,7 +151,7 @@
 
     <!-- WhatsApp Floating Button -->
     <a
-      href="https://wa.me/083153611239"
+      href="https://wa.me/6283153611239"
       target="_blank"
       class="fixed bottom-6 right-6 bg-[#5DAAB9] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg hover:bg-[#4c94a1]"
     >
@@ -179,9 +180,10 @@ const form = reactive({
   paket: ""
 })
 
-// ✅ Kirim Form ke WhatsApp
+const noWaTujuan = "6283153611239" // ✅ format internasional
+
+// ✅ Form Pendaftaran -> WhatsApp
 const submitForm = () => {
-  const noWaTujuan = "083153611239 " // 👉 ganti dengan nomor WA admin kamu (format internasional, tanpa +)
   const pesan = `
 Assalamu'alaikum, saya ingin mendaftar Qurban:
 
@@ -190,7 +192,6 @@ Assalamu'alaikum, saya ingin mendaftar Qurban:
 🏠 Alamat: ${form.alamat}
 🐄 Paket: ${form.paket}
 `
-
   const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
   window.open(url, "_blank")
 
@@ -199,6 +200,13 @@ Assalamu'alaikum, saya ingin mendaftar Qurban:
   form.telepon = ""
   form.alamat = ""
   form.paket = ""
+}
+
+// ✅ Tombol Daftar Sekarang -> WhatsApp
+const daftarSekarang = () => {
+  const pesan = "Assalamu'alaikum, saya ingin daftar Qurban sekarang."
+  const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
+  window.open(url, "_blank")
 }
 
 const faqs = reactive([
@@ -217,7 +225,6 @@ const artikels = reactive([
 
 const currentYear = computed(() => new Date().getFullYear())
 
-// ✅ Tombol Back ke Home Vue
 const goBack = () => {
   router.push("/") 
 }
