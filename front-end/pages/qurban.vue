@@ -3,10 +3,18 @@
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-[#E9741C] shadow-md">
       <div class="px-6 py-6 mx-auto max-w-7xl text-white">
-        <!-- Judul -->
-        <h1 class="text-2xl font-bold">Qurban</h1>
+        <!-- Baris Atas: Back + Judul -->
+        <div class="flex items-center mb-1">
+          <!-- Tombol Back -->
+          <router-link to="/" class="mr-2 flex items-center">
+            <i class="fas fa-arrow-left text-xl"></i>
+          </router-link>
+          <!-- Judul -->
+          <h1 class="text-2xl font-bold">Program</h1>
+        </div>
+
         <!-- Breadcrumb -->
-        <nav class="mt-1 text-sm opacity-90">
+        <nav class="text-sm opacity-90">
           <router-link to="/" class="hover:underline">Home</router-link>
           <span class="mx-1">/</span>
           <span>Tentang</span>
@@ -14,31 +22,33 @@
       </div>
     </header>
 
-<!-- Hero Section -->
-<section class="bg-[#E9741C] py-16">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center text-white">
-    <!-- Teks -->
-    <div>
-      <h2 class="text-4xl font-extrabold mb-4">Tunaikan Ibadah Qurban<br />dengan Amanah</h2>
-      <p class="mb-6">Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.</p>
-      <!-- Countdown -->
-      <div class="mb-4">
-        <span class="px-3 py-2 rounded bg-white text-black font-semibold">
-          Batas Qurban: -92h -16j -46m -15d
-        </span>
+    <!-- Hero Section -->
+    <section class="bg-[#E9741C] py-16">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center text-white">
+        <!-- Teks -->
+        <div>
+          <h2 class="text-4xl font-extrabold mb-4">Tunaikan Ibadah Qurban<br />dengan Amanah</h2>
+          <p class="mb-6">Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.</p>
+          <!-- Countdown -->
+          <div class="mb-4">
+            <span class="px-3 py-2 rounded bg-white text-black font-semibold">
+              Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
+            </span>
+          </div>
+          <!-- Button -->
+          <button 
+            @click="daftarSekarang"
+            class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md"
+          >
+            Daftar Sekarang
+          </button>
+        </div>
+        <!-- Gambar -->
+        <div class="flex justify-center">
+          <img src="/assets/image/sedekah1.png" alt="Qurban" class="rounded-lg shadow-lg w-full md:w-96" />
+        </div>
       </div>
-      <!-- Button -->
-      <button class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md">
-        Daftar Sekarang
-      </button>
-    </div>
-    <!-- Gambar -->
-    <div class="flex justify-center">
-      <img src="/assets/image/sedekah1.png" alt="Qurban" class="rounded-lg shadow-lg w-full md:w-96" />
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Tentang Qurban -->
     <section id="tentang" class="px-4 py-16 text-center bg-white">
@@ -141,7 +151,7 @@
 
     <!-- WhatsApp Floating Button -->
     <a
-      href="https://wa.me/6281234567890"
+      href="https://wa.me/6283153611239"
       target="_blank"
       class="fixed bottom-6 right-6 bg-[#5DAAB9] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg hover:bg-[#4c94a1]"
     >
@@ -159,8 +169,8 @@ const router = useRouter()
 const paketQurban = [
   { id: 1, name: "Kambing", price: 6000000, icon: "🐐" },
   { id: 2, name: "Domba", price: 7000000, icon: "🐏" },
-  { id: 3, name: "Sapi 1/7", price: 200000000, icon: "🐄" },
-  { id: 4, name: "Sapi 1 Ekor", price: 400000000, icon: "🐂" }
+  { id: 3, name: "Sapi 1/7", price: 20000000, icon: "🐄" },
+  { id: 4, name: "Sapi 1 Ekor", price: 40000000, icon: "🐂" }
 ]
 
 const form = reactive({
@@ -170,12 +180,33 @@ const form = reactive({
   paket: ""
 })
 
+const noWaTujuan = "6283153611239" // ✅ format internasional
+
+// ✅ Form Pendaftaran -> WhatsApp
 const submitForm = () => {
-  alert(`Pendaftaran Qurban berhasil!\n\nNama: ${form.nama}\nTelepon: ${form.telepon}\nAlamat: ${form.alamat}\nPaket: ${form.paket}`)
+  const pesan = `
+Assalamu'alaikum, saya ingin mendaftar Qurban:
+
+👤 Nama: ${form.nama}
+📞 Telepon: ${form.telepon}
+🏠 Alamat: ${form.alamat}
+🐄 Paket: ${form.paket}
+`
+  const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
+  window.open(url, "_blank")
+
+  // reset form
   form.nama = ""
   form.telepon = ""
   form.alamat = ""
   form.paket = ""
+}
+
+// ✅ Tombol Daftar Sekarang -> WhatsApp
+const daftarSekarang = () => {
+  const pesan = "Assalamu'alaikum, saya ingin daftar Qurban sekarang."
+  const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
+  window.open(url, "_blank")
 }
 
 const faqs = reactive([
@@ -194,7 +225,6 @@ const artikels = reactive([
 
 const currentYear = computed(() => new Date().getFullYear())
 
-// ✅ Tombol Back ke Home Vue
 const goBack = () => {
   router.push("/") 
 }
@@ -205,14 +235,6 @@ const formatCurrency = (amount) => {
 
 const toggleFAQ = (index) => {
   faqs[index].open = !faqs[index].open
-}
-
-const darkMode = ref(false)
-const logoDark = "/dark-logo.png" // ganti dengan path logo dark mode
-
-const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value
-  document.documentElement.classList.toggle("dark", darkMode.value)
 }
 
 const countdown = reactive({ days: 0, hours: 0, minutes: 0, seconds: 0 })
