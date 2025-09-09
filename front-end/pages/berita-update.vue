@@ -1,16 +1,34 @@
 <template>
-  <div>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Navbar -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
+    >
+      <!-- Tombol kembali -->
+      <NuxtLink to="/" class="cursor-pointer">⬅</NuxtLink>
+      <h2 class="text-lg font-semibold">Update & Berita</h2>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div
+      class="fixed top-14 left-0 right-0 z-40 bg-[#FB8505] text-white px-4 py-2 text-sm"
+    >
+      Home › <span class="text-[#FDB669] font-bold">Update & Berita</span>
+    </div>
+
     <!-- ================= UPDATE & BERITA ================= -->
-    <section id="berita" class="py-20 bg-white">
+    <section id="berita" class="pt-28 pb-20 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">Update & Berita</h2>
+        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">
+          Update & Berita
+        </h2>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Article 1 -->
           <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
             <div class="relative">
               <img 
-                src="#" 
+                src="" 
                 alt="Doa Zakat Fitrah" 
                 class="w-full h-48 object-cover"
                 @error="handleImageError($event, '#')"
@@ -252,31 +270,27 @@ const handleImageError = (event, fallbackSrc) => {
 }
 
 const loadMoreArticles = () => {
-  // Logic untuk load more articles
   console.log('Loading more articles...')
-  // Implement your pagination logic here
 }
 
 const loadMoreTestimonials = () => {
-  // Logic untuk load more testimonials
   console.log('Loading more testimonials...')
-  // Implement your pagination logic here
 }
 
-// SEO Meta
 useHead({
   title: 'Update & Berita - Ibadurrohman',
   meta: [
     {
       name: 'description',
-      content: 'Baca artikel terbaru dan testimoni dari penerima manfaat program Ibadurrohman. Update informasi seputar zakat, infaq, dan program kemanusiaan.'
+      content:
+        'Baca artikel terbaru dan testimoni dari penerima manfaat program Ibadurrohman. Update informasi seputar zakat, infaq, dan program kemanusiaan.'
     }
   ]
 })
 </script>
 
+
 <style scoped>
-/* Custom styles if needed */
 .hover\:-translate-y-2:hover {
   transform: translateY(-8px);
 }
