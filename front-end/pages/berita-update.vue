@@ -117,7 +117,7 @@
               <p class="italic text-gray-600">
                 "Donasi melalui Mizan Amanah sangat mudah dan terpercaya."
               </p>
-              <h4 class="mt-3 font-semibold text-gray-800">Ahmad</h4>
+              <h4 class="mt-3 font-semibold text-gray-800">Siti</h4>
             </div>
           </div>
 
@@ -133,7 +133,7 @@
               <p class="italic text-gray-600">
                 "Program-programnya bermanfaat dan tepat sasaran."
               </p>
-              <h4 class="mt-3 font-semibold text-gray-800">Siti</h4>
+              <h4 class="mt-3 font-semibold text-gray-800">Ahmad</h4>
             </div>
           </div>
 
