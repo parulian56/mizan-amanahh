@@ -291,7 +291,7 @@
         <h3
           class="pb-2 mb-4 text-xl font-bold text-orange-600 border-b-2 border-orange-200"
         >
-          💡 Tips Memilih Wakaf yang Baik
+          ` 💡 Tips Memilih Wakaf yang Baik
         </h3>
         <div class="space-y-3">
           <div class="flex items-start space-x-3">

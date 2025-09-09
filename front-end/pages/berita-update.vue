@@ -1,296 +1,187 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <!-- Navbar -->
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
-    >
-      <!-- Tombol kembali -->
-      <NuxtLink to="/" class="cursor-pointer">⬅</NuxtLink>
-      <h2 class="text-lg font-semibold">Update & Berita</h2>
-    </nav>
+  <div class="font-sans text-gray-800">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow z-50">
+      <nav class="container mx-auto flex items-center justify-between py-4 px-6">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 font-bold text-red-600">
+          <span class="text-xl">Mizan Amanah</span>
+        </div>
 
-    <!-- Breadcrumb -->
-    <div
-      class="fixed top-14 left-0 right-0 z-40 bg-[#FB8505] text-white px-4 py-2 text-sm"
-    >
-      Home › <span class="text-[#FDB669] font-bold">Update & Berita</span>
-    </div>
+        <!-- Breadcrumb -->
+        <div class="text-sm text-gray-500">
+          <NuxtLink to="/" class="hover:underline">Beranda</NuxtLink>
+          <span class="mx-1">/</span>
+          <span class="text-gray-700 font-medium">Update & Berita</span>
+        </div>
+      </nav>
+    </header>
 
-    <!-- ================= UPDATE & BERITA ================= -->
-    <section id="berita" class="pt-28 pb-20 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">
-          Update & Berita
-        </h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Article 1 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Doa Zakat Fitrah" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-              <div class="absolute top-4 left-4">
-                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Artikel</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-3 leading-tight">
-                Doa Zakat Fitrah Beserta Arab, Latin dan Artinya
-              </h3>
-              <p class="text-sm text-gray-500 mb-3">2025-03-29 15:15:08</p>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                Ketika melaksanakan suatu ibadah, niat merupakan unsur paling penting karena menentukan sah dan tidaknya suatu ibadah. Nabi SAW bersabda...
+    <!-- Main -->
+    <main class="container mx-auto px-6 pt-32 pb-16">
+      <!-- Section: Update & Berita -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Update & Berita</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Artikel 1 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan1"
+              alt="mizan1"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold text-lg">Doa Zakat Fitrah</h3>
+              <p class="text-gray-600 text-sm mt-2">
+                Panduan doa zakat fitrah sesuai sunnah.
               </p>
-              <NuxtLink to="/artikel/doa-zakat-fitrah" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
+              <NuxtLink
+                to="/berita/1"
+                class="text-red-600 font-semibold hover:underline text-sm mt-3 inline-block"
+              >
+                Baca Selengkapnya
               </NuxtLink>
             </div>
           </div>
 
-          <!-- Article 2 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Pengertian Infaq" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-              <div class="absolute top-4 left-4">
-                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Artikel</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-3 leading-tight">
-                Infaq: Arti, Makna, Hukum, dan Keutamaan yang Harus Diketahui
-              </h3>
-              <p class="text-sm text-gray-500 mb-3">2025-04-10 14:36:44</p>
-              <h4 class="font-semibold text-gray-800 mb-2">Pengertian Infaq</h4>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                Infaq dalam konteks agama Islam merujuk pada pengeluaran harta atau, kekayaan yang dilakukan oleh seorang Muslim dengan tujuan yang baik, terutama untuk membantu mereka yang...
+          <!-- Artikel 2 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan2"
+              alt="mizan2"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold text-lg">Manfaat Sedekah</h3>
+              <p class="text-gray-600 text-sm mt-2">
+                Sedekah membuka pintu rezeki dan keberkahan hidup.
               </p>
-              <NuxtLink to="/artikel/pengertian-infaq" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
+              <NuxtLink
+                to="/berita/2"
+                class="text-red-600 font-semibold hover:underline text-sm mt-3 inline-block"
+              >
+                Baca Selengkapnya
               </NuxtLink>
             </div>
           </div>
 
-          <!-- Article 3 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Infaq dalam Islam" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-              <div class="absolute top-4 left-4">
-                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Artikel</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-3 leading-tight">
-                Pengertian Infaq dalam Islam: Keutamaan dan Cara Mengamalkannya
-              </h3>
-              <p class="text-sm text-gray-500 mb-3">2025-04-10 13:54:49</p>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                Pengertian Infaq dalam Islam: Keutamaan dan Cara Mengamalkannya
+          <!-- Artikel 3 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan3"
+              alt="mizan3"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4">
+              <h3 class="font-semibold text-lg">Kegiatan Mizan Amanah</h3>
+              <p class="text-gray-600 text-sm mt-2">
+                Laporan kegiatan terbaru untuk masyarakat.
               </p>
-              <NuxtLink to="/artikel/infaq-dalam-islam" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
-              </NuxtLink>
-            </div>
-          </div>
-
-          <!-- Article 4 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Jariyah Artinya" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-              <div class="absolute top-4 left-4">
-                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Artikel</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-3 leading-tight">
-                Jariyah Artinya Amal yang Tak Terputus: Inilah Contoh dan Keutamaannya
-              </h3>
-              <p class="text-sm text-gray-500 mb-3">2025-04-09 14:12:43</p>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                Dalam ajaran Islam, konsep jariyah memiliki makna yang mendalam dan penting bagi kehidupan seorang Muslim. Jariyah artinya se
-              </p>
-              <NuxtLink to="/artikel/jariyah-artinya" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
+              <NuxtLink
+                to="/berita/3"
+                class="text-red-600 font-semibold hover:underline text-sm mt-3 inline-block"
+              >
+                Baca Selengkapnya
               </NuxtLink>
             </div>
           </div>
         </div>
 
-        <!-- Load More Button -->
-        <div class="text-center mt-12">
-          <button 
-            @click="loadMoreArticles"
-            class="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300"
+        <!-- Lihat Artikel Lainnya -->
+        <div class="mt-6 text-center">
+          <NuxtLink
+            to="/berita"
+            class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition"
           >
             Lihat Artikel Lainnya
-          </button>
+          </NuxtLink>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ================= KATA MEREKA SECTION ================= -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">Kata Mereka</h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Testimonial 1 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Wowo Kuswo" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-2">
-                Wowo Kuswo (Penerima Program Ekonomi)
-              </h3>
-              <p class="text-sm text-gray-500 mb-4">2019-10-27 15:40:14</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Saya sangat bersyukur bisa dibantu oleh Mizan Amanah, program warung ku ini sangat membantu saya untuk bisa berpenghasilan walaupun saya keterbatasan fisik.
+      <!-- Section: Kata Mereka -->
+      <section class="mt-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Kata Mereka</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Testimoni 1 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan4"
+              alt="mizan4"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4 text-center">
+              <p class="italic text-gray-600">
+                "Donasi melalui Mizan Amanah sangat mudah dan terpercaya."
               </p>
-              <NuxtLink to="/testimoni/wowo-kuswo" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
-              </NuxtLink>
+              <h4 class="mt-3 font-semibold text-gray-800">Siti</h4>
             </div>
           </div>
 
-          <!-- Testimonial 2 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Prof. Dr. K.H. Miftah Faridl" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-2">
-                Prof. Dr. K.H. Miftah Faridl
-              </h3>
-              <p class="text-sm text-gray-500 mb-4">2019-10-27 15:02:18</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Semoga hari para pengurus Mizan Amanah semakin tulus, ikhlas dan berjalan sosial yang tinggi karena Allah SWT tidak pernah salah memilih hambanya.
+          <!-- Testimoni 2 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan5"
+              alt="mizan5"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4 text-center">
+              <p class="italic text-gray-600">
+                "Program-programnya bermanfaat dan tepat sasaran."
               </p>
-              <NuxtLink to="/testimoni/prof-miftah" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
-              </NuxtLink>
+              <h4 class="mt-3 font-semibold text-gray-800">Ahmad</h4>
             </div>
           </div>
 
-          <!-- Testimonial 3 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Ust. Budi Ashari" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-2">
-                Ust. Budi Ashari, LC
-              </h3>
-              <p class="text-sm text-gray-500 mb-4">2019-11-05 16:54:18</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Semoga teman - teman di Mizan Amanah memiliki keikhlasan dalam mengelola lembaga, dan juga harus sesuai dengan namanya, harus amanah. Maju terus Mizan Amanah.
+          <!-- Testimoni 3 -->
+          <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+            <img
+              :src="mizan6"
+              alt="mizan6"
+              class="w-full h-48 object-cover"
+              @error="event => handleImageError(event, fallback)"
+            />
+            <div class="p-4 text-center">
+              <p class="italic text-gray-600">
+                "Saya senang bisa ikut berkontribusi membantu saudara-saudara kita."
               </p>
-              <NuxtLink to="/testimoni/ust-budi" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
-              </NuxtLink>
-            </div>
-          </div>
-
-          <!-- Testimonial 4 -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-            <div class="relative">
-              <img 
-                src="#" 
-                alt="Ainun" 
-                class="w-full h-48 object-cover"
-                @error="handleImageError($event, '#')"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg text-gray-800 mb-2">
-                Ainun, A.Md.Keb. (Penerima Program Pendidikan)
-              </h3>
-              <p class="text-sm text-gray-500 mb-4">2019-10-27 16:53:21</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Terima kasih kepada Mizan Amanah yang telah membiayai saya dari kelas saya bisa mandiri, terima kasih juga kepada para donatur yang telah memberikan dukungan kepada saya sehingga impian saya
-              </p>
-              <NuxtLink to="/testimoni/ainun" class="text-red-600 font-semibold hover:text-red-700 transition-colors">
-                Read More
-              </NuxtLink>
+              <h4 class="mt-3 font-semibold text-gray-800">Budi</h4>
             </div>
           </div>
         </div>
 
-        <!-- Load More Button -->
-        <div class="text-center mt-12">
-          <button 
-            @click="loadMoreTestimonials"
-            class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300"
+        <!-- Lihat Testimoni Lainnya -->
+        <div class="mt-6 text-center">
+          <NuxtLink
+            to="/testimoni"
+            class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition"
           >
             Lihat Testimoni Lainnya
-          </button>
+          </NuxtLink>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   </div>
 </template>
 
 <script setup>
-// Methods untuk handle gambar error dan load more
-const handleImageError = (event, fallbackSrc) => {
-  event.target.src = fallbackSrc || '#'
-}
+// Import gambar dari assets
+import mizan1 from '~/assets/image/mizan1.png'
+import mizan2 from '~/assets/image/mizan2.png'
+import mizan3 from '~/assets/image/mizan3.png'
+import mizan4 from '~/assets/image/mizan4.png'
+import mizan5 from '~/assets/image/mizan5.png'
+import mizan6 from '~/assets/image/mizan6.png'
 
-const loadMoreArticles = () => {
-  console.log('Loading more articles...')
-}
+// fallback image
+const fallback = '/image/fallback.png'
 
-const loadMoreTestimonials = () => {
-  console.log('Loading more testimonials...')
+// handle error image
+function handleImageError(event, fallbackUrl) {
+  event.target.src = fallbackUrl
 }
-
-useHead({
-  title: 'Update & Berita - Ibadurrohman',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Baca artikel terbaru dan testimoni dari penerima manfaat program Ibadurrohman. Update informasi seputar zakat, infaq, dan program kemanusiaan.'
-    }
-  ]
-})
 </script>
-
-<style scoped>
-.hover\:-translate-y-2:hover {
-  transform: translateY(-8px);
-}
-</style>
