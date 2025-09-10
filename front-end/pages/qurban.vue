@@ -218,10 +218,30 @@ const faqs = reactive([
 
 // 📌 Artikel Data
 const artikels = reactive([
-  { id: 1, title: "Keutamaan Berqurban dalam Islam", excerpt: "Qurban bukan sekadar penyembelihan hewan, namun wujud ketaatan kepada Allah SWT...", image: "https://source.unsplash.com/400x300/?mosque", link: "#" },
-  { id: 2, title: "Tips Memilih Hewan Qurban yang Baik", excerpt: "Hewan qurban harus memenuhi syarat: sehat, tidak cacat, dan cukup umur sesuai syariat...", image: "https://source.unsplash.com/400x300/?goat", link: "#" },
-  { id: 3, title: "Distribusi Daging Qurban Merata", excerpt: "Dengan sistem distribusi modern, daging qurban bisa sampai ke pelosok negeri...", image: "https://source.unsplash.com/400x300/?cow", link: "#" }
+  { 
+    id: 1, 
+    title: "Keutamaan Berqurban dalam Islam", 
+    excerpt: "Qurban bukan sekadar penyembelihan hewan, namun wujud ketaatan kepada Allah SWT...", 
+    image: "/assets/image/mizan7.jpg",   // ✅ pindah ke sini
+    link: "#" 
+  },
+  { 
+    id: 2, 
+    title: "Tips Memilih Hewan Qurban yang Baik", 
+    excerpt: "Hewan qurban harus memenuhi syarat: sehat, tidak cacat, dan cukup umur sesuai syariat...", 
+    image: "https://source.unsplash.com/400x300/?goat", 
+    link: "#" 
+  },
+  { 
+    id: 3, 
+    title: "Distribusi Daging Qurban Merata", 
+    excerpt: "Dengan sistem distribusi modern, daging qurban bisa sampai ke pelosok negeri...", 
+    image: "https://source.unsplash.com/400x300/?cow", 
+    link: "#" 
+  },
 ])
+
+
 
 const currentYear = computed(() => new Date().getFullYear())
 
