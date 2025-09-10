@@ -25,7 +25,7 @@
 
     <!-- Breadcrumb -->
     <nav class="bg-primary px-4 py-2 text-sm text-white">
-     <ul class="flex items-center space-x-2">
+      <ul class="flex items-center space-x-2">
         <li><a href="/" class="hover:underline">Home</a></li>
         <li>/</li>
         <li class="text-gray-200">Tentang</li>
@@ -58,7 +58,7 @@
       >
         <!-- Gambar -->
         <img
-          :src="program.image"
+          :src="program.image || 'https://via.placeholder.com/400x200?text=No+Image'"
           :alt="program.title"
           class="w-full h-48 object-cover"
         />
@@ -82,22 +82,22 @@
             <div>
               Terkumpul<br />
               <span class="font-semibold">
-                Rp. {{ formatNumber(program.collected) }}
+                Rp. {{ formatNumber(program.collected_donation) }}
               </span>
               <span class="text-xs">
-                dari Rp. {{ formatNumber(program.target) }}
+                dari Rp. {{ formatNumber(program.donation_target) }}
               </span>
             </div>
             <div class="text-right">
               Sisa Hari<br />
-              <span class="font-semibold">{{ program.daysLeft }}</span>
+              <span class="font-semibold">{{ program.remaining_days }}</span>
             </div>
           </div>
 
           <!-- Tanggal & Kategori -->
           <div class="flex justify-between text-xs text-gray-500 mb-3">
-            <span>{{ program.date }}</span>
-            <span class="text-primary font-medium">{{ program.category }}</span>
+            <span>{{ program.start_date }}</span>
+            <span class="text-primary font-medium">{{ program.category_program }}</span>
           </div>
 
           <!-- Tombol -->
@@ -113,56 +113,33 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed } from "vue"
 
-const search = ref("");
-const activeCategory = ref("Semua");
+// ambil data dari backend
+const { data: programs } = await useFetch('http://localhost:3001/programs')
 
-const programs = ref([
-  {
-    id: 1,
-    title: "Nenek Penjual Sayur Berjuang Rawat Anaknya yang Sakit-sakitan",
-    image: "https://via.placeholder.com/600x400.png?text=Program+1",
-    collected: 12265173,
-    target: 30000000,
-    daysLeft: -143,
-    date: "Senin, 31 Maret 2025",
-    category: "Kemanusiaan",
-  },
-  {
-    id: 2,
-    title: "Sedekah Sembako & Bedah Rumah Nenek Eja Yang Hidup Sebatang Kara",
-    image: "https://via.placeholder.com/600x400.png?text=Program+2",
-    collected: 16108000,
-    target: 30000000,
-    daysLeft: -113,
-    date: "Rabu, 30 April 2025",
-    category: "Pendidikan",
-  },
-]);
+// state filter & search
+const search = ref("")
+const activeCategory = ref("Semua")
+const categories = ["Semua", "Zakat", "Wakaf", "Sosial"]
 
-programs.value.forEach((p) => {
-  p.progress = Math.min(100, (p.collected / p.target) * 100);
-});
+// computed untuk filter data
+const filteredPrograms = computed(() => {
+  if (!programs.value) return []
 
-const categories = computed(() => {
-  const cats = ["Semua", ...new Set(programs.value.map((p) => p.category))];
-  return cats;
-});
+  return programs.value.filter(p => {
+    const matchSearch = p.title.toLowerCase().includes(search.value.toLowerCase())
+    const matchCategory = activeCategory.value === "Semua" || p.category_program === activeCategory.value
+    return matchSearch && matchCategory
+  }).map(p => ({
+    ...p,
+    progress: Math.min(100, Math.round((p.collected_donation / p.donation_target) * 100))
+  }))
+})
 
-const filteredPrograms = computed(() =>
-  programs.value.filter((p) => {
-    const matchSearch = p.title
-      .toLowerCase()
-      .includes(search.value.toLowerCase());
-    const matchCategory =
-      activeCategory.value === "Semua" || p.category === activeCategory.value;
-    return matchSearch && matchCategory;
-  })
-);
-
-function formatNumber(num) {
-  return new Intl.NumberFormat("id-ID").format(num);
+// format number (rupiah sederhana)
+const formatNumber = (num) => {
+  return new Intl.NumberFormat("id-ID").format(num || 0)
 }
 </script>
 
@@ -177,7 +154,7 @@ function formatNumber(num) {
   color: #FB8505 !important;
 }
 .bg-primary-dark {
-  background-color: #C96A04 !important; /* Orange 700 */
+  background-color: #C96A04 !important;
 }
 
 /* Secondary → Teal 500 */
@@ -188,20 +165,6 @@ function formatNumber(num) {
   color: #59AAB7 !important;
 }
 .bg-secondary-dark {
-  background-color: #478892 !important; /* Teal 700 */
-}
-
-/* Tambahan */
-.bg-light {
-  background-color: #FDB669 !important; /* Orange 300 */
-}
-.bg-accent {
-  background-color: #9BCCD4 !important; /* Teal 300 */
-}
-.bg-black-rich {
-  background-color: #111111 !important;
-}
-.text-black-rich {
-  color: #111111 !important;
+  background-color: #478892 !important;
 }
 </style>
