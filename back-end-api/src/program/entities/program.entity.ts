@@ -1,7 +1,4 @@
-// src/program/entities/program.entity.ts
-import {
-  Entity, PrimaryGeneratedColumn, Column, OneToMany
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Donation } from '../../donation/entities/donation.entity';
 
 @Entity()
@@ -9,36 +6,30 @@ export class Program {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 255 })
+  @Column()
   title: string;
 
-  @Column('text')
+  @Column({ type: 'text' })
   content: string;
 
-  @Column()
+  @Column({ default: 0 })
   collected_donation: number;
 
   @Column()
   donation_target: number;
 
-  @Column()
+  @Column({ type: 'date' })
   start_date: Date;
 
-  @Column()
+  @Column({ type: 'date' })
   end_date: Date;
 
   @Column()
   remaining_days: number;
 
-  @Column({ length: 100 })
+  @Column()
   category_program: string;
 
-  @Column({ length: 100 })
-  payment_method_id: string;
-
-  @Column({ length: 255 })
-  image: string;
-
-  @OneToMany(() => Donation, (donation) => donation.campaign)
+  @OneToMany(() => Donation, (donation) => donation.program)
   donations: Donation[];
 }
