@@ -27,16 +27,24 @@
       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center text-white">
         <!-- Teks -->
         <div>
-          <h2 class="text-4xl font-extrabold mb-4">Tunaikan Ibadah Qurban<br />dengan Amanah</h2>
-          <p class="mb-6">Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak, sesuai syariat, transparan, dan amanah.</p>
+          <h2 class="text-4xl font-extrabold mb-4">
+            Tunaikan Ibadah Qurban<br />dengan Amanah
+          </h2>
+          <p class="mb-6">
+            Mudahkan qurbanmu bersama kami, distribusi merata untuk yang berhak,
+            sesuai syariat, transparan, dan amanah.
+          </p>
           <!-- Countdown -->
           <div class="mb-4">
-            <span class="px-3 py-2 rounded bg-white text-black font-semibold">
-              Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j {{ countdown.minutes }}m {{ countdown.seconds }}d
+            <span
+              class="px-3 py-2 rounded bg-white text-black font-semibold"
+            >
+              Batas Qurban: {{ countdown.days }}h {{ countdown.hours }}j
+              {{ countdown.minutes }}m {{ countdown.seconds }}d
             </span>
           </div>
           <!-- Button -->
-          <button 
+          <button
             @click="daftarSekarang"
             class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded shadow-md"
           >
@@ -45,7 +53,11 @@
         </div>
         <!-- Gambar -->
         <div class="flex justify-center">
-          <img src="/assets/image/sedekah1.png" alt="Qurban" class="rounded-lg shadow-lg w-full md:w-96" />
+          <img
+            src="/assets/image/sedekah1.png"
+            alt="Qurban"
+            class="rounded-lg shadow-lg w-full md:w-96"
+          />
         </div>
       </div>
     </section>
@@ -54,9 +66,11 @@
     <section id="tentang" class="px-4 py-16 text-center bg-white">
       <h2 class="mb-6 text-3xl font-bold text-center">Tentang Qurban</h2>
       <p class="max-w-3xl mx-auto leading-relaxed text-gray-600">
-        Qurban adalah ibadah yang diperintahkan Allah SWT sebagai bentuk ketaatan dan rasa syukur hamba-Nya.
-        Dengan berqurban, kita meneladani Nabi Ibrahim AS dan Nabi Ismail AS. Hewan qurban akan disembelih
-        pada Hari Raya Idul Adha hingga hari Tasyrik, lalu dagingnya dibagikan kepada yang membutuhkan.
+        Qurban adalah ibadah yang diperintahkan Allah SWT sebagai bentuk
+        ketaatan dan rasa syukur hamba-Nya. Dengan berqurban, kita meneladani
+        Nabi Ibrahim AS dan Nabi Ismail AS. Hewan qurban akan disembelih pada
+        Hari Raya Idul Adha hingga hari Tasyrik, lalu dagingnya dibagikan
+        kepada yang membutuhkan.
       </p>
     </section>
 
@@ -64,11 +78,20 @@
     <section id="harga" class="px-4 py-16 mx-auto max-w-7xl">
       <h2 class="mb-10 text-3xl font-bold text-center">Harga Hewan Qurban</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div v-for="paket in paketQurban" :key="paket.id" class="p-6 text-center transition bg-white shadow-lg rounded-xl hover:shadow-xl">
+        <div
+          v-for="paket in paketQurban"
+          :key="paket.id"
+          class="p-6 text-center transition bg-white shadow-lg rounded-xl hover:shadow-xl"
+        >
           <div class="mb-4 text-5xl">{{ paket.icon }}</div>
           <h3 class="mb-2 text-xl font-semibold">{{ paket.name }}</h3>
-          <p class="mb-4 text-2xl font-bold text-center">{{ formatCurrency(paket.price) }}</p>
-          <button @click="scrollTo('daftar')" class="w-full bg-[#5DAAB9] text-white py-2 rounded-lg hover:bg-[#4c94a1]">
+          <p class="mb-4 text-2xl font-bold text-center">
+            {{ formatCurrency(paket.price) }}
+          </p>
+          <button
+            @click="scrollTo('daftar')"
+            class="w-full bg-[#5DAAB9] text-white py-2 rounded-lg hover:bg-[#4c94a1]"
+          >
             Pilih Qurban
           </button>
         </div>
@@ -78,33 +101,63 @@
     <!-- 📌 Form Daftar Qurban -->
     <section id="daftar" class="py-20 bg-gray-100">
       <div class="max-w-4xl p-8 px-6 mx-auto bg-white shadow-lg rounded-xl">
-        <h2 class="mb-8 text-3xl font-bold text-center">Form Pendaftaran Qurban</h2>
+        <h2 class="mb-8 text-3xl font-bold text-center">
+          Form Pendaftaran Qurban
+        </h2>
+
+        <!-- FORM -->
         <form @submit.prevent="submitForm" class="space-y-6">
+          <!-- Nama -->
           <div>
             <label class="block mb-2 font-semibold">Nama Lengkap</label>
-            <input v-model="form.nama" type="text" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]" />
+            <input
+              v-model="form.nama"
+              type="text"
+              class="w-full border rounded p-2"
+              required
+            />
           </div>
+
+          <!-- Telepon -->
           <div>
             <label class="block mb-2 font-semibold">Nomor Telepon</label>
-            <input v-model="form.telepon" type="tel" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]" />
+            <input
+              v-model="form.telepon"
+              type="tel"
+              class="w-full border rounded p-2"
+              required
+            />
           </div>
+
+          <!-- Alamat -->
           <div>
             <label class="block mb-2 font-semibold">Alamat</label>
-            <textarea v-model="form.alamat" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]"></textarea>
+            <textarea
+              v-model="form.alamat"
+              class="w-full border rounded p-2"
+              required
+            ></textarea>
           </div>
+
+          <!-- Paket -->
           <div>
-            <label class="block mb-2 font-semibold">Pilih Paket Qurban</label>
-            <select v-model="form.paket" required class="w-full border px-4 py-2 rounded-lg focus:ring focus:ring-[#FB8603]">
-              <option value="" disabled>Pilih Paket</option>
-              <option v-for="paket in paketQurban" :key="paket.id" :value="paket.name">
-                {{ paket.name }} - {{ formatCurrency(paket.price) }}
-              </option>
+            <label class="block mb-2 font-semibold">Paket Qurban</label>
+            <select
+              v-model="form.paket"
+              class="w-full border rounded p-2"
+              required
+            >
+              <option value="">-- Pilih Paket --</option>
+              <option value="Kambing">Kambing</option>
+              <option value="Sapi">Sapi</option>
+              <option value="Sapi 1/7">Sapi (1/7)</option>
             </select>
           </div>
-          <!-- Button Kirim Pendaftaran -->
-          <button 
-            type="submit" 
-            class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 rounded-lg !bg-[#5DAAB9] hover:!bg-[#4c94a1]"
+
+          <!-- Tombol -->
+          <button
+            type="submit"
+            class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700"
           >
             Kirim Pendaftaran
           </button>
@@ -116,12 +169,21 @@
     <section id="faq" class="py-16 bg-white">
       <div class="max-w-4xl px-4 mx-auto">
         <h2 class="mb-10 text-3xl font-bold text-center">FAQ</h2>
-        <div v-for="(faq, index) in faqs" :key="index" class="mb-4 border border-gray-200 rounded-lg">
-          <button @click="toggleFAQ(index)" class="flex justify-between w-full px-6 py-4 font-semibold text-left hover:bg-gray-50">
+        <div
+          v-for="(faq, index) in faqs"
+          :key="index"
+          class="mb-4 border border-gray-200 rounded-lg"
+        >
+          <button
+            @click="toggleFAQ(index)"
+            class="flex justify-between w-full px-6 py-4 font-semibold text-left hover:bg-gray-50"
+          >
             {{ faq.question }}
-            <span>{{ faq.open ? '-' : '+' }}</span>
+            <span>{{ faq.open ? "-" : "+" }}</span>
           </button>
-          <div v-show="faq.open" class="px-6 pb-4 text-gray-600">{{ faq.answer }}</div>
+          <div v-show="faq.open" class="px-6 pb-4 text-gray-600">
+            {{ faq.answer }}
+          </div>
         </div>
       </div>
     </section>
@@ -131,11 +193,26 @@
       <div class="max-w-6xl px-4 mx-auto">
         <h2 class="mb-10 text-3xl font-bold text-center">Artikel Terbaru</h2>
         <div class="grid gap-6 md:grid-cols-3">
-          <div v-for="artikel in artikels" :key="artikel.id" class="p-6 transition bg-white shadow-lg rounded-xl hover:shadow-xl">
-            <img :src="artikel.image" alt="artikel" class="object-cover w-full h-40 mb-4 rounded-lg" />
+          <div
+            v-for="artikel in artikels"
+            :key="artikel.id"
+            class="p-6 transition bg-white shadow-lg rounded-xl hover:shadow-xl"
+          >
+            <img
+              :src="artikel.image"
+              alt="artikel"
+              class="object-cover w-full h-40 mb-4 rounded-lg"
+            />
             <h3 class="mb-2 text-xl font-semibold">{{ artikel.title }}</h3>
-            <p class="mb-4 text-gray-600 line-clamp-3">{{ artikel.excerpt }}</p>
-            <a :href="artikel.link" target="_blank" class="text-[#FB8603] font-medium hover:underline">Baca Selengkapnya →</a>
+            <p class="mb-4 text-gray-600 line-clamp-3">
+              {{ artikel.excerpt }}
+            </p>
+            <a
+              :href="artikel.link"
+              target="_blank"
+              class="text-[#FB8603] font-medium hover:underline"
+              >Baca Selengkapnya →</a
+            >
           </div>
         </div>
       </div>
@@ -161,17 +238,10 @@
 </template>
 
 <script setup>
-import { reactive, computed, ref, onMounted } from "vue"
+import { reactive, computed, onMounted } from "vue"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
-
-const paketQurban = [
-  { id: 1, name: "Kambing", price: 6000000, icon: "🐐" },
-  { id: 2, name: "Domba", price: 7000000, icon: "🐏" },
-  { id: 3, name: "Sapi 1/7", price: 20000000, icon: "🐄" },
-  { id: 4, name: "Sapi 1 Ekor", price: 40000000, icon: "🐂" }
-]
 
 const form = reactive({
   nama: "",
@@ -180,10 +250,17 @@ const form = reactive({
   paket: ""
 })
 
-const noWaTujuan = "6283153611239" // ✅ format internasional
+const noWaTujuan = "6283153611239"
 
-// ✅ Form Pendaftaran -> WhatsApp
-const submitForm = () => {
+const submitForm = async () => {
+  const payload = { ...form }
+
+  await fetch("http://localhost:3000/pendaftaran", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+
   const pesan = `
 Assalamu'alaikum, saya ingin mendaftar Qurban:
 
@@ -195,26 +272,11 @@ Assalamu'alaikum, saya ingin mendaftar Qurban:
   const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
   window.open(url, "_blank")
 
-  // reset form
   form.nama = ""
   form.telepon = ""
   form.alamat = ""
   form.paket = ""
 }
-
-// ✅ Tombol Daftar Sekarang -> WhatsApp
-const daftarSekarang = () => {
-  const pesan = "Assalamu'alaikum, saya ingin daftar Qurban sekarang."
-  const url = `https://wa.me/${noWaTujuan}?text=${encodeURIComponent(pesan)}`
-  window.open(url, "_blank")
-}
-
-const faqs = reactive([
-  { question: "Kapan waktu penyembelihan qurban?", answer: "Setelah shalat Idul Adha hingga hari Tasyrik (11-13 Dzulhijjah).", open: false },
-  { question: "Bagaimana cara pembayaran?", answer: "Bisa transfer bank, e-wallet, atau pembayaran tunai.", open: false },
-  { question: "Apakah dapat dokumentasi?", answer: "Ya, tersedia foto/video penyembelihan dan pembagian.", open: false },
-  { question: "Siapa yang menerima daging qurban?", answer: "Daging akan dibagikan kepada masyarakat yang berhak di daerah pelosok.", open: false }
-])
 
 // 📌 Artikel Data
 const artikels = reactive([
@@ -222,7 +284,7 @@ const artikels = reactive([
     id: 1, 
     title: "Keutamaan Berqurban dalam Islam", 
     excerpt: "Qurban bukan sekadar penyembelihan hewan, namun wujud ketaatan kepada Allah SWT...", 
-    image: "/assets/image/mizan7.jpg",   // ✅ pindah ke sini
+    image: "/assets/image/mizan7.jpg", 
     link: "#" 
   },
   { 
@@ -241,7 +303,32 @@ const artikels = reactive([
   },
 ])
 
+// 📌 Paket Qurban Data
+const paketQurban = reactive([
+  { id: 1, name: "Kambing", price: 2500000, icon: "🐐" },
+  { id: 2, name: "Sapi", price: 17500000, icon: "🐄" },
+  { id: 3, name: "Sapi (1/7)", price: 2500000, icon: "🐄" },
+  { id: 4, name: "Kerbau", price: 16000000, icon: "🐃" },
+])
 
+// 📌 FAQ Data
+const faqs = reactive([
+  {
+    question: "Bagaimana cara mendaftar qurban?",
+    answer: "Isi form pendaftaran dan pilih paket qurban yang tersedia.",
+    open: false,
+  },
+  {
+    question: "Kapan batas waktu pendaftaran?",
+    answer: "Batas waktu pendaftaran hingga H-1 Idul Adha.",
+    open: false,
+  },
+  {
+    question: "Apakah ada laporan distribusi?",
+    answer: "Ya, kami menyediakan laporan distribusi untuk setiap peserta qurban.",
+    open: false,
+  },
+])
 
 const currentYear = computed(() => new Date().getFullYear())
 
