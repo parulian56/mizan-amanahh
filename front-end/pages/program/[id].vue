@@ -1,41 +1,34 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Header/Navbar -->
-<div class="bg-orange-500 text-white py-6">
-  <div class="container mx-auto px-4">
-    <!-- Judul + Tombol Back -->
-    <div class="flex items-center gap-2 mb-1">
-      <NuxtLink
-        to="/program"
-        class="flex items-center gap-1 hover:underline"
-      >
-        <!-- Ikon Panah -->
-        <router-link to="/" class="mr-3">
-        <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
-        <span class="font-bold">Detail Program</span>
-      </NuxtLink>
+    <div class="bg-orange-500 text-white py-6">
+      <div class="container mx-auto px-4">
+        <!-- Judul + Tombol Back -->
+        <div class="flex items-center gap-2 mb-1">
+          <NuxtLink to="/program" class="flex items-center gap-1 hover:underline">
+            <i class="fas fa-arrow-left text-xl"></i>
+            <span class="font-bold">Detail Program</span>
+          </NuxtLink>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm">
+          <ol class="flex items-center space-x-1">
+            <li>
+              <NuxtLink to="/" class="hover:underline">Home</NuxtLink>
+            </li>
+            <li>/</li>
+            <li>
+              <NuxtLink to="/program/program" class="hover:underline">Program</NuxtLink>
+            </li>
+            <li>/</li>
+            <li>
+              <span>{{ program?.title || "Detail" }}</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
-
-    <!-- Breadcrumb -->
-    <nav class="text-sm">
-      <ol class="flex items-center space-x-1">
-        <li>
-          <NuxtLink to="/" class="hover:underline">Home</NuxtLink>
-        </li>
-        <li>/</li>
-        <li>
-          <NuxtLink to="/program" class="hover:underline">Program</NuxtLink>
-        </li>
-        <li>/</li>
-        <li>
-          <span>{{ program?.title || "Detail" }}</span>
-        </li>
-      </ol>
-    </nav>
-  </div>
-</div>
-
 
     <!-- Konten Detail Program -->
     <div class="container mx-auto px-4 py-8">
@@ -54,8 +47,8 @@
         <!-- Progress Bar -->
         <div class="mb-6">
           <div class="flex justify-between text-sm text-gray-600 mb-1">
-            <span>Terkumpul: Rp {{ program.collected_donation.toLocaleString() }}</span>
-            <span>Target: Rp {{ program.donation_target.toLocaleString() }}</span>
+            <span>Terkumpul: Rp {{ formatNumber(program.collected_donation) }}</span>
+            <span>Target: Rp {{ formatNumber(program.donation_target) }}</span>
           </div>
           <div class="w-full bg-gray-200 rounded-full h-3">
             <div
@@ -93,10 +86,12 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const program = ref(null);
 
+const formatNumber = (num) => new Intl.NumberFormat("id-ID").format(num || 0);
+
 onMounted(async () => {
   try {
     // Ambil data dari API backend NestJS
-    const res = await $fetch(`http://localhost:3000/campaigns/${route.params.id}`);
+    const res = await $fetch(`http://localhost:3001/programs/${route.params.id}`);
     program.value = {
       ...res,
       image: "https://via.placeholder.com/800x400.png?text=" + res.title,

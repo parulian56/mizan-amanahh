@@ -50,65 +50,67 @@
     </div>
 
     <!-- List Programs -->
-    <main class="p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div
-        v-for="program in filteredPrograms"
-        :key="program.id"
-        class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col"
-      >
-        <!-- Gambar -->
-        <img
-          :src="program.image || 'https://via.placeholder.com/400x200?text=No+Image'"
-          :alt="program.title"
-          class="w-full h-48 object-cover"
-        />
+<main class="p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <NuxtLink
+    v-for="program in filteredPrograms"
+    :key="program.id"
+    :to="`/program/${program.id}`"
+    class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col hover:shadow-lg transition"
+  >
+    <!-- Gambar -->
+    <img
+      :src="program.image || 'https://via.placeholder.com/400x200?text=No+Image'"
+      :alt="program.title"
+      class="w-full h-48 object-cover"
+    />
 
-        <!-- Konten -->
-        <div class="p-4 flex flex-col flex-1">
-          <h2 class="font-bold text-primary mb-2">
-            {{ program.title }}
-          </h2>
+    <!-- Konten -->
+    <div class="p-4 flex flex-col flex-1">
+      <h2 class="font-bold text-primary mb-2">
+        {{ program.title }}
+      </h2>
 
-          <!-- Progress bar -->
-          <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
-            <div
-              class="bg-primary h-2 rounded-full"
-              :style="{ width: program.progress + '%' }"
-            ></div>
-          </div>
+      <!-- Progress bar -->
+      <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
+        <div
+          class="bg-primary h-2 rounded-full"
+          :style="{ width: program.progress + '%' }"
+        ></div>
+      </div>
 
-          <!-- Info Donasi -->
-          <div class="flex justify-between text-sm text-gray-600 mb-3">
-            <div>
-              Terkumpul<br />
-              <span class="font-semibold">
-                Rp. {{ formatNumber(program.collected_donation) }}
-              </span>
-              <span class="text-xs">
-                dari Rp. {{ formatNumber(program.donation_target) }}
-              </span>
-            </div>
-            <div class="text-right">
-              Sisa Hari<br />
-              <span class="font-semibold">{{ program.remaining_days }}</span>
-            </div>
-          </div>
-
-          <!-- Tanggal & Kategori -->
-          <div class="flex justify-between text-xs text-gray-500 mb-3">
-            <span>{{ program.start_date }}</span>
-            <span class="text-primary font-medium">{{ program.category_program }}</span>
-          </div>
-
-          <!-- Tombol -->
-          <button
-            class="bg-primary text-white py-2 rounded-lg mt-auto hover:bg-primary-dark transition"
-          >
-            DONASI
-          </button>
+      <!-- Info Donasi -->
+      <div class="flex justify-between text-sm text-gray-600 mb-3">
+        <div>
+          Terkumpul<br />
+          <span class="font-semibold">
+            Rp. {{ formatNumber(program.collected_donation) }}
+          </span>
+          <span class="text-xs">
+            dari Rp. {{ formatNumber(program.donation_target) }}
+          </span>
+        </div>
+        <div class="text-right">
+          Sisa Hari<br />
+          <span class="font-semibold">{{ program.remaining_days }}</span>
         </div>
       </div>
-    </main>
+
+      <!-- Tanggal & Kategori -->
+      <div class="flex justify-between text-xs text-gray-500 mb-3">
+        <span>{{ program.start_date }}</span>
+        <span class="text-primary font-medium">{{ program.category_program }}</span>
+      </div>
+
+      <!-- Tombol (opsional, tetap tampil tapi tidak perlu clickable karena card sudah clickable) -->
+      <div class="mt-auto">
+        <span class="bg-primary text-white py-2 rounded-lg px-4 block text-center">
+          DONASI
+        </span>
+      </div>
+    </div>
+  </NuxtLink>
+</main>
+
   </div>
 </template>
 
