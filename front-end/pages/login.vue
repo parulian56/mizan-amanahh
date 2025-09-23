@@ -13,7 +13,7 @@
 import { ref } from 'vue'
 import { useAuth } from '~/composables/useAuth'
 
-const { login } = useAuth()
+const { login } = useAuth() 
 const username = ref('')
 const password = ref('')
 

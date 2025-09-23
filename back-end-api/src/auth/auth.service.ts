@@ -1,28 +1,26 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
+
+// sementara hardcode user, nanti sambungin ke DB
+const users = [
+  { id: 1, username: 'admin', password: '$2b$10$e6Q4T9w2ZBOKs1XrO5p6NOfK5eZbx3dIv0k3r1bJ9l/jO8z6sS3si' }, 
+  // password: "123456"
+];
 
 @Injectable()
 export class AuthService {
-  private users = [
-    { id: 1, username: 'admin', password: await bcrypt.hash('123456', 10) },
-  ];
-
-  constructor(private jwtService: JwtService) {}
-
-  async validateUser(username: string, password: string) {
-    const user = this.users.find((u) => u.username === username);
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const { password, ...result } = user;
-      return result;
+  async validateUser(username: string, pass: string) {
+    const user = users.find(u => u.username === username);
+    if (user && await bcrypt.compare(pass, user.password)) {
+      return user;
     }
-    throw new UnauthorizedException('Username atau password salah');
+    return null;
   }
 
   async login(user: any) {
     const payload = { username: user.username, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+    const access_token = jwt.sign(payload, 'SECRET_KEY', { expiresIn: '1h' });
+    return { access_token };
   }
 }
