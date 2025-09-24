@@ -54,7 +54,7 @@
         <!-- Gambar -->
         <div class="flex justify-center">
           <img
-            src="/assets/image/sedekah1.png"
+            src="/assets/image/ibadah_qurban.jpg"
             alt="Qurban"
             class="rounded-lg shadow-lg w-full md:w-96"
           />
@@ -153,7 +153,7 @@
           <!-- Tombol -->
           <button
             type="submit"
-            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-green-700"
+            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-sky-600"
           >
             Kirim Pendaftaran
           </button>
