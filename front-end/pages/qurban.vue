@@ -88,12 +88,7 @@
           <p class="mb-4 text-2xl font-bold text-center">
             {{ formatCurrency(paket.price) }}
           </p>
-          <button
-            @click="scrollTo('daftar')"
-            class="w-full bg-[#5DAAB9] text-white py-2 rounded-lg hover:bg-[#4c94a1]"
-          >
-            Pilih Qurban
-          </button>
+
         </div>
       </div>
     </section>
@@ -151,13 +146,14 @@
               <option value="Kambing">Kambing</option>
               <option value="Sapi">Sapi</option>
               <option value="Sapi 1/7">Sapi (1/7)</option>
+              <option value="Kerbau">Kerbau</option>
             </select>
           </div>
 
           <!-- Tombol -->
           <button
             type="submit"
-            class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700"
+            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-green-700"
           >
             Kirim Pendaftaran
           </button>
@@ -250,6 +246,14 @@ const form = reactive({
   paket: ""
 })
 
+// ✅ Function daftarSekarang
+const daftarSekarang = () => {
+  const nomor = "6283153611239"
+  const pesan = encodeURIComponent("Assalamualaikum, saya ingin daftar qurban.")
+  window.open(`https://wa.me/${nomor}?text=${pesan}`, "_blank")
+}
+
+// ✅ Nomor WA tujuan global
 const noWaTujuan = "6283153611239"
 
 const submitForm = async () => {
