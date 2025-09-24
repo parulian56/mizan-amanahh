@@ -101,13 +101,14 @@
         <span class="text-primary font-medium">{{ program.category_program }}</span>
       </div>
 
-      <!-- Tombol (opsional, tetap tampil tapi tidak perlu clickable karena card sudah clickable) -->
-      <div class="mt-auto">
-        <span class="bg-primary text-white py-2 rounded-lg px-4 block text-center">
-          DONASI
-        </span>
-      </div>
-    </div>
+          <!-- Tombol (opsional, tetap tampil tapi tidak perlu clickable karena card sudah clickable) -->
+        <div class="mt-auto">
+          <button
+            @click.stop="donasi(program.id)" class="bg-primary text-white py-2 rounded-lg px-4 block text-center w-full">
+             DONASI
+          </button>
+        </div>
+  </div>
   </NuxtLink>
 </main>
 
