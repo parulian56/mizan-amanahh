@@ -16,8 +16,8 @@
 
           <!-- Dropdown Program -->
           <li class="relative">
-            <button 
-              @click="openMenu === 'program' ? openMenu = null : openMenu = 'program'" 
+            <button
+              @click="openMenu === 'program' ? openMenu = null : openMenu = 'program'"
               class="flex items-center hover:text-[#FB8505]"
             >
               <span>Program</span>
@@ -41,8 +41,8 @@
 
           <!-- Dropdown Berita -->
           <li class="relative">
-            <button 
-              @click="openMenu === 'berita' ? openMenu = null : openMenu = 'berita'" 
+            <button
+              @click="openMenu === 'berita' ? openMenu = null : openMenu = 'berita'"
               class="flex items-center hover:text-[#FB8505]"
             >
               <span>Berita & Update</span>
@@ -81,8 +81,8 @@
         </div>
 
         <!-- Hamburger (Mobile) -->
-        <button 
-          @click="isOpen = !isOpen" 
+        <button
+          @click="isOpen = !isOpen"
           class="md:hidden text-[#111111] focus:outline-none"
         >
           <svg v-if="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
@@ -99,7 +99,7 @@
 
         <!-- Mobile Menu -->
         <ul
-          :class="[ 
+          :class="[
             'absolute md:hidden top-16 left-0 w-full bg-white shadow-md transition-all',
             isOpen ? 'block' : 'hidden'
           ]"
@@ -184,14 +184,33 @@
           <button class="px-6 py-2 rounded-full font-bold bg-[#FB8505] text-white hover:bg-[#C96A04]">Infaq</button>
           <button class="px-6 py-2 rounded-full font-bold bg-white text-[#111111] border">Zakat</button>
         </div>
+
+        <!-- Cards -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-white rounded-xl shadow hover:-translate-y-1 transition overflow-hidden">
+          <div
+            v-for="(card, index) in cards"
+            :key="index"
+            class="bg-white rounded-xl shadow hover:-translate-y-1 transition overflow-hidden"
+          >
             <div class="bg-[#FB8505] text-white px-4 py-2 font-bold">Infaq Sedekah</div>
+            <img :src="card.image" :alt="card.title" class="w-full h-48 object-cover" />
+
             <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-2">Nazdar</h3>
-              <p class="text-[#FB8505] font-bold mb-2">Rp. 63.151.813 / Rp. 100.000.000</p>
+              <h3 class="text-lg font-bold text-[#111111] mb-2">{{ card.title }}</h3>
+              <p class="text-[#FB8505] font-bold mb-2">
+                Rp. {{ card.terkumpul.toLocaleString() }} / Rp. {{ card.target.toLocaleString() }}
+              </p>
+
+              <!-- Progress Bar -->
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                <div
+                  class="bg-[#FB8505] h-2 rounded-full"
+                  :style="{ width: (card.terkumpul / card.target * 100) + '%' }"
+                ></div>
+              </div>
+
               <p class="text-sm text-gray-600 mb-4">
-                NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...
+                {{ card.deskripsi }}
               </p>
               <NuxtLink to="/program" class="text-[#FB8505] font-bold">Read More</NuxtLink>
               <div class="mt-4">
@@ -200,8 +219,9 @@
                 </NuxtLink>
               </div>
             </div>
+
             <div class="bg-gray-100 px-5 py-3 flex justify-between items-center">
-              <span class="text-sm text-gray-600">Batas: 31 Juli 2025</span>
+              <span class="text-sm text-gray-600">Batas: {{ card.deadline }}</span>
               <button class="bg-[#FB8505] text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-[#C96A04]">Donasi</button>
             </div>
           </div>
@@ -214,7 +234,7 @@
       <div class="container mx-auto px-6">
         <NuxtLink to="/berita-update" class="bg-[#FB8505] text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-[#C96A04]">
           TEST
-        </NuxtLink>        
+        </NuxtLink>
         <div class="grid md:grid-cols-3 gap-8 mt-6">
           <div class="bg-white rounded-xl shadow overflow-hidden">
             <img :src="sedekah" alt="" />
@@ -273,11 +293,42 @@
 <script setup>
 import { ref } from "vue"
 
-// Import gambar dari folder assets
+// Import gambar
 import logoOrang from '~/assets/image/logo_orang.png'
 import sedekah from '~/assets/image/sedekah1.png'
+import nazar from '~/assets/image/nazar.png'
+import infaq from '~/assets/image/infaq.png'
+import hadiah from '~/assets/image/hadiah.png' 
 
 const isOpen = ref(false)
 const showPlaceholder = ref(false)
-const openMenu = ref(null) // untuk dropdown: 'program' | 'berita' | null
+const openMenu = ref(null)
+
+// Data Program Cards
+const cards = [
+  {
+    title: 'Nazdar',
+    image: nazar,
+    terkumpul: 63151813,
+    target: 100000000,
+    deskripsi: 'NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...',
+    deadline: '31 Juli 2025'
+  },
+  {
+    title: 'Berkah Dengan Sedekah',
+    image: infaq,
+    terkumpul: 1854740659,
+    target: 1600000000,
+    deskripsi: 'Mari kita jadikan sedekah sebagai gaya hidup. InsyaAllah...',
+    deadline: '31 Juli 2025'
+  },
+  {
+    title: 'Sedekah Yatim, Beri Hadiah Kebaikan Rayakan Lebaran Yatim',
+    image: hadiah,
+    terkumpul: 30341614,
+    target: 30000000,
+    deskripsi: 'Bantu bahagiakan anak yatim dengan hadiah di hari raya. Jadilah bagian dari kebahagiaan mereka.',
+    deadline: '31 Juli 2025'
+  }
+]
 </script>
