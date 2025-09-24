@@ -119,6 +119,31 @@
         </div>
       </NuxtLink>
     </main>
+
+    <!-- Tambahan Tombol Tunaikan & Kalkulator Zakat -->
+    <div class="px-4 py-6 text-center">
+      <h2 class="text-lg font-semibold mb-2">
+        Bayar Zakat sekarang dengan Mizan Amanah
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Saatnya Bayar Zakat. Bersihkan harta anda dengan zakat di Mizan Amanah. 
+        InsyaAllah Mudah, berkah dan amanah.
+      </p>
+      <div class="flex justify-center gap-4">
+        <NuxtLink
+          to="/tunaikan-zakat"
+          class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition"
+        >
+          TUNAIKAN ZAKAT
+        </NuxtLink>
+        <NuxtLink
+          to="/kalkulator-zakat"
+          class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-md transition"
+        >
+          KALKULATOR ZAKAT
+        </NuxtLink>
+      </div>
+    </div>
   </div>
 </template>
 
