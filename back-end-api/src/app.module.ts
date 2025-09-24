@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProgramModule } from './program/program.module';
 import { DonationModule } from './donation/donation.module'; // ⬅️ tambahin
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { DonationModule } from './donation/donation.module'; // ⬅️ tambahin
       synchronize: true,
     }),
     ProgramModule,
-    DonationModule, // ⬅️ daftarin modul donation
+    DonationModule,
+    AuthModule, // ⬅️ daftarin modul donation
   ],
   controllers: [AppController],
   providers: [AppService],
