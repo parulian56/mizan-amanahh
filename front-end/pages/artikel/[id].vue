@@ -1,28 +1,43 @@
 <template>
-  <div class="max-w-3xl mx-auto p-6">
-    <div v-if="artikel">
-      <!-- Foto artikel -->
-      <img
-        :src="artikel.image"
-        :alt="artikel.title"
-        class="w-full rounded-lg shadow-md mb-6 border-4 border-orange500"
-      />
+  <div class="flex flex-col min-h-screen bg-gray-50">
+    <!-- Header Full Width -->
+    <header class="bg-orange-600 text-white shadow-md w-full">
+      <div class="max-w-7xl mx-auto px-10 py-6">
+        <!-- Judul -->
+        <h1 class="text-2xl font-bold mb-1">Artikel Qurban</h1>
+        <!-- Breadcrumb -->
+        <p class="text-sm">
+          <a href="/" class="underline hover:text-gray-200">Home</a> / Artikel
+        </p>
+      </div>
+    </header>
 
-      <!-- Judul -->
-      <h1 class="text-3xl font-bold mb-4 text-orange700">
-        {{ artikel.title }}
-      </h1>
+    <!-- Konten Artikel -->
+    <main class="max-w-5xl mx-auto w-full px-6 py-10">
+      <div v-if="artikel">
+        <!-- Foto artikel -->
+        <img
+          :src="artikel.image"
+          :alt="artikel.title"
+          class="w-full rounded-lg shadow-md mb-6 border-4 border-orange-500"
+        />
 
-      <!-- Isi/Excerpt -->
-      <p class="text-richblack leading-relaxed text-lg bg-teal300/20 p-4 rounded-lg">
-        {{ artikel.excerpt }}
-      </p>
-    </div>
+        <!-- Judul -->
+        <h1 class="text-3xl font-bold mb-4 text-orange-700">
+          {{ artikel.title }}
+        </h1>
 
-    <!-- Jika artikel tidak ditemukan -->
-    <div v-else class="text-center py-20">
-      <p class="text-gray-500">Artikel tidak ditemukan.</p>
-    </div>
+        <!-- Isi/Excerpt -->
+        <p class="text-gray-700 leading-relaxed text-lg bg-teal-300/20 p-4 rounded-lg">
+          {{ artikel.excerpt }}
+        </p>
+      </div>
+
+      <!-- Jika artikel tidak ditemukan -->
+      <div v-else class="text-center py-20">
+        <p class="text-gray-500">Artikel tidak ditemukan.</p>
+      </div>
+    </main>
   </div>
 </template>
 
