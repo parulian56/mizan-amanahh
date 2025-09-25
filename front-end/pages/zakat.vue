@@ -1,353 +1,307 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <!-- Navbar -->
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-[#FB8505] text-white px-4 py-4 flex items-center space-x-2"
-    >
-      <router-link to="/" class="mr-3">
+  <div class="min-h-screen bg-gray-100 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-primary text-white p-4 flex items-center gap-2 shadow">
+      <NuxtLink to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
-      <h2 class="text-lg font-semibold">Zakat</h2>
-    </nav>
+      </NuxtLink>
+      <h1 class="font-bold text-lg">Program</h1>
+      <div class="flex-1"></div>
+
+      <!-- Search -->
+      <div class="relative w-2/3 md:w-1/3">
+        <input
+          v-model="search"
+          type="text"
+          placeholder="Cari Program"
+          class="w-full rounded-md px-3 py-1 text-gray-800 shadow-inner focus:outline-none"
+        />
+        <span
+          class="material-icons absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-base"
+        >
+          search
+        </span>
+      </div>
+    </header>
 
     <!-- Breadcrumb -->
-    <div
-      class="fixed top-14 left-0 right-0 z-40 bg-[#FB8505] text-white px-4 py-2 text-sm"
-    >
-      <span v-if="page === 'home'">
-        Home › <span class="text-[#FDB669] font-bold">Bayar-Zakat</span>
-      </span>
-      <span v-else-if="page === 'form'">
-        Home › Bayar-Zakat ›
-        <span class="text-[#FDB669] font-bold">Form-Zakat</span>
-      </span>
-      <span v-else-if="page === 'calc'">
-        Home › Bayar-Zakat ›
-        <span class="text-[#FDB669] font-bold">Kalkulator</span>
-      </span>
-      <span v-else-if="page === 'donate'">
-        Home › <span class="text-[#FDB669] font-bold">Donate</span>
-      </span>
+    <nav class="bg-primary px-4 py-2 text-sm text-white">
+      <ul class="flex items-center space-x-2">
+        <li><NuxtLink to="/" class="hover:underline">Home</NuxtLink></li>
+        <li>/</li>
+        <li class="text-gray-200">Program</li>
+      </ul>
+    </nav>
+
+    <!-- Tabs -->
+    <div class="bg-white px-4 py-3 flex gap-3 overflow-x-auto border-b">
+      <button
+        v-for="cat in categories"
+        :key="cat"
+        @click="activeCategory = cat"
+        :class="[ 
+          'px-4 py-1 rounded-full text-sm whitespace-nowrap transition',
+          activeCategory === cat
+            ? 'bg-primary text-white font-semibold shadow-sm'
+            : 'bg-secondary text-white hover:bg-secondary-dark'
+        ]"
+      >
+        {{ cat }}
+      </button>
     </div>
 
-    <!-- Konten Utama -->
-    <div class="pt-24">
-      <!-- Halaman Utama -->
-      <div v-if="page === 'home'" class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Card -->
-          <div
-            v-for="(item, index) in zakatList"
-            :key="index"
-            class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
-          >
-            <img
-              :src="item.image"
-              alt="zakat"
-              class="w-full h-40 object-cover"
-            />
-            <div class="p-3 flex flex-col flex-1">
-              <h3 class="font-semibold text-[#FB8505] text-sm">
-                {{ item.title }}
-              </h3>
-              <p class="text-xs text-gray-600 mt-1 line-clamp-3">
-                {{ item.description }}
+    <!-- List Program -->
+    <main class="p-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Loading -->
+      <div v-if="pending" class="col-span-full text-center py-10 text-gray-500">
+        <span class="loader"></span>
+        <p class="mt-2">Loading program...</p>
+      </div>
+
+      <!-- Program Cards -->
+      <NuxtLink
+        v-else
+        v-for="program in filteredPrograms"
+        :key="program.id"
+        :to="`/program/${program.id}`"
+        class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
+      >
+        <img
+          :src="program.image || 'https://via.placeholder.com/400x200?text=No+Image'"
+          :alt="program.title"
+          class="w-full h-48 object-cover"
+        />
+
+        <div class="p-4 flex flex-col flex-1">
+          <h2 class="font-bold text-primary text-base mb-2 line-clamp-2">
+            {{ program.title }}
+          </h2>
+
+          <!-- Progress -->
+          <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
+            <div
+              class="bg-primary h-2 rounded-full transition-all duration-500 ease-in-out"
+              :style="{ width: program.progress + '%' }"
+            ></div>
+          </div>
+
+          <!-- Info Donasi -->
+          <div class="flex justify-between text-sm text-gray-600 mb-3">
+            <div>
+              <p class="text-xs">Terkumpul</p>
+              <p class="font-semibold">
+                Rp {{ formatNumber(program.collected_donation) }}
               </p>
-
-              <!-- Progress -->
-              <div class="mt-3">
-                <p class="text-xs text-gray-500">
-                  Terkumpul
-                  <span class="font-semibold"
-                    >Rp. {{ item.collected.toLocaleString() }}</span
-                  >
-                  dari Rp. {{ item.target.toLocaleString() }}
-                </p>
-                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
-                  <div
-                    class="bg-[#59AAB7] h-2 rounded-full"
-                    :style="{
-                      width: ((item.collected / item.target) * 100) + '%'
-                    }"
-                  ></div>
-                </div>
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>{{ item.deadline }}</span>
-                  <span>Zakat</span>
-                </div>
-              </div>
-
-              <!-- Button -->
-              <div class="mt-auto pt-3">
-                <button
-                  @click="page = 'donate'"
-                  class="w-full bg-[#FB8505] text-white text-sm py-2 rounded-lg shadow hover:bg-[#C96A04]"
-                >
-                  Donasi Sekarang
-                </button>
-              </div>
+              <p class="text-xs">
+                dari Rp {{ formatNumber(program.donation_target) }}
+              </p>
             </div>
-          </div>
-        </div>
-
-        <!-- Footer CTA -->
-        <div class="text-center mt-6 px-4">
-          <p class="font-semibold">Bayar Zakat sekarang dengan Mizan Amanah</p>
-          <p class="text-xs text-gray-600 mt-1">
-            Saatnya Bayar Zakat. Bersihkan harta anda dengan zakat di Mizan
-            Amanah. Insyallah Mudah, berkah dan amanah.
-          </p>
-          <div class="flex justify-center space-x-3 mt-4">
-            <button
-              @click="page = 'form'"
-              class="bg-[#FB8505] text-white px-4 py-2 rounded-lg shadow text-sm hover:bg-[#C96A04]"
-            >
-              TUNAIKAN ZAKAT
-            </button>
-            <button
-              @click="page = 'calc'"
-              class="bg-[#59AAB7] text-white px-4 py-2 rounded-lg shadow text-sm hover:bg-[#478892]"
-            >
-              KALKULATOR ZAKAT
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Halaman Donasi -->
-      <div v-else-if="page === 'donate'" class="p-4">
-        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
-          Donasi
-        </h2>
-        <p class="text-center text-sm text-[#59AAB7] mb-4">
-          Silahkan Login atau isi data di bawah ini
-        </p>
-
-        <form class="space-y-4" @submit.prevent="submitDonasi">
-          <div>
-            <label class="block text-sm">Nama Lengkap</label>
-            <input v-model="nama" type="text" class="w-full border-b focus:outline-none py-1" />
-          </div>
-          <div>
-            <label class="block text-sm">No Handphone / Whatsapp</label>
-            <input v-model="hp" type="text" class="w-full border-b focus:outline-none py-1" />
-          </div>
-          <div>
-            <label class="block text-sm">Email</label>
-            <input v-model="email" type="email" class="w-full border-b focus:outline-none py-1" />
-          </div>
-
-          <!-- Pilihan Nominal -->
-          <div>
-            <label class="block text-sm">Nominal Donasi</label>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 1000000">
-                Rp. 1.000.000
-              </button>
-              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 500000">
-                Rp. 500.000
-              </button>
-              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 200000">
-                Rp. 200.000
-              </button>
-              <button type="button" class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-3 py-2 rounded-lg" @click="donasi = 100000">
-                Rp. 100.000
-              </button>
+            <div class="text-right">
+              <p class="text-xs">Sisa Hari</p>
+              <p class="font-semibold">{{ program.remaining_days }}</p>
             </div>
           </div>
 
-          <!-- Nominal Lain -->
-          <div>
-            <label class="block text-sm">Nominal Donasi Lainnya</label>
-            <input v-model.number="donasi" type="number" class="w-full border-b focus:outline-none py-1" />
+          <!-- Metadata -->
+          <div class="flex justify-between text-xs text-gray-500 mb-3">
+            <span>{{ program.start_date }}</span>
+            <span class="text-primary font-medium">{{ program.category_program }}</span>
           </div>
 
-          <!-- Tombol Aksi -->
-          <button type="button" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg" @click="showPayment = !showPayment">
-            Pilih Metode Pembayaran
-          </button>
+          <!-- Tombol -->
+          <div class="mt-auto">
+            <span
+              class="bg-primary hover:bg-primary-dark text-white py-2 rounded-md px-4 block text-center text-sm transition"
+            >
+              DONASI
+            </span>
+          </div>
+        </div>
+      </NuxtLink>
+    </main>
 
-          <!-- Metode Pembayaran -->
-          <div v-if="showPayment" class="space-y-2">
-            <label class="block">
-              <input type="radio" value="Transfer Bank" v-model="metode" /> Transfer Bank
-            </label>
-            <label class="block">
-              <input type="radio" value="E-Wallet" v-model="metode" /> E-Wallet
-            </label>
-            <label class="block">
-              <input type="radio" value="VA (Virtual Account)" v-model="metode" /> Virtual Account
-            </label>
-          </div>
-
-          <button type="submit" class="w-full bg-[#FB8505] hover:bg-[#C96A04] text-white py-2 rounded-lg">
-            Donasi
-          </button>
-        </form>
-      </div>
-
-      <!-- Form Zakat -->
-      <div v-else-if="page === 'form'" class="p-4">
-        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-2">
-          Tunaikan Zakat
-        </h2>
-        <p class="text-center text-sm text-[#59AAB7] mb-4">
-          Silahkan Login atau isi data di bawah ini
-        </p>
-
-        <form class="space-y-4">
-          <div>
-            <label class="block text-sm">Nama Lengkap</label>
-            <input type="text" class="w-full border-b focus:outline-none py-1" />
-          </div>
-          <div>
-            <label class="block text-sm">No Handphone / Whatsapp</label>
-            <input type="text" class="w-full border-b focus:outline-none py-1" />
-          </div>
-          <div>
-            <label class="block text-sm">Email</label>
-            <input type="email" class="w-full border-b focus:outline-none py-1" />
-          </div>
-          <div>
-            <label class="block text-sm">Kategori Zakat</label>
-            <select class="w-full border-b py-1">
-              <option>--- Pilih Kategori ---</option>
-              <option>Zakat Penghasilan</option>
-              <option>Zakat Pertanian</option>
-              <option>Zakat Perdagangan</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm">Jumlah Zakat</label>
-            <input type="number" value="0" class="w-full border-b focus:outline-none py-1" />
-          </div>
-
-          <button class="w-full bg-[#59AAB7] text-white py-2 rounded-lg hover:bg-[#478892]">
-            Pilih Metode Pembayaran
-          </button>
-          <button class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]">
-            Lanjutkan Pembayaran
-          </button>
-        </form>
-      </div>
-
-      <!-- Kalkulator Zakat -->
-      <div v-else-if="page === 'calc'" class="p-4">
-        <h2 class="text-center text-xl font-bold text-[#FB8505] mb-4">
-          Perhitungan Zakat Penghasilan
-        </h2>
-
-        <form class="space-y-3">
-          <label class="flex items-center gap-2">
-            <input type="checkbox" /> SAYA PUNYA PERHITUNGAN SENDIRI (TANPA
-            KALKULATOR)
-          </label>
-
-          <div>
-            <label class="block text-sm">Penghasilan Per Bulan</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
-          </div>
-          <div>
-            <label class="block text-sm">Penghasilan Tambahan Per Bulan</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
-          </div>
-          <div>
-            <label class="block text-sm">Pengeluaran Pokok Per Bulan</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
-          </div>
-          <div>
-            <label class="block text-sm">Harga Beras (Kg)</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2" />
-          </div>
-          <div>
-            <label class="block text-sm">NISHAB (Harga Beras x 522 Kg)</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2 bg-gray-100" readonly />
-          </div>
-          <div>
-            <label class="block text-sm">Jumlah Bulan Yang Akan Dibayarkan Zakatnya</label>
-            <input type="number" value="1" class="w-full border rounded py-1 px-2" />
-          </div>
-          <div>
-            <label class="block text-sm">Besar Zakat Hasil Perhitungan</label>
-            <input type="number" value="0" class="w-full border rounded py-1 px-2 bg-gray-100" readonly />
-          </div>
-
-          <p class="text-xs text-gray-600">
-            Bismillah. Saya serahkan zakat saya kepada Yayasan Mizan Amanah
-            agar dapat di kelola dengan sebaik-baiknya sesuai dengan ketentuan
-            syariat agama.
-          </p>
-
-          <button class="w-full bg-[#FB8505] text-white py-2 rounded-lg hover:bg-[#C96A04]">
-            BAYAR
-          </button>
-        </form>
+    <!-- Tambahan Tombol Tunaikan & Kalkulator Zakat -->
+    <div class="px-4 py-6 text-center">
+      <h2 class="text-lg font-semibold mb-2">
+        Bayar Zakat sekarang dengan Mizan Amanah
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Saatnya Bayar Zakat. Bersihkan harta anda dengan zakat di Mizan Amanah. 
+        InsyaAllah Mudah, berkah dan amanah.
+      </p>
+      <div class="flex justify-center gap-4">
+        <NuxtLink
+          to="/tunaikan-zakat"
+          class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition"
+        >
+          TUNAIKAN ZAKAT
+        </NuxtLink>
+        <NuxtLink
+          to="/kalkulator-zakat"
+          class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-md transition"
+        >
+          KALKULATOR ZAKAT
+        </NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue"
+import { useRoute } from "vue-router"
 
-const page = ref("home");
+// Routing
+const route = useRoute()
 
-const nama = ref("");
-const hp = ref("");
-const email = ref("");
-const donasi = ref(0);
-const metode = ref("");
-const showPayment = ref(false);
+// Fetch data dari backend
+const { data: programs, pending } = await useFetch("http://localhost:3001/programs")
 
-const submitDonasi = () => {
-  alert(`Donasi Berhasil!\nNama: ${nama.value}\nHP: ${hp.value}\nEmail: ${email.value}\nNominal: Rp ${donasi.value.toLocaleString()}\nMetode: ${metode.value}`);
-};
+// ===== Tambahan Data Dummy =====
+if (!programs.value || programs.value.length === 0) {
+  programs.value = [
+    {
+      id: 1,
+      title: "Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah",
+      image: "https://via.placeholder.com/400x200?text=Zakat",
+      collected_donation: 454295053,
+      donation_target: 400000000,
+      remaining_days: "310",
+      start_date: "31 Juli 2025",
+      category_program: "Zakat"
+    },
+    {
+      id: 2,
+      title: "Raih Pahala Berlipat: 2.5% Zakat Penghasilan Untuk Da’i Pelosok",
+      image: "https://via.placeholder.com/400x200?text=Zakat",
+      collected_donation: 1405557,
+      donation_target: 50000000,
+      remaining_days: "∞",
+      start_date: "Tanpa Batas Waktu",
+      category_program: "Zakat"
+    },
+    {
+      id: 3,
+      title: "Gajian Tiba, Tunaikan Zakat Penghasilanmu",
+      image: "https://via.placeholder.com/400x200?text=Zakat",
+      collected_donation: 1060980455,
+      donation_target: 1000000000,
+      remaining_days: "∞",
+      start_date: "Tanpa Batas Waktu",
+      category_program: "Zakat"
+    },
+    {
+      id: 4,
+      title: "Zakat Pertanian",
+      image: "https://via.placeholder.com/400x200?text=Zakat+Pertanian",
+      collected_donation: 37000,
+      donation_target: 1000000000,
+      remaining_days: "∞",
+      start_date: "Tanpa Batas Waktu",
+      category_program: "Zakat"
+    },
+    {
+      id: 5,
+      title: "Zakat Barang Temuan",
+      image: "https://via.placeholder.com/400x200?text=Zakat+Barang+Temuan",
+      collected_donation: 561248,
+      donation_target: 100000000,
+      remaining_days: "∞",
+      start_date: "Tanpa Batas Waktu",
+      category_program: "Zakat"
+    },
+    {
+      id: 6,
+      title: "Wakaf Pembangunan Masjid",
+      image: "https://via.placeholder.com/400x200?text=Wakaf+Masjid",
+      collected_donation: 250000000,
+      donation_target: 1000000000,
+      remaining_days: "120",
+      start_date: "01 Jan 2025",
+      category_program: "Wakaf"
+    },
+    {
+      id: 7,
+      title: "Sosial: Bantu Korban Banjir",
+      image: "https://via.placeholder.com/400x200?text=Sosial+Banjir",
+      collected_donation: 75000000,
+      donation_target: 500000000,
+      remaining_days: "45",
+      start_date: "15 Feb 2025",
+      category_program: "Sosial"
+    }
+  ]
+}
+// ===== End Dummy =====
 
-const zakatList = ref([
-  {
-    title: "Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah",
-    description:
-      "Tak terasa kita sudah berada dipenghujung tahun 2020, lembaran baru akan kita ukir di tahun 2021. Sebagai seorang muslim tentu kita harus senantiasa mensyukuri nikmat yang Allah berikan selama ini.",
-    collected: 454295053,
-    target: 400000000,
-    deadline: "Kamis, 31 Juli 2025",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Raih Pahala Berlipat: 2.5% Zakat Penghasilan Untuk Da’i Pelosok",
-    description:
-      "Bantu da’i di pelosok dengan zakat penghasilanmu, insyaAllah berkah.",
-    collected: 1405557,
-    target: 50000000,
-    deadline: "Tanpa Batas Waktu",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Gajian Tiba, Tunaikan Zakat Penghasilanmu",
-    description:
-      "Zakat penghasilan adalah zakat dari profesi yang telah mencapai nisab.",
-    collected: 1060980455,
-    target: 1000000000,
-    deadline: "Tanpa Batas Waktu",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Zakat Pertanian",
-    description:
-      "Zakat pertanian adalah zakat dari hasil tumbuh-tumbuhan atau tanaman yang bernilai ekonomi.",
-    collected: 37000,
-    target: 1000000000,
-    deadline: "Tanpa Batas Waktu",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Zakat Barang Temuan",
-    description:
-      "Zakat barang temuan adalah zakat dari barang yang ditemukan dan memiliki nilai.",
-    collected: 561248,
-    target: 100000000,
-    deadline: "Tanpa Batas Waktu",
-    image: "https://via.placeholder.com/300x200",
-  },
-]);
+// State filter
+const search = ref("")
+const activeCategory = ref("Zakat")
+const categories = ["Semua", "Zakat", "Wakaf", "Sosial"]
+
+onMounted(() => {
+  if (route.query.category) {
+    activeCategory.value = route.query.category
+  }
+})
+
+// Filter + Progress
+const filteredPrograms = computed(() => {
+  if (!programs.value) return []
+
+  return programs.value
+    .filter((p) => {
+      const matchSearch = p.title.toLowerCase().includes(search.value.toLowerCase())
+      const matchCategory =
+        activeCategory.value === "Semua" || p.category_program === activeCategory.value
+      return matchSearch && matchCategory
+    })
+    .map((p) => ({
+      ...p,
+      progress: Math.min(100, Math.round((p.collected_donation / p.donation_target) * 100)),
+    }))
+})
+
+// Format angka
+const formatNumber = (num) => {
+  return new Intl.NumberFormat("id-ID").format(num || 0)
+}
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.bg-primary {
+  background-color: #FB8505 !important;
+}
+.text-primary {
+  color: #FB8505 !important;
+}
+.bg-primary-dark {
+  background-color: #C96A04 !important;
+}
+
+.bg-secondary {
+  background-color: #59AAB7 !important;
+}
+.text-secondary {
+  color: #59AAB7 !important;
+}
+.bg-secondary-dark {
+  background-color: #478892 !important;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #FB8505;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>

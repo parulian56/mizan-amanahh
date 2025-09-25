@@ -10,14 +10,14 @@
             <i class="fas fa-arrow-left text-xl"></i>
           </router-link>
           <!-- Judul -->
-          <h1 class="text-2xl font-bold">Program</h1>
+          <h1 class="text-2xl font-bold">Qurban</h1>
         </div>
 
         <!-- Breadcrumb -->
         <nav class="text-sm opacity-90">
           <router-link to="/" class="hover:underline">Home</router-link>
           <span class="mx-1">/</span>
-          <span>Tentang</span>
+          <span>Artikel</span>
         </nav>
       </div>
     </header>
@@ -54,7 +54,7 @@
         <!-- Gambar -->
         <div class="flex justify-center">
           <img
-            src="/assets/image/sedekah1.png"
+            src="/assets/image/ibadah_qurban.jpg"
             alt="Qurban"
             class="rounded-lg shadow-lg w-full md:w-96"
           />
@@ -153,7 +153,7 @@
           <!-- Tombol -->
           <button
             type="submit"
-            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-green-700"
+            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-sky-600"
           >
             Kirim Pendaftaran
           </button>
@@ -185,34 +185,34 @@
     </section>
 
     <!-- 📌 Artikel -->
-    <section id="artikel" class="py-16 bg-gray-50">
-      <div class="max-w-6xl px-4 mx-auto">
-        <h2 class="mb-10 text-3xl font-bold text-center">Artikel Terbaru</h2>
-        <div class="grid gap-6 md:grid-cols-3">
-          <div
-            v-for="artikel in artikels"
-            :key="artikel.id"
-            class="p-6 transition bg-white shadow-lg rounded-xl hover:shadow-xl"
+    <section class="py-16 bg-gray-50 min-h-screen">
+    <div class="max-w-6xl px-4 mx-auto">
+      <h1 class="mb-10 text-3xl font-bold text-center">Artikel Qurban</h1>
+
+      <!-- Grid Artikel -->
+      <div class="grid gap-6 md:grid-cols-3">
+        <div
+          v-for="artikel in artikels"
+          :key="artikel.id"
+          class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition"
+        >
+          <img
+            :src="artikel.image"
+            alt="artikel"
+            class="object-cover w-full h-40 mb-4 rounded-lg"
+          />
+          <h2 class="text-xl font-semibold mb-2">{{ artikel.title }}</h2>
+          <p class="text-gray-600 mb-4">{{ artikel.excerpt }}</p>
+          <NuxtLink
+            :to="`/artikel/${artikel.id}`"
+            class="text-[#E9741C] font-medium hover:underline"
           >
-            <img
-              :src="artikel.image"
-              alt="artikel"
-              class="object-cover w-full h-40 mb-4 rounded-lg"
-            />
-            <h3 class="mb-2 text-xl font-semibold">{{ artikel.title }}</h3>
-            <p class="mb-4 text-gray-600 line-clamp-3">
-              {{ artikel.excerpt }}
-            </p>
-            <a
-              :href="artikel.link"
-              target="_blank"
-              class="text-[#FB8603] font-medium hover:underline"
-              >Baca Selengkapnya →</a
-            >
-          </div>
+            Baca Selengkapnya →
+          </NuxtLink>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Footer -->
     <footer class="bg-[#E9741C] text-white py-8 mt-auto">
@@ -283,36 +283,33 @@ Assalamu'alaikum, saya ingin mendaftar Qurban:
 }
 
 // 📌 Artikel Data
-const artikels = reactive([
-  { 
-    id: 1, 
-    title: "Keutamaan Berqurban dalam Islam", 
-    excerpt: "Qurban bukan sekadar penyembelihan hewan, namun wujud ketaatan kepada Allah SWT...", 
-    image: "/assets/image/mizan7.jpg", 
-    link: "#" 
+const artikels = [
+  {
+    id: 1,
+    title: "Keutamaan Berqurban",
+    excerpt: "Keutamaan qurban meliputi pahala yang sangat besar di sisi Allah SWT,",
+    image: "https://source.unsplash.com/600x400/?sheep,qurban"
   },
-  { 
-    id: 2, 
-    title: "Tips Memilih Hewan Qurban yang Baik", 
-    excerpt: "Hewan qurban harus memenuhi syarat: sehat, tidak cacat, dan cukup umur sesuai syariat...", 
-    image: "https://source.unsplash.com/400x300/?goat", 
-    link: "#" 
+  {
+    id: 2,
+    title: "Panduan Praktis Qurban",
+    excerpt: "pemilihan hewan sesuai syarat usia dan kondisi,",
+    image: "https://source.unsplash.com/600x400/?cow,islam"
   },
-  { 
-    id: 3, 
-    title: "Distribusi Daging Qurban Merata", 
-    excerpt: "Dengan sistem distribusi modern, daging qurban bisa sampai ke pelosok negeri...", 
-    image: "https://source.unsplash.com/400x300/?cow", 
-    link: "#" 
-  },
-])
+  {
+    id: 3,
+    title: "Sejarah Ibadah Qurban",
+    excerpt: "ibadah menyembelih hewan tertentu pada waktu tertentu sebagai bentuk ketaatan dan rasa syukur kepada Allah SWT,",
+    image: "https://source.unsplash.com/600x400/?goat,history"
+  }
+]
 
 // 📌 Paket Qurban Data
 const paketQurban = reactive([
-  { id: 1, name: "Kambing", price: 2500000, icon: "🐐" },
-  { id: 2, name: "Sapi", price: 17500000, icon: "🐄" },
-  { id: 3, name: "Sapi (1/7)", price: 2500000, icon: "🐄" },
-  { id: 4, name: "Kerbau", price: 16000000, icon: "🐃" },
+  { id: 1, name: "Kambing", price: 3000000, icon: "🐐" },
+  { id: 2, name: "Sapi", price: 50000000, icon: "🐄" },
+  { id: 3, name: "Sapi (1/7)", price: 30000000, icon: "🐄" },
+  { id: 4, name: "Kerbau", price: 25000000, icon: "🐃" },
 ])
 
 // 📌 FAQ Data
