@@ -288,19 +288,19 @@ const artikels = [
     id: 1,
     title: "Keutamaan Berqurban",
     excerpt: "Keutamaan qurban meliputi pahala yang sangat besar di sisi Allah SWT,",
-    image: "https://source.unsplash.com/600x400/?sheep,qurban"
+    image: "/artikel/Keutamaan-berqurban.jpg"
   },
   {
     id: 2,
     title: "Panduan Praktis Qurban",
-    excerpt: "pemilihan hewan sesuai syarat usia dan kondisi,",
-    image: "https://source.unsplash.com/600x400/?cow,islam"
+    excerpt: "Panduan praktis qurban meliputi pemilihan hewan dan peralatannya,",
+    image: "/artikel/Panduan-Praktis-Ibadah-Qurban.jpg"
   },
   {
     id: 3,
     title: "Sejarah Ibadah Qurban",
-    excerpt: "ibadah menyembelih hewan tertentu pada waktu tertentu sebagai bentuk ketaatan dan rasa syukur kepada Allah SWT,",
-    image: "https://source.unsplash.com/600x400/?goat,history"
+    excerpt: "Sejarah ibadah qurban berawal dari perintah Allah kepada Nabi Ibrahim untuk menyembelih putranya,",
+    image: "/artikel/sejarah_ibadah_qurban.jpeg"
   }
 ]
 
