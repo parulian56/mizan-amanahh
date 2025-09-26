@@ -69,6 +69,16 @@
             <span>{{ program.remaining_days }}</span>
           </div>
         </div>
+
+        <!-- Tombol Donasi -->
+        <div class="mt-6">
+          <button
+            @click="goToDonasi(program.id)"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg"
+          >
+            Donasi Sekarang
+          </button>
+        </div>
       </div>
 
       <!-- Loading State -->
@@ -80,25 +90,30 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue"
 
-const route = useRoute();
-const program = ref(null);
+// di Nuxt 3: auto-import composables
+const route = useRoute()
+const router = useRouter()
 
-const formatNumber = (num) => new Intl.NumberFormat("id-ID").format(num || 0);
+const program = ref(null)
+
+const formatNumber = (num) => new Intl.NumberFormat("id-ID").format(num || 0)
 
 onMounted(async () => {
   try {
-    // Ambil data dari API backend NestJS
-    const res = await $fetch(`http://localhost:3001/programs/${route.params.id}`);
+    const res = await $fetch(`http://localhost:3001/programs/${route.params.id}`)
     program.value = {
       ...res,
       image: "https://via.placeholder.com/800x400.png?text=" + res.title,
       progress: Math.min(100, (res.collected_donation / res.donation_target) * 100),
-    };
+    }
   } catch (err) {
-    console.error("Gagal ambil data program:", err);
+    console.error("Gagal ambil data program:", err)
   }
-});
+})
+
+const goToDonasi = (id) => {
+  router.push(`/donasi/${id}`)
+}
 </script>

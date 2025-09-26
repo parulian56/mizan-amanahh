@@ -96,7 +96,7 @@
         <!-- Mobile Menu -->
         <ul
           :class="[
-            'absolute md:hidden top-16 left-0 w-full bg-white shadow-md transition-all',
+            'absolute md:hidden top-16 left-0 w-full bg-[#FDB669] shadow-md transition-all',
             isOpen ? 'block' : 'hidden'
           ]"
         >
@@ -159,7 +159,7 @@
         <!-- Ilustrasi -->
         <div class="flex justify-center relative">
           <div class="absolute w-72 h-72 bg-[#FDB669] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-          <div class="relative z-10 w-48 h-48 bg-white rounded-lg shadow overflow-hidden">
+          <div class="relative z-10 w-48 h-48 bg-[#FDB669] rounded-lg shadow overflow-hidden">
             <img :src="logoOrang" alt="logo orang" class="w-full h-full object-cover" />
             <div v-if="showPlaceholder" class="w-full h-full bg-gray-100 flex items-center justify-center">
               <div class="text-center text-gray-600">No Image</div>
