@@ -5,7 +5,7 @@
       <div class="container mx-auto px-4">
         <!-- Judul + Tombol Back -->
         <div class="flex items-center gap-2 mb-1">
-          <NuxtLink to="/program" class="flex items-center gap-1 hover:underline">
+          <NuxtLink to="/program/program" class="flex items-center gap-1 hover:underline">
             <i class="fas fa-arrow-left text-xl"></i>
             <span class="font-bold">Detail Program</span>
           </NuxtLink>

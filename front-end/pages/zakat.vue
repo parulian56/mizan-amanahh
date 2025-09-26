@@ -67,7 +67,7 @@
         class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
       >
         <img
-          :src="program.image || 'https://via.placeholder.com/400x200?text=No+Image'"
+          :src="program.image"
           :alt="program.title"
           class="w-full h-48 object-cover"
         />
@@ -157,13 +157,13 @@ const route = useRoute()
 // Fetch data dari backend
 const { data: programs, pending } = await useFetch("http://localhost:3001/programs")
 
-// ===== Tambahan Data Dummy =====
+// ===== Dummy Data dengan gambar dari /assets/images =====
 if (!programs.value || programs.value.length === 0) {
   programs.value = [
     {
       id: 1,
       title: "Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah",
-      image: "https://via.placeholder.com/400x200?text=Zakat",
+      image: "https://th.bing.com/th/id/OIP.WyRnTu_WoNRQEz92GSY9uwHaE8?w=238&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       collected_donation: 454295053,
       donation_target: 400000000,
       remaining_days: "310",
@@ -173,7 +173,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 2,
       title: "Raih Pahala Berlipat: 2.5% Zakat Penghasilan Untuk Da’i Pelosok",
-      image: "https://via.placeholder.com/400x200?text=Zakat",
+      image: "https://th.bing.com/th/id/OIP.VeGx_--zQfxkdt8uhw7ARwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       collected_donation: 1405557,
       donation_target: 50000000,
       remaining_days: "∞",
@@ -183,7 +183,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 3,
       title: "Gajian Tiba, Tunaikan Zakat Penghasilanmu",
-      image: "https://via.placeholder.com/400x200?text=Zakat",
+      image: "https://th.bing.com/th/id/OIP.LfcZoM6KvD6yFG4Wc6_RkwHaD_?w=299&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       collected_donation: 1060980455,
       donation_target: 1000000000,
       remaining_days: "∞",
@@ -193,7 +193,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 4,
       title: "Zakat Pertanian",
-      image: "https://via.placeholder.com/400x200?text=Zakat+Pertanian",
+      image: "https://th.bing.com/th/id/OIP.a0rSvn4XpaIaQ7lyKLLjfwHaEK?w=319&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
       collected_donation: 37000,
       donation_target: 1000000000,
       remaining_days: "∞",
@@ -203,7 +203,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 5,
       title: "Zakat Barang Temuan",
-      image: "https://via.placeholder.com/400x200?text=Zakat+Barang+Temuan",
+      image: "https://th.bing.com/th/id/OIP.zbINZP-XoM5YwJQL0AoDFQHaEL?w=291&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       collected_donation: 561248,
       donation_target: 100000000,
       remaining_days: "∞",
@@ -213,7 +213,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 6,
       title: "Wakaf Pembangunan Masjid",
-      image: "https://via.placeholder.com/400x200?text=Wakaf+Masjid",
+      image: "https://th.bing.com/th/id/OIP.sgpn65DA_xqoWcF77JBFAAHaEK?w=308&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       collected_donation: 250000000,
       donation_target: 1000000000,
       remaining_days: "120",
@@ -223,7 +223,7 @@ if (!programs.value || programs.value.length === 0) {
     {
       id: 7,
       title: "Sosial: Bantu Korban Banjir",
-      image: "https://via.placeholder.com/400x200?text=Sosial+Banjir",
+      image: "https://th.bing.com/th/id/OIP.ZaHkjDv4bEbHIBud1KYDBQHaEK?w=263&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       collected_donation: 75000000,
       donation_target: 500000000,
       remaining_days: "45",
@@ -267,6 +267,7 @@ const formatNumber = (num) => {
   return new Intl.NumberFormat("id-ID").format(num || 0)
 }
 </script>
+
 
 <style>
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
