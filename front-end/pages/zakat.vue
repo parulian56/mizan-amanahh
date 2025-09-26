@@ -27,7 +27,7 @@
     <!-- Breadcrumb -->
     <nav class="bg-primary px-4 py-2 text-sm text-white">
       <ul class="flex items-center space-x-2">
-        <li><NuxtLink to="/" class="hover:underline">Home</NuxtLink></li>
+        <li><NuxtLink to="/program" class="hover:underline">Home</NuxtLink></li>
         <li>/</li>
         <li class="text-gray-200">Program</li>
       </ul>
