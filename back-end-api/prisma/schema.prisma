@@ -29,4 +29,3 @@ model Program {
   collected  Int        @default(0)
   donations  Donation[]
 }
-
