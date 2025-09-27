@@ -1,9 +1,14 @@
+// src/donation/dto/create-donation.dto.ts
+import { IsInt, IsPositive, IsString } from 'class-validator';
+
 export class CreateDonationDto {
   @IsInt()
-  program_id: number;
+  programId: number;
 
   @IsInt()
   @IsPositive()
   amount: number;
-  programId: number;
+
+  @IsString()
+  donorName: string;
 }

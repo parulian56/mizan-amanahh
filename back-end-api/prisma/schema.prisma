@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -16,16 +10,16 @@ datasource db {
 
 model Donation {
   id        Int      @id @default(autoincrement())
-  program   Program  @relation(fields: [programId], references: [id])
   programId Int
   amount    Int
   createdAt DateTime @default(now())
+  program   Program  @relation(fields: [programId], references: [id])
 }
 
 model Program {
-  id         Int        @id @default(autoincrement())
-  title      String
-  target     Int
-  collected  Int        @default(0)
-  donations  Donation[]
+  id        Int        @id @default(autoincrement())
+  title     String
+  target    Int
+  collected Int        @default(0)
+  donations Donation[]
 }
