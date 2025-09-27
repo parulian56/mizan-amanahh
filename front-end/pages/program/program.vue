@@ -124,7 +124,7 @@ const { data: programs } = await useFetch('http://localhost:3001/programs')
 // state filter & search
 const search = ref("")
 const activeCategory = ref("Semua")
-const categories = ["Semua", "Zakat", "Wakaf", "Sosial"]
+const categories = ["Semua", "Zakat", "Wakaf", "Sosial", "Sedekah"]
 
 // computed untuk filter data
 const filteredPrograms = computed(() => {

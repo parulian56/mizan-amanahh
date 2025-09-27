@@ -83,24 +83,20 @@
         <!-- Hamburger (Mobile) -->
         <button
           @click="isOpen = !isOpen"
-          class="md:hidden text-[#111111] focus:outline-none"
+          class="md:hidden text-[#111111] focus:outline-none ml-auto"
         >
-          <svg v-if="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"/>
+          <svg v-if="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
-          <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"/>
+          <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
 
         <!-- Mobile Menu -->
         <ul
           :class="[
-            'absolute md:hidden top-16 left-0 w-full bg-white shadow-md transition-all',
+            'absolute md:hidden top-16 left-0 w-full bg-[#FDB669] shadow-md transition-all',
             isOpen ? 'block' : 'hidden'
           ]"
         >
@@ -110,8 +106,7 @@
           <li class="border-b">
             <NuxtLink to="/program" class="flex justify-between items-center px-6 py-3 hover:text-[#FB8505]">
               <span>Program</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
-                   viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
               </svg>
             </NuxtLink>
@@ -119,8 +114,7 @@
           <li class="border-b">
             <NuxtLink to="/berita-update" class="flex justify-between items-center px-6 py-3 hover:text-[#FB8505]">
               <span>Berita & Update</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
-                   viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
               </svg>
             </NuxtLink>
@@ -165,10 +159,9 @@
         <!-- Ilustrasi -->
         <div class="flex justify-center relative">
           <div class="absolute w-72 h-72 bg-[#FDB669] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-          <div class="relative z-10 w-48 h-48 bg-white rounded-lg shadow overflow-hidden">
-             <img :src="logoOrang" alt="logo orang" />
-            <div v-if="showPlaceholder"
-              class="w-full h-full bg-gray-100 flex items-center justify-center">
+          <div class="relative z-10 w-48 h-48 bg-[#FDB669] rounded-lg shadow overflow-hidden">
+            <img :src="logoOrang" alt="logo orang" class="w-full h-full object-cover" />
+            <div v-if="showPlaceholder" class="w-full h-full bg-gray-100 flex items-center justify-center">
               <div class="text-center text-gray-600">No Image</div>
             </div>
           </div>
@@ -196,7 +189,7 @@
             <img :src="card.image" :alt="card.title" class="w-full h-48 object-cover" />
 
             <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-2">{{ card.title }}</h3>
+              <h3 class="text-lg font-bold text-[#111111] mb-2 min-h-[66px] flex items-start">{{ card.title }}</h3>
               <p class="text-[#FB8505] font-bold mb-2">
                 Rp. {{ card.terkumpul.toLocaleString() }} / Rp. {{ card.target.toLocaleString() }}
               </p>
@@ -219,33 +212,183 @@
                 </NuxtLink>
               </div>
             </div>
-
-            <div class="bg-gray-100 px-5 py-3 flex justify-between items-center">
-              <span class="text-sm text-gray-600">Batas: {{ card.deadline }}</span>
-              <button class="bg-[#FB8505] text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-[#C96A04]">Donasi</button>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= BERITA ================= -->
-    <section id="berita" class="py-20">
+    <!-- ================= PROGRAM TAMBAHAN ================= -->
+    <section class="py-20 bg-white">
       <div class="container mx-auto px-6">
-        <NuxtLink to="/berita-update" class="bg-[#FB8505] text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-[#C96A04]">
-          TEST
-        </NuxtLink>
-        <div class="grid md:grid-cols-3 gap-8 mt-6">
-          <div class="bg-white rounded-xl shadow overflow-hidden">
-            <img :src="sedekah" alt="" />
+        <!-- Header Section -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-[#111111] text-center mb-6">Program</h2>
+          <p class="text-gray-600 leading-relaxed">
+            Bergabung Program Lembaga Amil Zakat Mizan Amanah seperti Panti Asuhan Islam, 
+            Santuman Anak Yatim, dan berbagai pilihan donasi online untuk membantu sesama. 
+            Bergabung Program Lembaga Amil Zakat Mizan Amanah seperti Panti Asuhan Islam, 
+            Santuman Anak Yatim, dan berbagai pilihan donasi online untuk membantu sesama. 
+            Satu investasi yang dapat merubah jutaan hidup untuk kehidupan dunia dan akhirat. Aamiin
+          </p>
+        </div>
+
+        <!-- Program Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          
+          <!-- Card 1: Infaq Beras -->
+          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
+            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
+            <img :src="sedekah1" alt="Infaq Beras" class="w-full h-48 object-cover" />
             <div class="p-5">
-              <span class="bg-[#FB8505] text-white px-3 py-1 rounded-full text-xs">Artikel</span>
-              <h3 class="font-bold text-lg mt-3">Doa Zakat Fitrah Beserta Arab...</h3>
-              <NuxtLink to="/berita-update" class="text-[#FB8505] font-bold">Read More</NuxtLink>
+              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
+                Infaq Beras Untuk Fakir,Miskin,Lansia,Yatim,&Dhuafa Penghafal,AlQuran
+              </h3>
+              <div class="mb-4">
+                <p class="text-[#FB8505] font-bold text-sm mb-2">
+                  Rp. {{ (63151813).toLocaleString() }} / Rp. {{ (100000000).toLocaleString() }}
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 63%"></div>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...
+              </p>
+              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
+              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
+                Donasi
+              </button>
             </div>
+          </div>
+
+          <!-- Card 2: Berkah Dengan Sedekah -->
+          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
+            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
+            <img :src="zakat" alt="Berkah Dengan Sedekah" class="w-full h-48 object-cover" />
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
+                Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah
+              </h3>
+              <div class="mb-4">
+                <p class="text-[#FB8505] font-bold text-sm mb-2">
+                  Rp. {{ (454645053).toLocaleString() }} / Rp. {{ ( 400000000).toLocaleString() }}
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 100%"></div>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                “Sembahlah Allah dan jangan menyekutukan-Nya dengan sesuatu pun. Dirikanlah shalat, tunaikan zakat dan sambunglah tali silaturrahim.”
+              </p>
+              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
+              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
+                Donasi
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Sedekah Yatim -->
+          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
+            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
+            <img :src="nenekeja" alt="Sedekah Yatim" class="w-full h-48 object-cover" />
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
+                Sedekah Sembako & Bedah Rumah Nenek Eja Yang Hidup Sebatang Kara
+              </h3>
+              <div class="mb-4">
+                <p class="text-[#FB8505] font-bold text-sm mb-2">
+                  Rp. {{ (16138000).toLocaleString() }} / Rp. {{ (30000000).toLocaleString() }}
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 100%"></div>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+               Yuk orang-orang baik dan Sahabat Dermawan mari kita wujudkan Impian Nek Eja
+              </p>
+              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
+              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
+                Donasi
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+        <div class="font-sans text-[#111111]">
+    <!-- ================= UPDATE & BERITA ================= -->
+    <section class="container mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold text-center mb-8">Update & Berita</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          v-for="(item, i) in berita"
+          :key="i"
+          class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-lg transition"
+        >
+          <img
+            :src="item.image"
+            :alt="item.title"
+            class="w-full h-48 object-cover"
+            loading="lazy"
+            @error="event => handleImageError(event, fallback)"
+          />
+          <div class="p-4">
+            <span
+              class="inline-block bg-red-500 text-white text-xs px-3 py-1 rounded mb-3"
+            >
+              Artikel
+            </span>
+            <h3 class="font-semibold text-lg mb-1">{{ item.title }}</h3>
+            <p class="text-xs text-gray-500 mb-3">{{ item.date }}</p>
+            <p class="text-sm text-gray-600 mb-4">
+              {{ item.desc }}
+            </p>
+            <NuxtLink
+              :to="item.link"
+              class="text-red-600 font-semibold hover:underline text-sm"
+            >
+              Read More
+            </NuxtLink>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ================= KATA MEREKA ================= -->
+    <section class="container mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold text-center mb-8">Kata Mereka</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          v-for="(item, i) in kataMereka"
+          :key="i"
+          class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-lg transition"
+        >
+          <img
+            :src="item.image"
+            :alt="item.name"
+            class="w-full h-48 object-cover"
+            loading="lazy"
+            @error="event => handleImageError(event, fallback)"
+          />
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">{{ item.name }}</h3>
+            <p class="text-xs text-gray-500 mb-3">{{ item.role }}</p>
+            <p class="text-sm text-gray-600 mb-4">
+              {{ item.text }}
+            </p>
+            <NuxtLink
+              :to="item.link"
+              class="text-red-600 font-semibold hover:underline text-sm"
+            >
+              Read More
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
     </section>
 
     <!-- ================= FOOTER ================= -->
@@ -295,10 +438,12 @@ import { ref } from "vue"
 
 // Import gambar
 import logoOrang from '~/assets/image/logo_orang.png'
-import sedekah from '~/assets/image/sedekah1.png'
+import sedekah1 from '~/assets/image/sedekah1.png'
 import nazar from '~/assets/image/nazar.png'
 import infaq from '~/assets/image/infaq.png'
-import hadiah from '~/assets/image/hadiah.png' 
+import hadiah from '~/assets/image/hadiah.png'
+import zakat from '~/assets/image/zakat.png'
+import nenekeja from '~/assets/image/nenekeja.png'
 
 const isOpen = ref(false)
 const showPlaceholder = ref(false)
@@ -331,4 +476,71 @@ const cards = [
     deadline: '31 Juli 2025'
   }
 ]
+
+// ====== IMPORT GAMBAR DARI assets ======
+import mizan1 from '~/assets/image/mizan1.png'
+import mizan2 from '~/assets/image/mizan2.png'
+import mizan3 from '~/assets/image/mizan3.png'
+import mizan4 from '~/assets/image/mizan4.png'
+import mizan5 from '~/assets/image/mizan5.png'
+import mizan6 from '~/assets/image/mizan6.png'
+
+// fallback image (taruh di /public/image/fallback.png)
+const fallback = '/image/fallback.png'
+
+// Data artikel
+const berita = [
+  {
+    title: 'Doa Zakat Fitrah Beserta Arti, Lafal dan Hukumnya',
+    date: '2025-09-10 15:05:03',
+    desc: 'Zakat fitrah merupakan ibadah yang wajib ditunaikan oleh umat Islam menjelang Idul Fitri.',
+    link: '/mizan/1',
+    image: mizan1,
+  },
+  {
+    title: 'Pengertian Infaq dalam Islam: Keutamaan dan Cara Mengamalkannya',
+    date: '2025-09-10 15:05:04',
+    desc: 'Infaq adalah ibadah dalam bentuk pengeluaran harta di jalan Allah untuk membantu sesama.',
+    link: '/mizan/2',
+    image: mizan2,
+  },
+  {
+    title: 'Jariyah Artinya Amal yang Tak Terputus: Inilah Contoh dan Keutamaannya',
+    date: '2025-09-10 15:05:05',
+    desc: 'Amal jariyah adalah amalan yang pahalanya terus mengalir meskipun pelakunya telah meninggal dunia.',
+    link: '/mizan/3',
+    image: mizan3,
+  },
+]
+
+// Data testimoni
+const kataMereka = [
+  {
+    name: 'Aini, A.Md Keb.',
+    role: 'Penerima Program Pendidikan',
+    text: 'Alhamdulillah Mizan Amanah sangat membantu dalam kelanjutan pendidikan saya...',
+    link: 'front-end/assets/image/mizan4.png',
+    image: mizan4,
+  },
+  {
+    name: 'Wicno Kusumo',
+    role: 'Penerima Program Ekonomi',
+    text: 'Mizan Amanah membantu saya mendapatkan modal usaha hingga bisa berkembang...',
+    link: 'front-end/assets/image/mizan5.png',
+    image: mizan5,
+  },
+  {
+    name: 'Ust. Budi Ashari, Lc',
+    role: 'Pembina Yayasan',
+    text: 'Mizan Amanah hadir dengan semangat membantu sesama, terutama dalam bidang pendidikan dan ekonomi umat...',
+    link: 'front-end/assets/image/mizan6.png',
+    image: mizan6,
+  },
+]
+
+// Handle error image
+function handleImageError(event, fallbackUrl) {
+  event.target.src = fallbackUrl
+}
+
 </script>
