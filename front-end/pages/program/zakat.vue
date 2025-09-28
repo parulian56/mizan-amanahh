@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100 font-sans text-gray-800">
     <!-- Header -->
     <header class="bg-primary text-white p-4 flex items-center gap-2 shadow">
-      <NuxtLink to="/" class="mr-3">
+      <NuxtLink to="/program/program" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
       </NuxtLink>
       <h1 class="font-bold text-lg">Program</h1>
