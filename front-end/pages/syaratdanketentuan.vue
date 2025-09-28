@@ -10,8 +10,6 @@
     <!-- Breadcrumb -->
     <nav class="mt-1 text-sm opacity-90">
       <router-link to="/" class="hover:underline">Home</router-link>
-      <span class="mx-1">/</span>
-      <span>Tentang</span>
     </nav>
   </div>
 </header>

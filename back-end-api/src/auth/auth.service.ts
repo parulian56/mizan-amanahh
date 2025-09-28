@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
-
-// sementara hardcode user, nanti sambungin ke DB
-const users = [
-  { id: 1, username: 'admin', password: '$2b$10$e6Q4T9w2ZBOKs1XrO5p6NOfK5eZbx3dIv0k3r1bJ9l/jO8z6sS3si' }, 
-  // password: "123456"
-];
+import { User } from '../user/user.entity';
 
 @Injectable()
 export class AuthService {
-  async validateUser(username: string, pass: string) {
-    const user = users.find(u => u.username === username);
-    if (user && await bcrypt.compare(pass, user.password)) {
-      return user;
-    }
-    return null;
+  constructor(
+    @InjectRepository(User)
+    private userRepo: Repository<User>,
+  ) {}
+
+  async register(username: string, password: string) {
+    const hashed = await bcrypt.hash(password, 10);
+    const user = this.userRepo.create({ username, password: hashed });
+    await this.userRepo.save(user);
+    return { success: true, message: 'User registered successfully' };
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.id };
-    const access_token = jwt.sign(payload, 'SECRET_KEY', { expiresIn: '1h' });
-    return { access_token };
+  async login(username: string, password: string) {
+    const user = await this.userRepo.findOne({ where: { username } });
+    if (!user) {
+      return { success: false, message: 'User not found' };
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return { success: false, message: 'Invalid credentials' };
+    }
+
+    return { success: true, user };
   }
 }

@@ -1,16 +1,12 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
-import { AuthService } from './auth.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { User } from '../user/user.entity';
 
 @Module({
-  imports: [
-    JwtModule.register({
-      secret: 'RAHASIA_SUPER_SECRET', // ganti dengan ENV
-      signOptions: { expiresIn: '1h' },
-    }),
-  ],
-  providers: [AuthService],
+  imports: [TypeOrmModule.forFeature([User])],
   controllers: [AuthController],
+  providers: [AuthService],
 })
 export class AuthModule {}
