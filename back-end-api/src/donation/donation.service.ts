@@ -29,6 +29,7 @@ export class DonationService {
       const donation = this.donationRepository.create({
         donorName: dto.donorName,
         amount: dto.amount,
+        paymentMethod: dto.paymentMethod, // ⬅️ simpan metode pembayaran
         program,
       });
       await this.donationRepository.save(donation);
