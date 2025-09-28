@@ -29,7 +29,7 @@
       <ul class="flex items-center space-x-2">
         <li><NuxtLink to="/" class="hover:underline">Home</NuxtLink></li>
         <li>/</li>
-        <li class="text-gray-200">Program</li>
+        <li class="text-gray-200"><NuxtLink to="/program/program" class="hover:underline">Program</NuxtLink></li>
       </ul>
     </nav>
 
@@ -49,101 +49,6 @@
         {{ cat }}
       </button>
     </div>
-
-    <!-- List Program -->
-    <main class="p-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Loading -->
-      <div v-if="pending" class="col-span-full text-center py-10 text-gray-500">
-        <span class="loader"></span>
-        <p class="mt-2">Loading program...</p>
-      </div>
-
-      <!-- Program Cards -->
-      <NuxtLink
-        v-else
-        v-for="program in filteredPrograms"
-        :key="program.id"
-        :to="`/program/${program.id}`"
-        class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
-      >
-        <img
-          :src="program.image"
-          :alt="program.title"
-          class="w-full h-48 object-cover"
-        />
-
-        <div class="p-4 flex flex-col flex-1">
-          <h2 class="font-bold text-primary text-base mb-2 line-clamp-2">
-            {{ program.title }}
-          </h2>
-
-          <!-- Progress -->
-          <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
-            <div
-              class="bg-primary h-2 rounded-full transition-all duration-500 ease-in-out"
-              :style="{ width: program.progress + '%' }"
-            ></div>
-          </div>
-
-          <!-- Info Donasi -->
-          <div class="flex justify-between text-sm text-gray-600 mb-3">
-            <div>
-              <p class="text-xs">Terkumpul</p>
-              <p class="font-semibold">
-                Rp {{ formatNumber(program.collected_donation) }}
-              </p>
-              <p class="text-xs">
-                dari Rp {{ formatNumber(program.donation_target) }}
-              </p>
-            </div>
-            <div class="text-right">
-              <p class="text-xs">Sisa Hari</p>
-              <p class="font-semibold">{{ program.remaining_days }}</p>
-            </div>
-          </div>
-
-          <!-- Metadata -->
-          <div class="flex justify-between text-xs text-gray-500 mb-3">
-            <span>{{ program.start_date }}</span>
-            <span class="text-primary font-medium">{{ program.category_program }}</span>
-          </div>
-
-          <!-- Tombol -->
-          <div class="mt-auto">
-            <span
-              class="bg-primary hover:bg-primary-dark text-white py-2 rounded-md px-4 block text-center text-sm transition"
-            >
-              DONASI
-            </span>
-          </div>
-        </div>
-      </NuxtLink>
-    </main>
-
-    <!-- Tambahan Tombol Tunaikan & Kalkulator Zakat -->
-    <div class="px-4 py-6 text-center">
-      <h2 class="text-lg font-semibold mb-2">
-        Bayar Zakat sekarang dengan Mizan Amanah
-      </h2>
-      <p class="text-sm text-gray-600 mb-4">
-        Saatnya Bayar Zakat. Bersihkan harta anda dengan zakat di Mizan Amanah. 
-        InsyaAllah Mudah, berkah dan amanah.
-      </p>
-      <div class="flex justify-center gap-4">
-        <NuxtLink
-          to="/tunaikan-zakat"
-          class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition"
-        >
-          TUNAIKAN ZAKAT
-        </NuxtLink>
-        <NuxtLink
-          to="/kalkulator-zakat"
-          class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-md transition"
-        >
-          KALKULATOR ZAKAT
-        </NuxtLink>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -156,83 +61,6 @@ const route = useRoute()
 
 // Fetch data dari backend
 const { data: programs, pending } = await useFetch("http://localhost:3001/programs")
-
-// ===== Dummy Data dengan gambar dari /assets/images =====
-if (!programs.value || programs.value.length === 0) {
-  programs.value = [
-    {
-      id: 1,
-      title: "Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah",
-      image: "https://th.bing.com/th/id/OIP.WyRnTu_WoNRQEz92GSY9uwHaE8?w=238&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-      collected_donation: 454295053,
-      donation_target: 400000000,
-      remaining_days: "310",
-      start_date: "31 Juli 2025",
-      category_program: "Zakat"
-    },
-    {
-      id: 2,
-      title: "Raih Pahala Berlipat: 2.5% Zakat Penghasilan Untuk Da’i Pelosok",
-      image: "https://th.bing.com/th/id/OIP.VeGx_--zQfxkdt8uhw7ARwHaEK?w=323&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      collected_donation: 1405557,
-      donation_target: 50000000,
-      remaining_days: "∞",
-      start_date: "Tanpa Batas Waktu",
-      category_program: "Zakat"
-    },
-    {
-      id: 3,
-      title: "Gajian Tiba, Tunaikan Zakat Penghasilanmu",
-      image: "https://th.bing.com/th/id/OIP.LfcZoM6KvD6yFG4Wc6_RkwHaD_?w=299&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-      collected_donation: 1060980455,
-      donation_target: 1000000000,
-      remaining_days: "∞",
-      start_date: "Tanpa Batas Waktu",
-      category_program: "Zakat"
-    },
-    {
-      id: 4,
-      title: "Zakat Pertanian",
-      image: "https://th.bing.com/th/id/OIP.a0rSvn4XpaIaQ7lyKLLjfwHaEK?w=319&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      collected_donation: 37000,
-      donation_target: 1000000000,
-      remaining_days: "∞",
-      start_date: "Tanpa Batas Waktu",
-      category_program: "Zakat"
-    },
-    {
-      id: 5,
-      title: "Zakat Barang Temuan",
-      image: "https://th.bing.com/th/id/OIP.zbINZP-XoM5YwJQL0AoDFQHaEL?w=291&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-      collected_donation: 561248,
-      donation_target: 100000000,
-      remaining_days: "∞",
-      start_date: "Tanpa Batas Waktu",
-      category_program: "Zakat"
-    },
-    {
-      id: 6,
-      title: "Wakaf Pembangunan Masjid",
-      image: "https://th.bing.com/th/id/OIP.sgpn65DA_xqoWcF77JBFAAHaEK?w=308&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-      collected_donation: 250000000,
-      donation_target: 1000000000,
-      remaining_days: "120",
-      start_date: "01 Jan 2025",
-      category_program: "Wakaf"
-    },
-    {
-      id: 7,
-      title: "Sosial: Bantu Korban Banjir",
-      image: "https://th.bing.com/th/id/OIP.ZaHkjDv4bEbHIBud1KYDBQHaEK?w=263&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-      collected_donation: 75000000,
-      donation_target: 500000000,
-      remaining_days: "45",
-      start_date: "15 Feb 2025",
-      category_program: "Sosial"
-    }
-  ]
-}
-// ===== End Dummy =====
 
 // State filter
 const search = ref("")
