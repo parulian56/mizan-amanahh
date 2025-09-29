@@ -74,7 +74,7 @@
 
         <!-- Login & Donasi (Far Right) -->
         <div class="hidden md:flex items-center space-x-4 ml-auto">
-          <a href="login" class="hover:text-[#FB8505] font-medium">Log in</a>
+          <a href="/auth/login" class="hover:text-[#FB8505] font-medium">Log in</a>
           <a href="#donasi" class="bg-[#59AAB7] text-white px-5 py-2 rounded-full font-bold hover:bg-[#478892]">
             Donasi
           </a>

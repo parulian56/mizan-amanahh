@@ -30,7 +30,7 @@
         <li>/</li>
         <li><a href="/program/program" class="hover:underline">program</a></li>
         <li>/</li>
-        <li class="text-gray-200">Sedekah</li>
+        <li class="text-gray-200">Zakat</li>
       </ul>
     </nav>
 
