@@ -1,26 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
-
-// sementara hardcode user, nanti sambungin ke DB
-const users = [
-  { id: 1, username: 'admin', password: '$2b$10$e6Q4T9w2ZBOKs1XrO5p6NOfK5eZbx3dIv0k3r1bJ9l/jO8z6sS3si' }, 
-  // password: "123456"
-];
+import { JwtService } from '@nestjs/jwt';
+import { User } from './entities/user.entity';
+import { RegisterDto, LoginDto } from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
-  async validateUser(username: string, pass: string) {
-    const user = users.find(u => u.username === username);
-    if (user && await bcrypt.compare(pass, user.password)) {
-      return user;
-    }
-    return null;
+  constructor(
+    @InjectRepository(User) private userRepo: Repository<User>,
+    private jwtService: JwtService,
+  ) {}
+
+  async register(dto: RegisterDto) {
+    const hash = await bcrypt.hash(dto.password, 10);
+    const user = this.userRepo.create({ username: dto.username, password: hash });
+    return this.userRepo.save(user);
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.id };
-    const access_token = jwt.sign(payload, 'SECRET_KEY', { expiresIn: '1h' });
-    return { access_token };
+  async login(dto: LoginDto) {
+    const user = await this.userRepo.findOne({ where: { username: dto.username } });
+    if (!user) throw new UnauthorizedException('User not found');
+
+    const isMatch = await bcrypt.compare(dto.password, user.password);
+    if (!isMatch) throw new UnauthorizedException('Invalid credentials');
+
+    const payload = { sub: user.id, username: user.username };
+    return { access_token: await this.jwtService.signAsync(payload) };
   }
 }
