@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProgramModule } from './program/program.module';
-import { DonationModule } from './donation/donation.module'; // ⬅️ tambahin
+import { DonationModule } from './donation/donation.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -16,11 +16,11 @@ import { AuthModule } from './auth/auth.module';
       password: 'raihansami140707',
       database: 'ibadurrohman',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true, // jangan aktifin di production
     }),
     ProgramModule,
     DonationModule,
-    AuthModule, // ⬅️ daftarin modul donation
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

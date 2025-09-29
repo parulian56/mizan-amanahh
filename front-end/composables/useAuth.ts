@@ -1,26 +1,30 @@
-// composables/useAuth.ts
-import { ref } from 'vue'
+export const useAuth = () => {
+  const user = useState<any | null>("user", () => null)
+  const token = useState<string | null>("token", () => null)
+  const apiBase = useRuntimeConfig().public.apiBase || "http://localhost:3000"
 
-const API_URL = 'http://localhost:3000' // ganti sesuai backend NestJS kamu
-
-export function useAuth() {
-  const user = ref(null)
-
-  async function register(username: string, password: string) {
-    const res = await fetch(`${API_URL}/auth/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
+  async function login(email: string, password: string) {
+    const res = await $fetch(`${apiBase}/auth/login`, {
+      method: "POST",
+      body: { email, password },
     })
-
-    if (!res.ok) {
-      throw new Error('Register failed')
-    }
-
-    const data = await res.json()
-    user.value = data
-    return data
+    token.value = (res as any).access_token
+    localStorage.setItem("token", token.value as string)
+    return res
   }
 
-  return { user, register }
+  async function register(name: string, email: string, password: string) {
+    return await $fetch(`${apiBase}/auth/register`, {
+      method: "POST",
+      body: { name, email, password },
+    })
+  }
+
+  function logout() {
+    user.value = null
+    token.value = null
+    localStorage.removeItem("token")
+  }
+
+  return { user, token, login, register, logout }
 }
