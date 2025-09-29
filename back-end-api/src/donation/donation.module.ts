@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Donation } from './entities/donation.entity';
-import { Program } from '../berita/dto/entities/program.entity';
+import { Program } from '../program/entities/program.entity';
 import { DonationService } from './donation.service';
 import { DonationController } from './donation.controller';
 
