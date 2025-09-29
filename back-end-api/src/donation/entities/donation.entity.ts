@@ -7,11 +7,14 @@ export class Donation {
   id: number;
 
   @Column()
-  donor_name: string;
+  donorName: string;
 
-  @Column()
+  @Column({ type: 'decimal' })
   amount: number;
 
-  @ManyToOne(() => Program, (program) => program.donations)
+  @Column({ default: 'transfer' }) // ⬅️ default biar ga error null
+  paymentMethod: string;
+
+  @ManyToOne(() => Program, (program) => program.donations, { onDelete: 'CASCADE' })
   program: Program;
 }

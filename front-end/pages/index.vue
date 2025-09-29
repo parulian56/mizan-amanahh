@@ -30,9 +30,9 @@
               v-show="openMenu === 'program'"
               class="absolute left-0 mt-2 w-48 bg-white shadow rounded transition z-50"
             >
-              <li><NuxtLink to="/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Program</NuxtLink></li>
-              <li><NuxtLink to="/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
-              <li><NuxtLink to="/sedekah" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink></li>
+              <li><NuxtLink to="/program/program" class="block px-4 py-2 hover:bg-[#9BCDD4]">Program</NuxtLink></li>
+              <li><NuxtLink to="/program/zakat" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
+              <li><NuxtLink to="/program/sedekah" class="block px-4 py-2 hover:bg-[#9BCDD4]">Sedekah</NuxtLink></li>
               <li><NuxtLink to="/rekening" class="block px-4 py-2 hover:bg-[#9BCDD4]">Rekening Donasi</NuxtLink></li>
               <li><NuxtLink to="/qurban" class="block px-4 py-2 hover:bg-[#9BCDD4]">Qurban</NuxtLink></li>
               <li><NuxtLink to="/laporan" class="block px-4 py-2 hover:bg-[#9BCDD4]">Laporan Audit</NuxtLink></li>
@@ -57,7 +57,7 @@
             >
               <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
               <li><NuxtLink to="/wakaf" class="block px-4 py-2 hover:bg-[#9BCDD4]">Wakaf</NuxtLink></li>
-              <li><NuxtLink to="/artikel" class="block px-4 py-2 hover:bg-[#9BCDD4]">Artikel</NuxtLink></li>
+              <li><NuxtLink to="/article/article" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
             </ul>
           </li>
 
@@ -96,7 +96,7 @@
         <!-- Mobile Menu -->
         <ul
           :class="[
-            'absolute md:hidden top-16 left-0 w-full bg-white shadow-md transition-all',
+            'absolute md:hidden top-16 left-0 w-full bg-[#FDB669] shadow-md transition-all',
             isOpen ? 'block' : 'hidden'
           ]"
         >
@@ -159,7 +159,7 @@
         <!-- Ilustrasi -->
         <div class="flex justify-center relative">
           <div class="absolute w-72 h-72 bg-[#FDB669] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-          <div class="relative z-10 w-48 h-48 bg-white rounded-lg shadow overflow-hidden">
+          <div class="relative z-10 w-48 h-48 bg-[#FDB669] rounded-lg shadow overflow-hidden">
             <img :src="logoOrang" alt="logo orang" class="w-full h-full object-cover" />
             <div v-if="showPlaceholder" class="w-full h-full bg-gray-100 flex items-center justify-center">
               <div class="text-center text-gray-600">No Image</div>
