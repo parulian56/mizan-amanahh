@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-@Entity('articles')
-export class Article {
+@Entity()
+export class Program {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,12 +11,22 @@ export class Article {
   @Column({ type: 'text' })
   content: string;
 
-  @Column({ nullable: true })
-  image: string;
+  @Column({ default: 0 })
+  collected_donation: number;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @Column()
+  donation_target: number;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @Column({ type: 'date' })
+  start_date: Date;
+
+  @Column({ type: 'date' })
+  end_date: Date;
+
+  @Column()
+  remaining_days: number;
+
+  @Column()
+  category_program: string;
+
 }

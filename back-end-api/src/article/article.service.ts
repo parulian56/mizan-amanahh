@@ -1,40 +1,43 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Article } from './entities/article.entity';
+import { Program } from './entities/program.entity';
+import { CreateProgramDto } from './dto/create-program.dto';
+import { UpdateProgramDto } from './dto/update-program.dto';
 
 @Injectable()
-export class ArticleService {
+export class ProgramService {
   constructor(
-    @InjectRepository(Article)
-    private articleRepository: Repository<Article>,
+    @InjectRepository(Program)
+    private readonly programRepository: Repository<Program>,
   ) {}
 
-  async findAll(): Promise<Article[]> {
-    return this.articleRepository.find();
+  create(createProgramDto: CreateProgramDto): Promise<Program> {
+    const program = this.programRepository.create(createProgramDto);
+    return this.programRepository.save(program);
   }
 
-  async findOne(id: number): Promise<Article> {
-    const article = await this.articleRepository.findOneBy({ id });
-    if (!article) {
-      throw new NotFoundException(`Article with ID ${id} not found`);
+  findAll(): Promise<Program[]> {
+    return this.programRepository.find({ relations: ['donations'] });
+  }
+
+  async findOne(id: number): Promise<Program> {
+    const program = await this.programRepository.findOne({
+      where: { id },
+      relations: ['donations'],
+    });
+    if (!program) {
+      throw new Error(`Program with id ${id} not found`);
     }
-    return article;
+    return program;
   }
 
-  async create(data: Partial<Article>): Promise<Article> {
-    const article = this.articleRepository.create(data);
-    return this.articleRepository.save(article);
+  async update(id: number, updateProgramDto: UpdateProgramDto): Promise<Program> {
+    await this.programRepository.update(id, updateProgramDto);
+    return this.findOne(id);
   }
 
-  async update(id: number, data: Partial<Article>): Promise<Article> {
-    const article = await this.findOne(id); // kalau ga ada → otomatis 404
-    Object.assign(article, data);
-    return this.articleRepository.save(article);
-  }
-
-  async remove(id: number): Promise<Article> {
-    const article = await this.findOne(id); // kalau ga ada → otomatis 404
-    return this.articleRepository.remove(article);
+  async remove(id: number): Promise<void> {
+    await this.programRepository.delete(id);
   }
 }

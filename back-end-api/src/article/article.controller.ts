@@ -1,33 +1,34 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { ArticleService } from './article.service';
-import { Article } from './entities/article.entity';
+import { CreateArticleDto } from './dto/create-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
-@Controller('articles')
+@Controller('Article')
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
+  @Post()
+  create(@Body() createProgramDto: CreateProgramDto) {
+    return this.programService.create(createProgramDto);
+  }
+
   @Get()
-  findAll(): Promise<Article[]> {
-    return this.articleService.findAll();
+  findAll() {
+    return this.programService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Article> {
-    return this.articleService.findOne(+id);
+  findOne(@Param('id') id: string) {
+    return this.programService.findOne(+id);
   }
 
-  @Post()
-  create(@Body() data: Partial<Article>): Promise<Article> {
-    return this.articleService.create(data);
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() data: Partial<Article>) {
-    return this.articleService.update(+id, data);
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateProgramDto: UpdateProgramDto) {
+    return this.programService.update(+id, updateProgramDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.articleService.remove(+id);
+    return this.programService.remove(+id);
   }
 }
