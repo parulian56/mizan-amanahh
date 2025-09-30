@@ -1,33 +1,37 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { ArticleService } from './article.service';
-import { Article } from './entities/article.entity';
+import { CreateArticleDto } from './dto/create-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Controller('articles')
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
+  @Post()
+  async create(@Body() createArticleDto: CreateArticleDto) {
+    return await this.articleService.create(createArticleDto);
+  }
+
   @Get()
-  findAll(): Promise<Article[]> {
-    return this.articleService.findAll();
+  async findAll() {
+    return await this.articleService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Article> {
-    return this.articleService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.articleService.findOne(+id);
   }
 
-  @Post()
-  create(@Body() data: Partial<Article>): Promise<Article> {
-    return this.articleService.create(data);
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() data: Partial<Article>) {
-    return this.articleService.update(+id, data);
+  @Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateArticleDto: UpdateArticleDto,
+  ) {
+    return await this.articleService.update(+id, updateArticleDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.articleService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.articleService.remove(+id);
   }
 }

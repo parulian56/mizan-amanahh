@@ -1,22 +1,31 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('articles')
+@Entity()
 export class Article {
-  @PrimaryGeneratedColumn()
-  id: number;
+@PrimaryGeneratedColumn()
+id: number;
 
-  @Column()
-  title: string;
+@Column()
+title: string;
 
-  @Column({ type: 'text' })
-  content: string;
+@Column({ type: 'text' })
+content: string;
 
-  @Column({ nullable: true })
-  image: string;
+@Column({ default: 0 })
+collected_donation: number;
 
-  @CreateDateColumn()
-  createdAt: Date;
+@Column()
+donation_target: number;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+@Column({ type: 'date' })
+start_date: Date;
+
+@Column({ type: 'date' })
+end_date: Date;
+
+@Column()
+remaining_days: number;
+
+@Column()
+category_article: string;
 }

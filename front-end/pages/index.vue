@@ -57,7 +57,7 @@
             >
               <li><NuxtLink to="/berita/berita" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
               <li><NuxtLink to="/wakaf" class="block px-4 py-2 hover:bg-[#9BCDD4]">Wakaf</NuxtLink></li>
-              <li><NuxtLink to="/article/article" class="block px-4 py-2 hover:bg-[#9BCDD4]">Zakat</NuxtLink></li>
+              <li><NuxtLink to="/article/article" class="block px-4 py-2 hover:bg-[#9BCDD4]">artikel</NuxtLink></li>
             </ul>
           </li>
 
