@@ -273,7 +273,7 @@
             <li><nuxt-link to="/rekening" class="hover:text-red-500">Rekening Donasi</nuxt-link></li>
             <li><nuxt-link to="/qurban" class="hover:text-red-500">Qurban</nuxt-link></li>
             <li><nuxt-link to="/laporan" class="hover:text-red-500">Laporan Audit</nuxt-link></li>
-            <li><nuxt-link to="/zakat" class="hover:text-red-500">Zakat</nuxt-link></li>
+            <li><nuxt-link to="/program/zakat" class="hover:text-red-500">Zakat</nuxt-link></li>
             <li><nuxt-link to="/sedekah" class="hover:text-red-500">Sedekah</nuxt-link></li>
           </ul>
         </div>
