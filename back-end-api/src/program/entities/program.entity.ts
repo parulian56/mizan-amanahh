@@ -21,10 +21,10 @@ export class Program {
   // Ubah dari 'date' → 'timestamptz'
   // Biar bisa handle format 'YYYY-MM-DD' dan juga ISO datetime
   @Column({ type: 'timestamptz' })
-  start_date: Date;
+  start_date: string;
 
   @Column({ type: 'timestamptz' })
-  end_date: Date;
+  end_date: string;
 
   @Column()
   remaining_days: number;
