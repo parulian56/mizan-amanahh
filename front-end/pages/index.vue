@@ -247,7 +247,7 @@
         <!-- Company Info -->
         <div class="space-y-4">
           <div class="flex items-center space-x-2">
-            <div class="bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+            <div class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-bold">
               ibadurahman
             </div>
           </div>
@@ -339,7 +339,7 @@
     </div>
 
     <!-- Bottom Footer -->
-    <div class="bg-red-500 text-white py-4">
+    <div class="bg-orange-500 text-white py-4">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-sm">
