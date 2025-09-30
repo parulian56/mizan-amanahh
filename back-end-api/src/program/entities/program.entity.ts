@@ -18,10 +18,12 @@ export class Program {
   @Column()
   donation_target: number;
 
-  @Column({ type: 'date' })
+  // Ubah dari 'date' → 'timestamptz'
+  // Biar bisa handle format 'YYYY-MM-DD' dan juga ISO datetime
+  @Column({ type: 'timestamptz' })
   start_date: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'timestamptz' })
   end_date: Date;
 
   @Column()
