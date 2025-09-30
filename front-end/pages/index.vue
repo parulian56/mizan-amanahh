@@ -4,8 +4,8 @@
     <header class="fixed top-0 w-full bg-white shadow z-50">
       <nav class="container mx-auto flex items-center py-4 px-6">
         <!-- Logo -->
-        <div class="flex items-center space-x-2 font-bold text-[#FB8505]">
-          <span class="text-xl">Ibadurrohman</span>
+        <div class="flex space-x-2">
+          <img src="assets/image/mizan.png" class="h-12" alt="Mizan" />
         </div>
 
         <!-- Desktop Menu (Center) -->
@@ -151,8 +151,8 @@
           <p class="text-gray-600 mb-6">
             Bergabunglah dengan misi mulia kami untuk menciptakan harapan bagi mereka yang membutuhkan.
           </p>
-          <NuxtLink to="/program" class="bg-[#FB8505] text-white px-6 py-3 rounded-full font-bold hover:bg-[#C96A04]">
-            Mulai Berdonasi
+          <NuxtLink to="/auth/login" class="bg-[#FB8505] text-white px-6 py-3 rounded-full font-bold hover:bg-[#C96A04]">
+            Login
           </NuxtLink>
         </div>
 
@@ -174,34 +174,43 @@
     <!-- ================= KATA MEREKA ================= -->
     <section class="container mx-auto px-6 py-12">
       <h2 class="text-2xl font-bold text-center mb-8">Kata Mereka</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div
-          v-for="(item, i) in kataMereka"
-          :key="i"
-          class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-lg transition"
-        >
-          <img
-            :src="item.image"
-            :alt="item.name"
-            class="w-full h-48 object-cover"
-            loading="lazy"
-            @error="event => handleImageError(event, fallback)"
-          />
-          <div class="p-4">
-            <h3 class="font-semibold text-lg mb-1">{{ item.name }}</h3>
-            <p class="text-xs text-gray-500 mb-3">{{ item.role }}</p>
-            <p class="text-sm text-gray-600 mb-4">
-              {{ item.text }}
-            </p>
-            <NuxtLink
-              :to="item.link"
-              class="text-red-600 font-semibold hover:underline text-sm"
-            >
-              Read More
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
+       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Card 1 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="/assets/image/mizan4.png" class="rounded-t-lg" alt="Aini" />
+      <h2 class="font-bold mt-2">Aini, A.Md Keb.</h2>
+      <p class="text-sm text-gray-500">Penerima Program Pendidikan</p>
+      <p>Terima kasih kepada Mizan Amanah yang telah membimbing saya dari kecil sampai saya bisa mandiri,
+         terima kasih juga kepada para donatur yang telah memberikan dukungan kepada saya sehingga impian saya menjadi seorang bidan tercapai....</p>
+      <NuxtLink to="/katamereka1" class="text-red-500 font-semibold">
+        Read More
+      </NuxtLink>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="/assets/image/mizan5.png" class="rounded-t-lg" alt="Wicno" />
+      <h2 class="font-bold mt-2">Wicno Kusumo</h2>
+      <p class="text-sm text-gray-500">Penerima Program Ekonomi</p>
+      <p>Saya sangat bersyukur bisa dibantu oleh Mizan Amanah, program warungku
+         ini sangat membantu saya untuk bisa berpenghasilan walaupun saya keterbatasan fisik....</p>
+      <NuxtLink to="/katamereka2" class="text-red-500 font-semibold">
+        Read More
+      </NuxtLink>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="/assets/image/mizan6.png" class="rounded-t-lg" alt="Budi Ashari" />
+      <h2 class="font-bold mt-2">Ust. Budi Ashari, Lc</h2>
+      <p class="text-sm text-gray-500">Pembina Yayasan</p>
+      <p>Semoga teman - teman di Mizan Amanah memiliki keikhlasan dalam mengelola lembaga,
+         dan juga harus sesuai dengan namanya, harus amanah. Maju terus Mizan Amanah....</p>
+      <NuxtLink to="/katamereka3" class="text-red-500 font-semibold">
+        Read More
+      </NuxtLink>
+    </div>
+  </div>
     </section>
   </div>
 
@@ -247,9 +256,9 @@
         <!-- Company Info -->
         <div class="space-y-4">
           <div class="flex items-center space-x-2">
-            <div class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-bold">
-              ibadurahman
-            </div>
+            <div class="flex space-x-2">
+          <img src="assets/image/mizan.png" class="h-12" alt="Mizan" />
+        </div>
           </div>
           <p class="text-sm text-gray-600">
             Insan/lembaga yang sudah tidak mampu lagi bekerja atau berusaha
