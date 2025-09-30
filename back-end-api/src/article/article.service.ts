@@ -1,43 +1,46 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Program } from './entities/program.entity';
-import { CreateProgramDto } from './dto/create-program.dto';
-import { UpdateProgramDto } from './dto/update-program.dto';
+import { Article } from './entities/article.entity';
+import { CreateArticleDto } from './dto/create-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
-export class ProgramService {
+export class ArticleService {
   constructor(
-    @InjectRepository(Program)
-    private readonly programRepository: Repository<Program>,
+    @InjectRepository(Article)
+    private readonly articleRepository: Repository<Article>,
   ) {}
 
-  create(createProgramDto: CreateProgramDto): Promise<Program> {
-    const program = this.programRepository.create(createProgramDto);
-    return this.programRepository.save(program);
+  async create(createArticleDto: CreateArticleDto): Promise<Article> {
+    const article = this.articleRepository.create(createArticleDto);
+    return await this.articleRepository.save(article);
   }
 
-  findAll(): Promise<Program[]> {
-    return this.programRepository.find({ relations: ['donations'] });
+  async findAll(): Promise<Article[]> {
+    return await this.articleRepository.find();
   }
 
-  async findOne(id: number): Promise<Program> {
-    const program = await this.programRepository.findOne({
+  async findOne(id: number): Promise<Article> {
+    const article = await this.articleRepository.findOne({
       where: { id },
-      relations: ['donations'],
     });
-    if (!program) {
-      throw new Error(`Program with id ${id} not found`);
+    if (!article) {
+      throw new NotFoundException(`Article with id ${id} not found`);
     }
-    return program;
+    return article;
   }
 
-  async update(id: number, updateProgramDto: UpdateProgramDto): Promise<Program> {
-    await this.programRepository.update(id, updateProgramDto);
-    return this.findOne(id);
+  async update(id: number, updateArticleDto: UpdateArticleDto): Promise<Article> {
+    const existing = await this.findOne(id); // cek dulu biar error lebih jelas
+    const updated = Object.assign(existing, updateArticleDto);
+    return await this.articleRepository.save(updated);
   }
 
   async remove(id: number): Promise<void> {
-    await this.programRepository.delete(id);
+    const result = await this.articleRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Article with id ${id} not found`);
+    }
   }
 }

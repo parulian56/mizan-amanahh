@@ -1,4 +1,4 @@
-export class CreateProgramDto {
+export class CreateArticleDto {
   title: string;
   content: string;
   donation_target: number;
