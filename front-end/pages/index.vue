@@ -247,7 +247,7 @@
         <!-- Company Info -->
         <div class="space-y-4">
           <div class="flex items-center space-x-2">
-            <div class="bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+            <div class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-bold">
               ibadurahman
             </div>
           </div>
@@ -273,8 +273,8 @@
             <li><nuxt-link to="/rekening" class="hover:text-red-500">Rekening Donasi</nuxt-link></li>
             <li><nuxt-link to="/qurban" class="hover:text-red-500">Qurban</nuxt-link></li>
             <li><nuxt-link to="/laporan" class="hover:text-red-500">Laporan Audit</nuxt-link></li>
-            <li><nuxt-link to="/zakat" class="hover:text-red-500">Zakat</nuxt-link></li>
-            <li><nuxt-link to="/sedekah" class="hover:text-red-500">Sedekah</nuxt-link></li>
+            <li><nuxt-link to="/program/zakat" class="hover:text-red-500">Zakat</nuxt-link></li>
+            <li><nuxt-link to="/program/sedekah" class="hover:text-red-500">Sedekah</nuxt-link></li>
           </ul>
         </div>
 
@@ -287,7 +287,7 @@
               <li><nuxt-link to="/berita/berita" class="hover:text-red-500">Berita</nuxt-link></li>
               <li><nuxt-link to="/kantorcabang" class="hover:text-red-500">Kantor Cabang</nuxt-link></li>
                <li><nuxt-link to="/syaratdanketentuan" class="hover:text-red-500">Syarat & Ketentuan</nuxt-link></li>
-                <li><nuxt-link to="/tentang" class="hover:text-red-500">Artikel</nuxt-link></li>
+                <li><nuxt-link to="/article/article" class="hover:text-red-500">Artikel</nuxt-link></li>
           </ul>
         </div>
 
@@ -339,7 +339,7 @@
     </div>
 
     <!-- Bottom Footer -->
-    <div class="bg-red-500 text-white py-4">
+    <div class="bg-orange-500 text-white py-4">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-sm">
