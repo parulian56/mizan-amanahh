@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Program } from '../../program/entities/program.entity';
+import { Program } from '../../program/entities/program.entity'; // ✅ path yang benar
+
 
 @Entity()
 export class Donation {

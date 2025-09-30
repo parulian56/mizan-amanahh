@@ -55,7 +55,7 @@
               v-show="openMenu === 'berita'"
               class="absolute left-0 mt-2 w-40 bg-white shadow rounded transition z-50"
             >
-              <li><NuxtLink to="/berita-update" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
+              <li><NuxtLink to="/berita/berita" class="block px-4 py-2 hover:bg-[#9BCDD4]">Berita</NuxtLink></li>
               <li><NuxtLink to="/wakaf" class="block px-4 py-2 hover:bg-[#9BCDD4]">Wakaf</NuxtLink></li>
               <li><NuxtLink to="/article/article" class="block px-4 py-2 hover:bg-[#9BCDD4]">artikel</NuxtLink></li>
             </ul>
@@ -169,192 +169,8 @@
       </div>
     </section>
 
-    <!-- ================= PROGRAM ================= -->
-    <section id="program" class="bg-gray-50 py-20">
-      <div class="container mx-auto px-6">
-        <h2 class="text-center text-3xl font-bold text-[#111111] mb-12">Program Infaq dan Zakat</h2>
-        <div class="flex justify-center gap-4 mb-10">
-          <button class="px-6 py-2 rounded-full font-bold bg-[#FB8505] text-white hover:bg-[#C96A04]">Infaq</button>
-          <button class="px-6 py-2 rounded-full font-bold bg-white text-[#111111] border">Zakat</button>
-        </div>
 
-        <!-- Cards -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            v-for="(card, index) in cards"
-            :key="index"
-            class="bg-white rounded-xl shadow hover:-translate-y-1 transition overflow-hidden"
-          >
-            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold">Infaq Sedekah</div>
-            <img :src="card.image" :alt="card.title" class="w-full h-48 object-cover" />
-
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-2 min-h-[66px] flex items-start">{{ card.title }}</h3>
-              <p class="text-[#FB8505] font-bold mb-2">
-                Rp. {{ card.terkumpul.toLocaleString() }} / Rp. {{ card.target.toLocaleString() }}
-              </p>
-
-              <!-- Progress Bar -->
-              <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-                <div
-                  class="bg-[#FB8505] h-2 rounded-full"
-                  :style="{ width: (card.terkumpul / card.target * 100) + '%' }"
-                ></div>
-              </div>
-
-              <p class="text-sm text-gray-600 mb-4">
-                {{ card.deskripsi }}
-              </p>
-              <NuxtLink to="/program" class="text-[#FB8505] font-bold">Read More</NuxtLink>
-              <div class="mt-4">
-                <NuxtLink to="/program" class="bg-[#FB8505] text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-[#C96A04]">
-                  Donasi
-                </NuxtLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PROGRAM TAMBAHAN ================= -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <!-- Header Section -->
-        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <h2 class="text-3xl font-bold text-[#111111] text-center mb-6">Program</h2>
-          <p class="text-gray-600 leading-relaxed">
-            Bergabung Program Lembaga Amil Zakat Mizan Amanah seperti Panti Asuhan Islam, 
-            Santuman Anak Yatim, dan berbagai pilihan donasi online untuk membantu sesama. 
-            Bergabung Program Lembaga Amil Zakat Mizan Amanah seperti Panti Asuhan Islam, 
-            Santuman Anak Yatim, dan berbagai pilihan donasi online untuk membantu sesama. 
-            Satu investasi yang dapat merubah jutaan hidup untuk kehidupan dunia dan akhirat. Aamiin
-          </p>
-        </div>
-
-        <!-- Program Cards -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          
-          <!-- Card 1: Infaq Beras -->
-          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
-            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
-            <img :src="sedekah1" alt="Infaq Beras" class="w-full h-48 object-cover" />
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
-                Infaq Beras Untuk Fakir,Miskin,Lansia,Yatim,&Dhuafa Penghafal,AlQuran
-              </h3>
-              <div class="mb-4">
-                <p class="text-[#FB8505] font-bold text-sm mb-2">
-                  Rp. {{ (63151813).toLocaleString() }} / Rp. {{ (100000000).toLocaleString() }}
-                </p>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 63%"></div>
-                </div>
-              </div>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                NAZDAR adalah menampung anak yatim yang tidak memiliki tempat tinggal...
-              </p>
-              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
-              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
-                Donasi
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 2: Berkah Dengan Sedekah -->
-          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
-            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
-            <img :src="zakat" alt="Berkah Dengan Sedekah" class="w-full h-48 object-cover" />
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
-                Tunaikan Zakat: Dekatkan Diri Menuju Surga Bersama Rasulullah
-              </h3>
-              <div class="mb-4">
-                <p class="text-[#FB8505] font-bold text-sm mb-2">
-                  Rp. {{ (454645053).toLocaleString() }} / Rp. {{ ( 400000000).toLocaleString() }}
-                </p>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 100%"></div>
-                </div>
-              </div>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                “Sembahlah Allah dan jangan menyekutukan-Nya dengan sesuatu pun. Dirikanlah shalat, tunaikan zakat dan sambunglah tali silaturrahim.”
-              </p>
-              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
-              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
-                Donasi
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 3: Sedekah Yatim -->
-          <div class="bg-white rounded-xl shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden">
-            <div class="bg-[#FB8505] text-white px-4 py-2 font-bold text-sm">Infaq Sedekah</div>
-            <img :src="nenekeja" alt="Sedekah Yatim" class="w-full h-48 object-cover" />
-            <div class="p-5">
-              <h3 class="text-lg font-bold text-[#111111] mb-3 min-h-[66px] flex items-start leading-tight">
-                Sedekah Sembako & Bedah Rumah Nenek Eja Yang Hidup Sebatang Kara
-              </h3>
-              <div class="mb-4">
-                <p class="text-[#FB8505] font-bold text-sm mb-2">
-                  Rp. {{ (16138000).toLocaleString() }} / Rp. {{ (30000000).toLocaleString() }}
-                </p>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="bg-[#FB8505] h-2 rounded-full" style="width: 100%"></div>
-                </div>
-              </div>
-              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-               Yuk orang-orang baik dan Sahabat Dermawan mari kita wujudkan Impian Nek Eja
-              </p>
-              <a href="#" class="text-[#FB8505] font-bold text-sm hover:text-[#C96A04] transition mb-4 block">Read More</a>
-              <button class="bg-[#FB8505] hover:bg-[#C96A04] text-white px-4 py-2 rounded-full font-bold text-sm transition duration-300">
-                Donasi
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-        <div class="font-sans text-[#111111]">
-    <!-- ================= UPDATE & BERITA ================= -->
-    <section class="container mx-auto px-6 py-12">
-      <h2 class="text-2xl font-bold text-center mb-8">Update & Berita</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div
-          v-for="(item, i) in berita"
-          :key="i"
-          class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-lg transition"
-        >
-          <img
-            :src="item.image"
-            :alt="item.title"
-            class="w-full h-48 object-cover"
-            loading="lazy"
-            @error="event => handleImageError(event, fallback)"
-          />
-          <div class="p-4">
-            <span
-              class="inline-block bg-red-500 text-white text-xs px-3 py-1 rounded mb-3"
-            >
-              Artikel
-            </span>
-            <h3 class="font-semibold text-lg mb-1">{{ item.title }}</h3>
-            <p class="text-xs text-gray-500 mb-3">{{ item.date }}</p>
-            <p class="text-sm text-gray-600 mb-4">
-              {{ item.desc }}
-            </p>
-            <NuxtLink
-              :to="item.link"
-              class="text-red-600 font-semibold hover:underline text-sm"
-            >
-              Read More
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- ================= KATA MEREKA ================= -->
     <section class="container mx-auto px-6 py-12">
       <h2 class="text-2xl font-bold text-center mb-8">Kata Mereka</h2>
@@ -389,7 +205,6 @@
     </section>
   </div>
 
-    </section>
 
     <!-- ================= FOOTER ================= -->
 <footer class="bg-gray-100">
@@ -469,6 +284,7 @@
           <ul class="space-y-2 text-sm text-gray-600">
             <li><nuxt-link to="/tentang" class="hover:text-red-500">Tentang Kami</nuxt-link></li>
              <li><nuxt-link to="/wakaf" class="hover:text-red-500">wakaf</nuxt-link></li>
+              <li><nuxt-link to="/berita/berita" class="hover:text-red-500">Berita</nuxt-link></li>
               <li><nuxt-link to="/kantorcabang" class="hover:text-red-500">Kantor Cabang</nuxt-link></li>
                <li><nuxt-link to="/syaratdanketentuan" class="hover:text-red-500">Syarat & Ketentuan</nuxt-link></li>
                 <li><nuxt-link to="/tentang" class="hover:text-red-500">Artikel</nuxt-link></li>
@@ -555,7 +371,6 @@
       </div>
     </div>
   </footer>
-  </div>
 </template>
 
 <script setup>
