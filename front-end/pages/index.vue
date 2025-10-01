@@ -216,7 +216,7 @@
 
 
     <!-- ================= FOOTER ================= -->
-<footer class="bg-gray-100">
+<footer class="bg-white-50">
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
       <!-- Header Section -->
