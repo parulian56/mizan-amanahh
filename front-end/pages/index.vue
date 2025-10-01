@@ -216,7 +216,7 @@
 
 
     <!-- ================= FOOTER ================= -->
-<footer class="bg-gray-100">
+<footer class="bg-white-50">
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
       <!-- Header Section -->
@@ -352,7 +352,7 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-sm">
-            © 2025 Mizan Amanah. All rights reserved.
+            © 2025 Ibadurohman. All rights reserved.
           </div>
           <div class="flex space-x-4 mt-2 md:mt-0">
             <a href="#" class="text-white hover:text-gray-200">
