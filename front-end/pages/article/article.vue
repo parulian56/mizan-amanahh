@@ -2,10 +2,10 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-primary text-white p-4 flex items-center gap-2">
-      <router-link to="/" class="mr-3">
+      <NuxtLink to="/" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
-      </router-link>
-      <h1 class="font-bold">article</h1>
+      </NuxtLink>
+      <h1 class="font-bold">Article</h1>
       <div class="flex-1"></div>
       <!-- Search -->
       <div class="relative w-2/3 md:w-1/3">
@@ -26,9 +26,9 @@
     <!-- Breadcrumb -->
     <nav class="bg-primary px-4 py-2 text-sm text-white">
       <ul class="flex items-center space-x-2">
-        <li><a href="/" class="hover:underline">Home</a></li>
+        <li><NuxtLink to="/" class="hover:underline">Home</NuxtLink></li>
         <li>/</li>
-        <li class="text-gray-200">Tentang</li>
+        <li class="text-gray-200">Article</li>
       </ul>
     </nav>
 
@@ -49,69 +49,38 @@
       </button>
     </div>
 
-    <!-- List Programs -->
-<main class="p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  <NuxtLink
-    v-for="article in filteredArticles"
-    :key="article.id"
-    :to="`/program/${program.id}`"
-    class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col hover:shadow-lg transition"
-  >
-    <!-- Gambar -->
-    <img
-      :src="article.image || 'https://via.placeholder.com/400x200?text=No+Image'"
-      :alt="article.title"
-      class="w-full h-48 object-cover"
-    />
+    <!-- List Articles -->
+    <main class="p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <NuxtLink
+        v-for="article in filteredArticles"
+        :key="article.id"
+        :to="`/article/${article.id}`"
+        class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col hover:shadow-lg transition"
+      >
+        <!-- Gambar -->
+        <img
+          :src="article.image || 'https://via.placeholder.com/400x200?text=No+Image'"
+          :alt="article.title"
+          class="w-full h-48 object-cover"
+        />
 
-    <!-- Konten -->
-    <div class="p-4 flex flex-col flex-1">
-      <h2 class="font-bold text-primary mb-2">
-        {{ program.title }}
-      </h2>
+        <!-- Konten -->
+        <div class="p-4 flex flex-col flex-1">
+          <h2 class="font-bold text-primary mb-2">
+            {{ article.title }}
+          </h2>
 
-      <!-- Progress bar -->
-      <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
-        <div
-          class="bg-primary h-2 rounded-full"
-          :style="{ width: program.progress + '%' }"
-        ></div>
-      </div>
+          <p class="text-gray-600 text-sm line-clamp-3 mb-3">
+            {{ article.content }}
+          </p>
 
-      <!-- Info Donasi -->
-      <div class="flex justify-between text-sm text-gray-600 mb-3">
-        <div>
-          Terkumpul<br />
-          <span class="font-semibold">
-            Rp. {{ formatNumber(program.collected_donation) }}
-          </span>
-          <span class="text-xs">
-            dari Rp. {{ formatNumber(program.donation_target) }}
-          </span>
+          <!-- Kategori -->
+          <div class="mt-auto text-xs text-primary font-medium">
+            {{ article.category_article }}
+          </div>
         </div>
-        <div class="text-right">
-          Sisa Hari<br />
-          <span class="font-semibold">{{ program.remaining_days }}</span>
-        </div>
-      </div>
-
-      <!-- Tanggal & Kategori -->
-      <div class="flex justify-between text-xs text-gray-500 mb-3">
-        <span>{{ program.start_date }}</span>
-        <span class="text-primary font-medium">{{ program.category_program }}</span>
-      </div>
-
-          <!-- Tombol (opsional, tetap tampil tapi tidak perlu clickable karena card sudah clickable) -->
-        <div class="mt-auto">
-          <button
-            @click.stop="donasi(program.id)" class="bg-primary text-white py-2 rounded-lg px-4 block text-center w-full">
-             DONASI
-          </button>
-        </div>
-  </div>
-  </NuxtLink>
-</main>
-
+      </NuxtLink>
+    </main>
   </div>
 </template>
 
@@ -119,7 +88,7 @@
 import { ref, computed } from "vue"
 
 // ambil data dari backend
-const { data: articles } = await useFetch('http://localhost:3001/programs')
+const { data: articles } = await useFetch('http://localhost:3001/articles')
 
 // state filter & search
 const search = ref("")
@@ -127,47 +96,15 @@ const activeCategory = ref("Semua")
 const categories = ["Semua", "Zakat", "Wakaf", "Sosial", "Sedekah"]
 
 // computed untuk filter data
-const filteredPrograms = computed(() => {
-  if (!programs.value) return []
+const filteredArticles = computed(() => {
+  if (!articles.value) return []
 
-  return programs.value.filter(p => {
-    const matchSearch = p.title.toLowerCase().includes(search.value.toLowerCase())
-    const matchCategory = activeCategory.value === "Semua" || p.category_program === activeCategory.value
+  return articles.value.filter(a => {
+    const matchSearch = a.title.toLowerCase().includes(search.value.toLowerCase())
+    const matchCategory =
+      activeCategory.value === "Semua" ||
+      a.category_article === activeCategory.value
     return matchSearch && matchCategory
-  }).map(p => ({
-    ...p,
-    progress: Math.min(100, Math.round((p.collected_donation / p.donation_target) * 100))
-  }))
+  })
 })
-
-// format number (rupiah sederhana)
-const formatNumber = (num) => {
-  return new Intl.NumberFormat("id-ID").format(num || 0)
-}
 </script>
-
-<style>
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-/* Primary → Orange 500 */
-.bg-primary {
-  background-color: #FB8505 !important;
-}
-.text-primary {
-  color: #FB8505 !important;
-}
-.bg-primary-dark {
-  background-color: #C96A04 !important;
-}
-
-/* Secondary → Teal 500 */
-.bg-secondary {
-  background-color: #59AAB7 !important;
-}
-.text-secondary {
-  color: #59AAB7 !important;
-}
-.bg-secondary-dark {
-  background-color: #478892 !important;
-}
-</style>

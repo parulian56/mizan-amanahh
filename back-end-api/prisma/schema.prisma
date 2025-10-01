@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -22,4 +21,22 @@ model Program {
   target    Int
   collected Int        @default(0)
   donations Donation[]
+}
+
+model Article {
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String
+}
+
+model Berita {
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
 }
