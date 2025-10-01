@@ -301,49 +301,6 @@
         </div>
 
         <!-- Newsletter -->
-        <div>
-          <h3 class="font-semibold text-gray-800 mb-4">Newsletter</h3>
-          <form @submit.prevent="subscribeNewsletter" class="space-y-4">
-            <div>
-              <input
-                v-model="email"
-                type="email"
-                placeholder="Enter your email"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-sm font-medium"
-            >
-              Berlangganan
-            </button>
-          </form>
-          
-          <!-- Warning -->
-          <div class="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-            <div class="flex items-start space-x-2">
-              <div class="text-yellow-600">⚠️</div>
-              <div class="text-xs text-yellow-800">
-                <strong>Hati - hati penipuan mengatasnamakan Mizan Amanah.</strong> Seluruh donasi resmi hanya melalui situs website, aplikasi, dan rekening resmi Mizan Amanah SAJA!!!
-              </div>
-            </div>
-          </div>
-
-          <!-- App Download -->
-          <div class="mt-6">
-            <h4 class="font-semibold text-gray-800 mb-2 text-sm">Download Aplikasi:</h4>
-            <div class="flex space-x-2">
-              <a href="#" class="bg-black text-white px-3 py-1 rounded text-xs hover:bg-gray-800">
-                App Store
-              </a>
-              <a href="#" class="bg-green-600 text-white px-3 py-1 rounded text-xs hover:bg-green-700">
-                Google Play
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
