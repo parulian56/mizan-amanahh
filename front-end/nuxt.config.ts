@@ -1,7 +1,20 @@
+// nuxt.config.ts
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
-
-  css: ["~/assets/css/main.css"],
-  modules: ["@nuxtjs/tailwindcss"], 
+  css: [
+    '~/assets/css/main.css',
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:3000/api',
+        changeOrigin: true,
+      },
+    },
+  },
 })

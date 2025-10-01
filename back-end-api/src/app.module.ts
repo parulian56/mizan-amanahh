@@ -1,30 +1,24 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ProgramModule } from './program/program.module';
-import { DonationModule } from './donation/donation.module';
-import { AuthModule } from './auth/auth.module';
-import { ArticleModule } from './article/article.module';
+import { AuditController } from './audit/audit.controller';
+import { AuditService } from './audit/audit.service';
+import { AuditReport } from './audit/audit.entity';
 
 @Module({
-imports: [
-TypeOrmModule.forRoot({
-type: 'postgres',
-host: 'localhost',
-port: 5432,
-username: 'postgres',
-password: 'raihansami140707',
-database: 'ibadurrohman',
-autoLoadEntities: true,
-synchronize: true, // ❌ jangan aktifkan di production
-}),
-ProgramModule,
-DonationModule,
-AuthModule,
-ArticleModule, // ✅ tambahin di sini
-],
-controllers: [AppController],
-providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'raihamzu',
+      database: 'audit_db',
+      entities: [AuditReport],
+      synchronize: true,
+    }),
+    TypeOrmModule.forFeature([AuditReport]),
+  ],
+  controllers: [AuditController],
+  providers: [AuditService],
 })
 export class AppModule {}

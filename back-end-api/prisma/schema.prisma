@@ -9,34 +9,17 @@ datasource db {
 
 model Donation {
   id        Int      @id @default(autoincrement())
+  program   Program  @relation(fields: [programId], references: [id])
   programId Int
   amount    Int
   createdAt DateTime @default(now())
-  program   Program  @relation(fields: [programId], references: [id])
 }
 
 model Program {
-  id        Int        @id @default(autoincrement())
-  title     String
-  target    Int
-  collected Int        @default(0)
-  donations Donation[]
+  id         Int        @id @default(autoincrement())
+  title      String
+  target     Int
+  collected  Int        @default(0)
+  donations  Donation[]
 }
 
-model Article {
-  id      Int    @id @default(autoincrement())
-  title   String
-  content String
-}
-
-model Berita {
-  id      Int    @id @default(autoincrement())
-  title   String
-  content String
-}
-
-model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  password String
-}
