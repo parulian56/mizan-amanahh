@@ -10,4 +10,3 @@ controllers: [ArticleController],
 providers: [ArticleService],
 })
 export class ArticleModule {}
-7
