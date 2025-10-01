@@ -2,10 +2,10 @@
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-primary text-white p-4 flex items-center gap-2">
-      <NuxtLink to="/" class="mr-3">
+      <router-link to="/program/program" class="mr-3">
         <i class="fas fa-arrow-left text-xl"></i>
-      </NuxtLink>
-      <h1 class="font-bold">Program</h1>
+      </router-link>
+      <h1 class="font-bold">Program Zakat</h1>
       <div class="flex-1"></div>
       <!-- Search -->
       <div class="relative w-2/3 md:w-1/3">
@@ -26,9 +26,11 @@
     <!-- Breadcrumb -->
     <nav class="bg-primary px-4 py-2 text-sm text-white">
       <ul class="flex items-center space-x-2">
-        <li><NuxtLink to="/" class="hover:underline">Home</NuxtLink></li>
+        <li><a href="/" class="hover:underline">Home</a></li>
         <li>/</li>
-        <li class="text-gray-200">Program</li>
+        <li><a href="/program/program" class="hover:underline">program</a></li>
+        <li>/</li>
+        <li class="text-gray-200">Zakat</li>
       </ul>
     </nav>
 
@@ -66,7 +68,9 @@
 
         <!-- Konten -->
         <div class="p-4 flex flex-col flex-1">
-          <h2 class="font-bold text-primary mb-2">{{ program.title }}</h2>
+          <h2 class="font-bold text-primary mb-2">
+            {{ program.title }}
+          </h2>
 
           <!-- Progress bar -->
           <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
@@ -101,9 +105,12 @@
 
           <!-- Tombol -->
           <div class="mt-auto">
-            <span class="bg-primary text-white py-2 rounded-lg px-4 block text-center">
+            <button
+              @click.stop="donasi(program.id)"
+              class="bg-primary text-white py-2 rounded-lg px-4 block text-center w-full"
+            >
               DONASI
-            </span>
+            </button>
           </div>
         </div>
       </NuxtLink>
@@ -112,41 +119,28 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue"
-import { useRoute } from "vue-router"
-
-const route = useRoute()
+import { ref, computed } from "vue"
 
 // ambil data dari backend
-const { data: programs } = await useFetch("http://localhost:3001/programs")
+const { data: programs } = await useFetch('http://localhost:3001/programs')
 
 // state filter & search
 const search = ref("")
-const activeCategory = ref("Zakat")
-const categories = ["Semua", "Zakat", "Wakaf", "Sosial"]
-
-// pas mount → cek query param category
-onMounted(() => {
-  if (route.query.category) {
-    activeCategory.value = route.query.category
-  }
-})
+const activeCategory = ref("Zakat") // langsung aktif ke Zakat
+const categories = ["Semua", "Zakat", "Wakaf", "Sosial", "Sedekah"]
 
 // computed untuk filter data
 const filteredPrograms = computed(() => {
   if (!programs.value) return []
 
-  return programs.value
-    .filter((p) => {
-      const matchSearch = p.title.toLowerCase().includes(search.value.toLowerCase())
-      const matchCategory =
-        activeCategory.value === "Zakat" || p.category_program === activeCategory.value
-      return matchSearch && matchCategory
-    })
-    .map((p) => ({
-      ...p,
-      progress: Math.min(100, Math.round((p.collected_donation / p.donation_target) * 100)),
-    }))
+  return programs.value.filter(p => {
+    const matchSearch = p.title.toLowerCase().includes(search.value.toLowerCase())
+    const matchCategory = activeCategory.value === "Semua" || p.category_program === activeCategory.value
+    return matchSearch && matchCategory
+  }).map(p => ({
+    ...p,
+    progress: Math.min(100, Math.round((p.collected_donation / p.donation_target) * 100))
+  }))
 })
 
 // format number (rupiah sederhana)
@@ -154,29 +148,3 @@ const formatNumber = (num) => {
   return new Intl.NumberFormat("id-ID").format(num || 0)
 }
 </script>
-
-<style>
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-/* Primary → Orange 500 */
-.bg-primary {
-  background-color: #FB8505 !important;
-}
-.text-primary {
-  color: #FB8505 !important;
-}
-.bg-primary-dark {
-  background-color: #C96A04 !important;
-}
-
-/* Secondary → Teal 500 */
-.bg-secondary {
-  background-color: #59AAB7 !important;
-}
-.text-secondary {
-  color: #59AAB7 !important;
-}
-.bg-secondary-dark {
-  background-color: #478892 !important;
-}
-</style>

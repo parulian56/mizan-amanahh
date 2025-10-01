@@ -16,8 +16,8 @@
         <!-- Breadcrumb -->
         <nav class="text-sm opacity-90">
           <router-link to="/" class="hover:underline">Home</router-link>
-          <span class="mx-1">/</span>
-          <span>Artikel</span>
+          <span class="mx-1">></span>
+          <span>Qurban</span>
         </nav>
       </div>
     </header>
@@ -54,7 +54,7 @@
         <!-- Gambar -->
         <div class="flex justify-center">
           <img
-            src="/assets/image/sedekah1.png"
+            src="/assets/image/ibadah_qurban.jpg"
             alt="Qurban"
             class="rounded-lg shadow-lg w-full md:w-96"
           />
@@ -153,7 +153,7 @@
           <!-- Tombol -->
           <button
             type="submit"
-            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-green-700"
+            class="w-full bg-sky-600 text-white p-3 rounded hover:bg-sky-600"
           >
             Kirim Pendaftaran
           </button>
@@ -288,19 +288,19 @@ const artikels = [
     id: 1,
     title: "Keutamaan Berqurban",
     excerpt: "Keutamaan qurban meliputi pahala yang sangat besar di sisi Allah SWT,",
-    image: "https://source.unsplash.com/600x400/?sheep,qurban"
+    image: "/artikel/Keutamaan-berqurban.jpg"
   },
   {
     id: 2,
     title: "Panduan Praktis Qurban",
-    excerpt: "pemilihan hewan sesuai syarat usia dan kondisi,",
-    image: "https://source.unsplash.com/600x400/?cow,islam"
+    excerpt: "Panduan praktis qurban meliputi pemilihan hewan dan peralatannya,",
+    image: "/artikel/Panduan-Praktis-Ibadah-Qurban.jpg"
   },
   {
     id: 3,
     title: "Sejarah Ibadah Qurban",
-    excerpt: "ibadah menyembelih hewan tertentu pada waktu tertentu sebagai bentuk ketaatan dan rasa syukur kepada Allah SWT,",
-    image: "https://source.unsplash.com/600x400/?goat,history"
+    excerpt: "Sejarah ibadah qurban berawal dari perintah Allah kepada Nabi Ibrahim untuk menyembelih putranya,",
+    image: "/artikel/sejarah_ibadah_qurban.jpeg"
   }
 ]
 

@@ -7,23 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model donation {
-  id         Int      @id(map: "PK_25fb5a541964bc5cfc18fb13a82") @default(autoincrement())
-  donor_name String   @db.VarChar
-  amount     Int
-  programId  Int?
-  program    program? @relation(fields: [programId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_fa357429a76b467183b6c8aa36c")
+model Donation {
+  id        Int      @id @default(autoincrement())
+  program   Program  @relation(fields: [programId], references: [id])
+  programId Int
+  amount    Int
+  createdAt DateTime @default(now())
 }
 
-model program {
-  id                 Int        @id(map: "PK_3bade5945afbafefdd26a3a29fb") @default(autoincrement())
-  title              String     @db.VarChar
-  content            String
-  collected_donation Int        @default(0)
-  donation_target    Int
-  start_date         DateTime   @db.Date
-  end_date           DateTime   @db.Date
-  remaining_days     Int
-  category_program   String     @db.VarChar
-  donation           donation[]
+model Program {
+  id         Int        @id @default(autoincrement())
+  title      String
+  target     Int
+  collected  Int        @default(0)
+  donations  Donation[]
 }
+

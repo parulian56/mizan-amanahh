@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuditModule } from './audit/audit.module'; // 👈 import modul Audit
+import { AuditController } from './audit/audit.controller';
+import { AuditService } from './audit/audit.service';
+import { AuditReport } from './audit/audit.entity';
 
 @Module({
   imports: [
@@ -11,10 +13,12 @@ import { AuditModule } from './audit/audit.module'; // 👈 import modul Audit
       username: 'postgres',
       password: 'raihamzu',
       database: 'audit_db',
-      autoLoadEntities: true, // otomatis detect entity dari semua module
-      synchronize: true, // buat tabel otomatis
+      entities: [AuditReport],
+      synchronize: true,
     }),
-    AuditModule, // 👈 daftarkan modul Audit di sini
+    TypeOrmModule.forFeature([AuditReport]),
   ],
+  controllers: [AuditController],
+  providers: [AuditService],
 })
 export class AppModule {}
