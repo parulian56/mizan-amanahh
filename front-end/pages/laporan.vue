@@ -284,9 +284,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
+// KONFIGURASI YANG BENAR - Backend jalan di port 3001
+const API_BASE_URL = "http://localhost:3001";
 
 const auditReports = ref([]);
 const newYear = ref("");
@@ -300,15 +300,21 @@ const showToast = ref(false);
 const toastMessage = ref("");
 const toastType = ref("success");
 
-// Fetch from backend
+// Fetch dari backend
 onMounted(async () => {
   await fetchReports();
 });
 
 const fetchReports = async () => {
   try {
-    auditReports.value = await $fetch("/api/audit");
+    const response = await $fetch(`${API_BASE_URL}/api/audit`);
+    auditReports.value = response.map((report, index) => ({
+      ...report,
+      number: index + 1,
+      fileUrl: `${API_BASE_URL}/api/audit/file/${report.fileName}`,
+    }));
   } catch (err) {
+    console.error("Error fetching reports:", err);
     showToastMessage("Gagal memuat laporan", "error");
   }
 };
@@ -339,25 +345,40 @@ const resetForm = () => {
   newYear.value = "";
   description.value = "";
   file.value = null;
+  // Reset file input
+  const fileInput = document.querySelector('input[type="file"]');
+  if (fileInput) fileInput.value = "";
 };
 
 const uploadReport = async () => {
-  if (!file.value)
+  if (!file.value) {
     return showToastMessage("Pilih file PDF terlebih dahulu", "error");
+  }
+
   const formData = new FormData();
   formData.append("file", file.value);
   formData.append("year", newYear.value);
   formData.append("description", description.value || "");
+
   try {
-    const res = await $fetch("/api/audit/upload", {
+    const response = await $fetch(`${API_BASE_URL}/api/audit/upload`, {
       method: "POST",
       body: formData,
     });
-    auditReports.value.unshift(res);
+
+    // Tambahkan nomor dan fileUrl untuk response baru
+    const newReport = {
+      ...response,
+      number: auditReports.value.length + 1,
+      fileUrl: `${API_BASE_URL}/api/audit/file/${response.fileName}`,
+    };
+
+    auditReports.value.unshift(newReport);
     resetForm();
     showToastMessage("Laporan berhasil ditambahkan");
   } catch (err) {
-    showToastMessage(err.message || "Gagal upload laporan", "error");
+    console.error("Upload error:", err);
+    showToastMessage(err.data?.message || "Gagal upload laporan", "error");
   }
 };
 
@@ -373,25 +394,40 @@ const cancelEdit = () => {
 
 const updateReport = async () => {
   if (!editingReport.value) return;
+
   const formData = new FormData();
   formData.append("year", newYear.value);
   formData.append("description", description.value || "");
+
   if (file.value) {
     formData.append("file", file.value);
   }
+
   try {
-    const res = await $fetch(`/api/audit/${editingReport.value.id}`, {
-      method: "PUT",
-      body: formData,
-    });
+    const response = await $fetch(
+      `${API_BASE_URL}/api/audit/${editingReport.value.id}`,
+      {
+        method: "PUT",
+        body: formData,
+      }
+    );
+
+    const updatedReport = {
+      ...response,
+      number: editingReport.value.number,
+      fileUrl: `${API_BASE_URL}/api/audit/file/${response.fileName}`,
+    };
+
     const idx = auditReports.value.findIndex(
       (r) => r.id === editingReport.value.id
     );
-    if (idx !== -1) auditReports.value[idx] = res;
+    if (idx !== -1) auditReports.value[idx] = updatedReport;
+
     resetForm();
     showToastMessage("Laporan berhasil diupdate");
   } catch (err) {
-    showToastMessage(err.message || "Gagal update laporan", "error");
+    console.error("Update error:", err);
+    showToastMessage(err.data?.message || "Gagal update laporan", "error");
   }
 };
 
@@ -401,12 +437,23 @@ const viewReport = (report) => {
   }
 };
 
-const downloadReport = (report) => {
+const downloadReport = async (report) => {
   if (report.fileUrl) {
-    const link = document.createElement("a");
-    link.href = report.fileUrl;
-    link.download = `Laporan_Audit_${report.year}.pdf`;
-    link.click();
+    try {
+      const response = await fetch(report.fileUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `Laporan_Audit_${report.year}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download error:", error);
+      showToastMessage("Gagal mengunduh file", "error");
+    }
   }
 };
 
@@ -417,16 +464,27 @@ const confirmDelete = (report) => {
 
 const deleteReport = async () => {
   if (!reportToDelete.value) return;
+
   try {
-    await $fetch(`/api/audit/${reportToDelete.value.id}`, { method: "DELETE" });
+    await $fetch(`${API_BASE_URL}/api/audit/${reportToDelete.value.id}`, {
+      method: "DELETE",
+    });
+
     auditReports.value = auditReports.value.filter(
       (r) => r.id !== reportToDelete.value.id
     );
+
+    // Update numbers
+    auditReports.value.forEach((report, index) => {
+      report.number = index + 1;
+    });
+
     showDeleteModal.value = false;
     reportToDelete.value = null;
     showToastMessage("Laporan berhasil dihapus");
   } catch (err) {
-    showToastMessage(err.message || "Gagal menghapus laporan", "error");
+    console.error("Delete error:", err);
+    showToastMessage(err.data?.message || "Gagal menghapus laporan", "error");
   }
 };
 

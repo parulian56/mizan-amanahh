@@ -1,79 +1,114 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseInterceptors,
-  UploadedFile,
-  HttpException,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, UploadedFile, UseInterceptors, BadRequestException, Res } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AuditService } from './audit.service';
-import { CreateAuditDto } from './dto/create-audit.dto';
-import { UpdateAuditDto } from './dto/update-audit.dto';
-import { AuditReport } from './entities/audit.entity';
 import { diskStorage } from 'multer';
-import * as path from 'path';
+import { extname, join } from 'path';
+import type { Response } from 'express';
+import * as fs from 'fs';
 
-const multerOptions = {
-  storage: diskStorage({
-    destination: './uploads',
-    filename: (req, file, cb) => {
-      const randomName = Array(32)
-        .fill(null)
-        .map(() => Math.round(Math.random() * 16).toString(16))
-        .join('');
-      cb(null, `${randomName}${path.extname(file.originalname)}`);
-    },
-  }),
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype !== 'application/pdf') {
-      return cb(
-        new HttpException('Hanya file PDF yang diizinkan!', HttpStatus.BAD_REQUEST),
-        false,
-      );
-    }
-    cb(null, true);
-  },
-};
-
-@Controller('audit') // ✅ cukup 'audit' karena sudah ada global prefix 'api'
+@Controller('api/audit')
 export class AuditController {
   constructor(private readonly auditService: AuditService) {}
 
+  @Get()
+  async getAllReports() {
+    return await this.auditService.findAll();
+  }
+
   @Post('upload')
-  @UseInterceptors(FileInterceptor('file', multerOptions))
+  @UseInterceptors(FileInterceptor('file', {
+    storage: diskStorage({
+      destination: './uploads/audit-reports',
+      filename: (req, file, cb) => {
+        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+        cb(null, `${randomName}${extname(file.originalname)}`);
+      }
+    }),
+    fileFilter: (req, file, cb) => {
+      if (file.mimetype === 'application/pdf') {
+        cb(null, true);
+      } else {
+        cb(new BadRequestException('Only PDF files are allowed'), false);
+      }
+    },
+    limits: {
+      fileSize: 10 * 1024 * 1024,
+    }
+  }))
   async uploadReport(
     @UploadedFile() file: Express.Multer.File,
-    @Body() createAuditDto: CreateAuditDto,
-  ): Promise<AuditReport> {
-    if (!file) {
-      throw new HttpException('File PDF wajib diunggah', HttpStatus.BAD_REQUEST);
+    @Body('year') year: string,
+    @Body('description') description: string
+  ) {
+    if (!file) throw new BadRequestException('File is required');
+    if (!year) throw new BadRequestException('Year is required');
+
+    return await this.auditService.create({
+      year,
+      description,
+      fileName: file.filename,
+      filePath: file.path,
+      originalName: file.originalname,
+      fileSize: file.size
+    });
+  }
+
+  @Get(':id')
+  async getReport(@Param('id') id: string) {
+    return await this.auditService.findOne(id);
+  }
+
+  @Put(':id')
+  @UseInterceptors(FileInterceptor('file', {
+    storage: diskStorage({
+      destination: './uploads/audit-reports',
+      filename: (req, file, cb) => {
+        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+        cb(null, `${randomName}${extname(file.originalname)}`);
+      }
+    }),
+    fileFilter: (req, file, cb) => {
+      if (!file || file.mimetype === 'application/pdf') {
+        cb(null, true);
+      } else {
+        cb(new BadRequestException('Only PDF files are allowed'), false);
+      }
     }
-    return this.auditService.create(createAuditDto, file);
-  }
-
-  @Get()
-  async findAllReports(): Promise<AuditReport[]> {
-    return this.auditService.findAll();
-  }
-
-  @Patch(':id')
-  @UseInterceptors(FileInterceptor('file', multerOptions))
+  }))
   async updateReport(
     @Param('id') id: string,
     @UploadedFile() file: Express.Multer.File,
-    @Body() updateAuditDto: UpdateAuditDto,
-  ): Promise<AuditReport> {
-    return this.auditService.update(id, updateAuditDto, file);
+    @Body('year') year: string,
+    @Body('description') description: string
+  ) {
+    const updateData: any = { year, description };
+    
+    if (file) {
+      updateData.fileName = file.filename;
+      updateData.filePath = file.path;
+      updateData.originalName = file.originalname;
+      updateData.fileSize = file.size;
+    }
+
+    return await this.auditService.update(id, updateData);
   }
 
   @Delete(':id')
   async deleteReport(@Param('id') id: string) {
-    return this.auditService.remove(id);
+    return await this.auditService.remove(id);
+  }
+
+  @Get('file/:filename')
+  async getFile(@Param('filename') filename: string, @Res() res: Response) {
+    const filePath = join(process.cwd(), 'uploads', 'audit-reports', filename);
+    
+    if (!fs.existsSync(filePath)) {
+      throw new BadRequestException('File not found');
+    }
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+    
+    return res.sendFile(filePath);
   }
 }

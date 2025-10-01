@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('audit_reports')
 export class AuditReport {
@@ -8,11 +8,20 @@ export class AuditReport {
   @Column()
   year: string;
 
+  @Column()
+  fileName: string;
+
+  @Column()
+  filePath: string;
+
   @Column({ nullable: true })
   description: string;
 
   @Column()
-  filePath: string;
+  originalName: string;
+
+  @Column()
+  fileSize: number;
 
   @CreateDateColumn()
   createdAt: Date;

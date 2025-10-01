@@ -1,7 +1,20 @@
+// nuxt.config.ts
 export default defineNuxtConfig({
-  devServer: {
-    port: 3001,
+  css: [
+    '~/assets/css/main.css',
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
-  css: ["~/assets/css/main.css"],
-  modules: ["@nuxtjs/tailwindcss"],
-});
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:3000/api',
+        changeOrigin: true,
+      },
+    },
+  },
+})
